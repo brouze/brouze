@@ -335,7 +335,7 @@
              miniRef.on("value", function(snapshot) {
                 var currentUser = snapshot.val();
                 console.log(currentUser.name);
-                console.log(currentUser.year);
+                //console.log(currentUser.year);
                 console.log(currentUser.username);
                 profilepic = currentUser.profilepic;
                 name = currentUser.name;
@@ -350,7 +350,7 @@
             //name
             //grade
             //personal comment
-            $("#miniList").append('<div class="container mini-profile"><div class="row"><div class="col-md-4"><img class="img-responsive" src='+profilepic+'id="mini-pic"></div><div class="col-md-8"><h2>'+name+'</h2><h3>'+year+'at'+ school+'</h3><h4>'+comment+'</h4></div></div></div>');
+            $("#miniList").append('<div class="container mini-profile"><div class="row"><div class="col-md-4"><img class="img-responsive" src='+profilepic+'id="mini-pic"></div><div class="col-md-8"><h2>'+name+'</h2><h3>'+grade+'at'+ school+'</h3><h4>'+comment+'</h4></div></div></div>');
             
                                   }
                                   
