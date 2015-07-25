@@ -330,11 +330,12 @@
             //var grade;
             //var school;
             //var comment;
-            console.log("hey");
+            console.log("hey you");
             console.log(miniKey);
             var ref = new Firebase("https://brouze.firebaseio.com/users/" + miniKey + "/basicInfo");
             ref.on("value", function(snapshot) {
                 var currentUser = snapshot.val();
+                console.log("just so you know, we are in the thing");
                 console.log(currentUser);
                 console.log(currentUser.username);
                 console.log(currentUser.name);
