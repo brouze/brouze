@@ -357,8 +357,10 @@
                 $("#miniList").append('<div class="container mini-profile" ><div class="row"><div class="col-md-4"><img class="img-responsive" src="'+profilepic+'"id="mini-pic"></div><div class="col-md-8"><h2>'+name+'</h2><h3>'+grade+' at '+ school+'</h3><h4>'+comment+'</h4></div></div></div>');
                 $("#miniList").on('click', 'div.submit', function(){
     // this is your click-handler
+                    console.log("ummmm");
                      window.location.replace("profile.html?" + "username=" + miniKey + "&pageOwner="+miniKey);
                 });
+                console.log("after all that nonsense");
             }, function(errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
