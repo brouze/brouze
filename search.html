@@ -332,6 +332,7 @@
             var school;
             var comment;
             var miniRef = new Firebase("https://brouze.firebaseio.com/users/"+miniKey+"/basicInfo");
+            console.log("do we even get here");
              miniRef.on("value", function(snapshot) {
                 var currentUser = snapshot.val();
                 console.log(currentUser.name);
