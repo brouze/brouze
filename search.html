@@ -354,7 +354,7 @@
                 var school = currentUser.school;
                 var profilepic = currentUser.profilepic;
                 var comment = currentUser.blurb;
-                $("#miniList").append('<div class="container mini-profile" id='+miniKey+'><div class="row"><div class="col-md-4"><img class="img-responsive" src="'+profilepic+'"id="mini-pic"></div><div class="col-md-8"><h2>'+name+'</h2><h3>'+grade+' at '+ school+'</h3><h4>'+comment+'</h4></div></div></div>');
+                $("#miniList").append('<div class="container mini-profile" id="profile"><div class="row"><div class="col-md-4"><img class="img-responsive" src="'+profilepic+'"id="mini-pic"></div><div class="col-md-8"><h2>'+name+'</h2><h3>'+grade+' at '+ school+'</h3><h4>'+comment+'</h4></div></div></div>');
                 apply_click(miniKey);
 
 
@@ -393,8 +393,8 @@
              window.location.replace("profile.html?" + "username=" + ownerKey + "&pageOwner="+ownerKey);
         }  
         function apply_click(ownerKey) {
-            $("#"+ownerKey+"").click( function() {
-                alert('clicked'); 
+            $('#profile').click( function() {
+                alert('clicked'+ownerKey); 
                 window.location.replace("profile.html?" + "username=" + ownerKey + "&pageOwner="+ownerKey);
             });    
         }
