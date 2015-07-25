@@ -331,21 +331,18 @@
             //var school;
             //var comment;
             console.log("hey");
-            var miniRef = new Firebase("https://brouze.firebaseio.com/users/"+miniKey+"/basicInfo");
-            console.log("do we even get here");
-            console.log("xox 1");
-             miniRef.on("value", function(snapshot) {
+            console.log(miniKey);
+            var ref = new Firebase("https://brouze.firebaseio.com/users/" + miniKey + "/basicInfo");
+            ref.on("value", function(snapshot) {
                 var currentUser = snapshot.val();
-                console.log(currentUser.name);
+                console.log(currentUser);
                 console.log(currentUser.username);
-                console.log(currentUser.profilepic);
-                console.log(currentUser.school);
-                console.log(currentUser.grade);
-                profilepic = currentUser.profilepic;
+                console.log(currentUser.name);
                 var name = currentUser.name;
+                var username = currentUser.username;
                 var grade = currentUser.grade;
-                var comment = currentUser.comment;
                 var school = currentUser.school;
+                var profilepic = currentUser.profilepic;
             }, function(errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
