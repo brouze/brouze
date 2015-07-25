@@ -339,15 +339,15 @@
             //var grade;
             //var school;
             //var comment;
-            console.log("hey you");
-            console.log(miniKey);
+            //console.log("hey you");
+            //console.log(miniKey);
             var ref = new Firebase("https://brouze.firebaseio.com/users/" + miniKey + "/basicInfo");
             ref.on("value", function(snapshot) {
                 var currentUser = snapshot.val();
-                console.log("just so you know, we are in the thing");
-                console.log(currentUser);
-                console.log(currentUser.username);
-                console.log(currentUser.name);
+                //console.log("just so you know, we are in the thing");
+                //console.log(currentUser);
+                //console.log(currentUser.username);
+                //console.log(currentUser.name);
                 var name = currentUser.name;
                 var username = currentUser.username;
                 var grade = currentUser.grade;
@@ -357,19 +357,19 @@
                 $("#miniList").append('<div class="container mini-profile" id="profile"><div class="row"><div class="col-md-4"><img class="img-responsive" src="'+profilepic+'"id="mini-pic"></div><div class="col-md-8"><h2>'+name+'</h2><h3>'+grade+' at '+ school+'</h3><h4>'+comment+'</h4></div></div></div>');
                 $("#miniList").on('click', '#profile', function(){
     // this is your click-handler
-                    console.log("ummmm");
+                    //console.log("ummmm");
                      window.location.replace("profile.html?" + "username=" + miniKey + "&pageOwner="+miniKey);
                 });
-                console.log("after all that nonsense");
-                console.log("go 2");
+                //console.log("after all that nonsense");
+                console.log("go 3");
             }, function(errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
             //$("#miniList").remove();
-            console.log("xox 2");
+            //console.log("xox 2");
             results++;
-            console.log(results);
-            console.log("xox 3");
+            //console.log(results);
+            //console.log("xox 3");
             //console.log(name);
             //console.log(school);
             //console.log(grade);
@@ -379,7 +379,7 @@
             //name
             //grade
             //personal comment
-            console.log("xox 4");
+            //console.log("xox 4");
         }
         function profileRedirect(ownerKey){
             console.log("hey we are redirecting");
