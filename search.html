@@ -290,6 +290,7 @@
         <h5>Copyright 2015 - YAAAS Labs</h5>
     </div>
     <script>
+        var results;
         var keyWord;
         function getWord(){
             keyWord = $("#subject").val();
@@ -303,6 +304,10 @@
             }
         });
        function search(searchVal){
+           for(var i = 0;i < results;i++){
+               $("#miniList").remove();
+           }
+           results = 0;
             var nameRef = new Firebase("https://brouze.firebaseio.com/users");
             nameRef.once("value", function(snapshot) {
                 snapshot.forEach(function(childSnapshot) {
@@ -352,6 +357,7 @@
             });
             $("#miniList").remove();
             console.log("xox 2");
+            results++;
             //console.log(name);
             //console.log(school);
             //console.log(grade);
