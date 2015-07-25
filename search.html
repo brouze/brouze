@@ -325,13 +325,13 @@
             });
        }
         function addMini(miniKey){
+            //var profilepic;
+            //var name;
+            //var grade;
+            //var school;
+            //var comment;
             console.log("hey");
             var miniRef = new Firebase("https://brouze.firebaseio.com/users/"+miniKey+"/basicInfo");
-            var profilepic;
-            var name;
-            var grade;
-            var school;
-            var comment;
             console.log("do we even get here");
             console.log("xox 1");
              miniRef.on("value", function(snapshot) {
@@ -342,10 +342,10 @@
                 console.log(currentUser.school);
                 console.log(currentUser.grade);
                 profilepic = currentUser.profilepic;
-                name = currentUser.name;
-                grade = currentUser.grade;
-                comment= currentUser.comment;
-                school = currentUser.school;
+                var name = currentUser.name;
+                var grade = currentUser.grade;
+                var comment= currentUser.comment;
+                var school = currentUser.school;
             }, function(errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
