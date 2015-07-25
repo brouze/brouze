@@ -333,6 +333,7 @@
             var comment;
             var miniRef = new Firebase("https://brouze.firebaseio.com/users/"+miniKey+"/basicInfo");
             console.log("do we even get here");
+            console.log("xox 1");
              miniRef.on("value", function(snapshot) {
                 var currentUser = snapshot.val();
                 console.log(currentUser.name);
@@ -348,13 +349,18 @@
             }, function(errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
+            console.log("xox 2");
+            console.log(name);
+            console.log(school);
+            console.log(grade);
+            console.log("xox 3");
             //console.log(miniRef.username);
             //image url
             //name
             //grade
             //personal comment
             $("#miniList").append('<div class="container mini-profile"><div class="row"><div class="col-md-4"><img class="img-responsive" src="'+profilepic+'"id="mini-pic"></div><div class="col-md-8"><h2>'+name+'</h2><h3>'+grade+' at '+ school+'</h3><h4>'+comment+'</h4></div></div></div>');
-            
+            console.log("xox 4");
         }
                                   
     </script>
