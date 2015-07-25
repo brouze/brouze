@@ -306,10 +306,10 @@
        function search(searchVal){
            for(var i = 0;i < results;i++){
                //$("#miniList").remove();
-               $("#miniList:last-child").remove();
+               //$("#miniList:last-child").remove();
            }
-           
-           results = 0;
+           $("#miniList").children().last().remove();
+           //results = 0;
             var nameRef = new Firebase("https://brouze.firebaseio.com/users");
             nameRef.once("value", function(snapshot) {
                 snapshot.forEach(function(childSnapshot) {
