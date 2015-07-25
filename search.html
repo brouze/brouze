@@ -326,12 +326,12 @@
        }
         function addMini(miniKey){
             console.log("hey");
+            var miniRef = new Firebase("https://brouze.firebaseio.com/users/"+miniKey+"/basicInfo");
             var profilepic;
             var name;
             var grade;
             var school;
             var comment;
-            var miniRef = new Firebase("https://brouze.firebaseio.com/users/"+miniKey+"/basicInfo");
             console.log("do we even get here");
             console.log("xox 1");
              miniRef.on("value", function(snapshot) {
