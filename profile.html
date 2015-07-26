@@ -117,7 +117,7 @@
                     <li class="dropdown">
                         <a id="dropMenu" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi Buttface  <span class="caret" aria-hidden="true"></span></a>
                         <ul class="dropdown-menu">
-                            <li class="active"><a href="profile.html">Profile</a></li>
+                            <li class="active"><a onclick="home()">Profile</a></li>
                             <li><a href="savedtutors.html">Saved Tutors</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a onclick="signOut()">Sign Out</a></li>
@@ -241,6 +241,7 @@
         var data;
         var profileOwner;
         var pageViewer;
+        var match = true;
         /*function parseQueryString(){
             data = GetUrlValue("username_a");
             console.log(data);
@@ -269,6 +270,7 @@
             if(pageViewer != data){
                 console.log("the user is not the viewer");
                 //$(".canTutorButton").hide();
+                match = false;
                 $(".canTutorButton").hide();
             }
             accessInfo(params["username"]);
@@ -395,6 +397,9 @@
         function sendWord(){
             var keyWord = $("#subject").val();
             window.location.replace("search.html?" + "username=" + data + "&word="+keyWord);
+        }
+        function home(){
+            window.location.replace("profile.html?" + "username=" + userData + "&pageOwner="+userData);
         }
     </script>
 
