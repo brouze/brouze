@@ -270,7 +270,7 @@ td {
 }
 
 
-.canTutorButton{
+#canTutorButton{
     text-align: right;
     padding-top: 2%;
     padding-bottom: 2%;
@@ -278,7 +278,7 @@ td {
   
 }
 
-.canTutorButton a {
+#canTutorButton a {
     padding: 5px 7px 5px 8px;
     font-size: 1.5em;
     border-radius: 100%;
