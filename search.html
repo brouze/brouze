@@ -264,16 +264,16 @@
         var userData;
         var pageWord;
         var parseQueryString = function() {
-            console.log("go 40");
+            console.log("go 41");
             var queryString = window.location.search;
-            console.log(queryString);
+            //console.log(queryString);
             var res = queryString.replace("%20", " ");
-            console.log(res);
+            //console.log(res);
             queryString = res;
             //decodeURI(queryString)
             //decodeURIComponent(queryString.replace(/\+/g, '%20') );
             queryString = queryString.substring(1);
-            console.log(queryString)
+           // console.log(queryString)
             var params = {},
                 queries, temp, i, l;
             // Split into key/value pairs
@@ -370,7 +370,7 @@
                     console.log(status);
                     console.log(miniKey);
                     //console.log(miniKey.ID);
-                     window.location.replace("profile.html?" + "username=" + miniKey + "&pageOwner="+miniKey);
+                     window.location.replace("profile.html?" + "username=" + miniKey + "&pageOwner="+userData);
                 });
                 
                 
