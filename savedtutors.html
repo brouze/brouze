@@ -94,7 +94,7 @@
                               
                           </div>
                           <div class="input-group-btn">
-                            <button class="btn btn-default" type="button" onclick="getWord()"><i class="glyphicon glyphicon-search"></i></button>
+                             <button class="btn btn-default" type="button" onclick="sendWord()"><i class="glyphicon glyphicon-search"></i></button>
                           </div><!-- /btn-group -->
                         </div><!-- /input-group -->
                         <!--<button class="btn btn-default" type="button" onclick="getWord()"><i class="glyphicon glyphicon-search"></i></button>-->
@@ -164,7 +164,6 @@
     </div>
 
 
-    <!--
     <script>
         var data;
         var profileOwner;
@@ -175,7 +174,7 @@
             console.log(profileOwner);
             accessInfo(data);
                                
-        }*/
+        }
         var parseQueryString = function() {
             var queryString = window.location.search;
             queryString = queryString.substring(1);
@@ -300,15 +299,18 @@
                 $('#cantTutorTable tr:last').after('<tr><td>'+key+'</td><td>'+teacher+'</td><td>'+grade+'</td><td>'+comments+'</td></tr>');
               });
             });
-        }
+        }*/
         function signOut(){
             var outRef = new Firebase("https://brouze.firebaseio.com");
             outRef.unauth();
             window.location.replace("index.html");
             
         }
+         function sendWord(){
++            var keyWord = $("#subject").val();
++            window.location.replace("search.html?" + "username=" + data + "&word="+keyWord);
++        }
     </script>
-    -->
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
