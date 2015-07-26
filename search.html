@@ -135,7 +135,7 @@
                     <li class="dropdown">
                         <a id="dropMenu" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi Buttface  <span class="caret" aria-hidden="true"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="">Profile</a></li>
+                            <li><a onclick="home()">Profile</a></li>
                             <li><a href="">Saved Tutors</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="">Sign Out</a></li>
@@ -409,6 +409,9 @@
                 alert('clicked'+ownerKey); 
                 window.location.replace("profile.html?" + "username=" + ownerKey + "&pageOwner="+ownerKey);
             });    
+        }
+        function home(){
+            window.location.replace("profile.html?" + "username=" + data + "&pageOwner="+data);
         }
         /*$("#miniList").click(function(event){
             alert(event.target.id);
