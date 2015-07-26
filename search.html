@@ -358,17 +358,18 @@
                 //apply_click(miniKey,results);
 
 
-                $("#miniList").on('click', '#'+miniKey, function(){
+                //$("#miniList").on('click', '#'+miniKey, function(){
+                $(document.getElementById(miniKey)).onclick(){
     // this is your click-handler
                     console.log(miniKey);
                      window.location.replace("profile.html?" + "username=" + miniKey + "&pageOwner="+miniKey);
-                });
+                };
                 /*$( "#profile" ).wrap(function() {
                   console.log("ummmm");
                   window.location.replace("profile.html?" + "username=" + miniKey + "&pageOwner="+miniKey);
                 });*/
                 //console.log("after all that nonsense");
-                console.log("go 13");
+                console.log("go 14");
             }, function(errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
