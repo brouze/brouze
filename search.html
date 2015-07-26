@@ -354,16 +354,16 @@
                 var school = currentUser.school;
                 var profilepic = currentUser.profilepic;
                 var comment = currentUser.blurb;
-                $("#miniList").append('<div class="container mini-profile" id='+results+'><div class="row"><div class="col-md-4"><img class="img-responsive" src="'+profilepic+'"id="mini-pic"></div><div class="col-md-8"><h2>'+name+'</h2><h3>'+grade+' at '+ school+'</h3><h4>'+comment+'</h4></div></div></div>');
+                $("#miniList").append('<div class="container mini-profile" onclick="window.location.replace('"profile.html?" + "username=" + miniKey + "&pageOwner="+miniKey+')" id='+results+'><div class="row"><div class="col-md-4"><img class="img-responsive" src="'+profilepic+'"id="mini-pic"></div><div class="col-md-8"><h2>'+name+'</h2><h3>'+grade+' at '+ school+'</h3><h4>'+comment+'</h4></div></div></div>');
                 //apply_click(miniKey,results);
 
 
-                $("#miniList").on('click', '#'+results, function(){
+                /*$("#miniList").on('click', '#'+results, function(){
                 //$(document.getElementById(results)).onclick = function(){
     // this is your click-handler
                     console.log(miniKey);
                      //window.location.replace("profile.html?" + "username=" + miniKey + "&pageOwner="+miniKey);
-                });
+                });*/
                 /*$( "#profile" ).wrap(function() {
                   console.log("ummmm");
                   window.location.replace("profile.html?" + "username=" + miniKey + "&pageOwner="+miniKey);
