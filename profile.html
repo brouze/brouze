@@ -262,15 +262,16 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude");
+            console.log("dude 1");
             data = params["username"];
             console.log(params["username"]);
             pageViewer = params["pageOwner"];
             if(pageViewer != data){
+                console.log("the user is not the viewer");
                 $(".glyphicon glyphicon-plus").hide();
             }
             accessInfo(params["username"]);
-            console.log("page Owner"+params["pageOwner"]);
+            console.log("page Owner "+params["pageOwner"]);
             
         };
         function GetUrlValue(VarSearch){
