@@ -265,16 +265,20 @@
         var pageWord;
         var parseQueryString = function() {
             var queryString = window.location.search;
+            console.log(queryString);
             //decodeURI(queryString)
-            decodeURIComponent(queryString.replace(/\+/g, '%20') );
+            //decodeURIComponent(queryString.replace(/\+/g, '%20') );
             queryString = queryString.substring(1);
+            console.log(queryString)
             var params = {},
                 queries, temp, i, l;
             // Split into key/value pairs
             queries = queryString.split("&");
+            console.log(queries);
             // Convert the array of strings into an object
             for (i = 0, l = queries.length; i < l; i++) {
                 temp = queries[i].split('=');
+                console.log(temp);
                 //temp.replace(/%20/g, " ");
                 params[temp[0]] = temp[1];
                
