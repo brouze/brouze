@@ -34,7 +34,7 @@
 
 </head>
 
-<body>
+<body onload="parseQueryString()">
 
     <!-- Fixed navbar -->
     
@@ -367,7 +367,7 @@
                   window.location.replace("profile.html?" + "username=" + miniKey + "&pageOwner="+miniKey);
                 });*/
                 //console.log("after all that nonsense");
-                console.log("go 31");
+                console.log("go 32");
             }, function(errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
