@@ -159,7 +159,7 @@
                     <div class="col-xs-6 col-md-6">
                         <h2>Can Tutor:</h2>
                     </div>
-                    <div class="col-xs-6 col-md-6" id="canTutorButton">
+                    <div class="col-xs-6 col-md-6 canTutorButton">
                       
                             <a onclick="redirect()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
 
@@ -198,7 +198,7 @@
                     <div class="col-xs-6 col-md-6">
                         <h2>Needs Help In:</h2>
                     </div>
-                    <div class="col-xs-6 col-md-6" id="canTutorButton">
+                    <div class="col-xs-6 col-md-6 canTutorButton">
                       
                             <a onclick="redirectTwo()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
 
@@ -269,7 +269,7 @@
             if(pageViewer != data){
                 console.log("the user is not the viewer");
                 //$(".canTutorButton").hide();
-                //$("#canTutorButton").hide();
+                $(".canTutorButton").hide();
             }
             accessInfo(params["username"]);
             console.log("page Owner "+params["pageOwner"]);
