@@ -262,13 +262,13 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude 6");
+            console.log("dude 7");
             data = params["username"];
             console.log(params["username"]);
             pageViewer = params["pageOwner"];
             if(pageViewer != data){
                 console.log("the user is not the viewer");
-                $(".canTutorButton").hide();
+                //$(".canTutorButton").hide();
                 //$("#canTutorButton").hide();
             }
             accessInfo(params["username"]);
