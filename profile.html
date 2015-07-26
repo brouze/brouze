@@ -159,7 +159,7 @@
                     <div class="col-xs-6 col-md-6">
                         <h2>Can Tutor:</h2>
                     </div>
-                    <div class="col-xs-6 col-md-6" id="canTutorButton">
+                    <div class="col-xs-6 col-md-6" class="canTutorButton">
                       
                             <a onclick="redirect()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
 
@@ -198,7 +198,7 @@
                     <div class="col-xs-6 col-md-6">
                         <h2>Needs Help In:</h2>
                     </div>
-                    <div class="col-xs-6 col-md-6" id="canTutorButton">
+                    <div class="col-xs-6 col-md-6" class="canTutorButton">
                       
                             <a onclick="redirectTwo()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
 
@@ -262,13 +262,13 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude 5");
+            console.log("dude 6");
             data = params["username"];
             console.log(params["username"]);
             pageViewer = params["pageOwner"];
             if(pageViewer != data){
                 console.log("the user is not the viewer");
-                $("#canTutorButton").hide();
+                $(".canTutorButton").hide();
                 //$("#canTutorButton").hide();
             }
             accessInfo(params["username"]);
