@@ -359,16 +359,22 @@
                 $("#miniList").on('click', '#'+results, function(){
                 //$(document.getElementById(results)).onclick = function(){
     // this is your click-handler
+                   
+                    var status = $(this).attr('id');
+                    console.log(status);
                     console.log(miniKey);
-                    console.log(miniKey.ID);
+                    //console.log(miniKey.ID);
                      //window.location.replace("profile.html?" + "username=" + miniKey + "&pageOwner="+miniKey);
                 });
+                
+                
+
                 /*$( "#profile" ).wrap(function() {
                   console.log("ummmm");
                   window.location.replace("profile.html?" + "username=" + miniKey + "&pageOwner="+miniKey);
                 });*/
                 //console.log("after all that nonsense");
-                console.log("go 25");
+                console.log("go 26");
             }, function(errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
