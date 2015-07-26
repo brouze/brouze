@@ -107,7 +107,7 @@
                                </li>
                                <li><a href="">Tutor Name</a></li>
                             </ul>
-                            <button class="btn btn-default" type="button" onclick="getWord()"><i class="glyphicon glyphicon-search"></i></button>
+                            <button class="btn btn-default" type="button" onclick="sendWord()"><i class="glyphicon glyphicon-search"></i></button>
                           </div><!-- /btn-group -->
                         </div><!-- /input-group -->
                         <!--<button class="btn btn-default" type="button" onclick="getWord()"><i class="glyphicon glyphicon-search"></i></button>-->
@@ -383,6 +383,10 @@
             outRef.unauth();
             window.location.replace("index.html");
             
+        }
+        function sendWord(){
+            var keyWord = $("#subject").val();
+            window.location.replace("search.html?" + "username=" + data + "&word="+keyWord);
         }
     </script>
 
