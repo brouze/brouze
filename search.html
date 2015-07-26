@@ -273,7 +273,9 @@
             // Convert the array of strings into an object
             for (i = 0, l = queries.length; i < l; i++) {
                 temp = queries[i].split('=');
+                temp.replace(/%20/g, " ");
                 params[temp[0]] = temp[1];
+               
             }
             console.log("dude");
             data = params["username"];
@@ -368,7 +370,7 @@
                   window.location.replace("profile.html?" + "username=" + miniKey + "&pageOwner="+miniKey);
                 });*/
                 //console.log("after all that nonsense");
-                console.log("go 33");
+                console.log("go 34");
             }, function(errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
