@@ -297,12 +297,13 @@
             }
         });
        function search(searchVal){
+           console.log("in search");
            for(var i = 0;i < results;i++){
                //$("#miniList").remove();
                //$("#miniList:last-child").remove();
                $("#miniList").children().last().remove();
            }
-           
+           console.log("xox 1");
            results = 0;
             var nameRef = new Firebase("https://brouze.firebaseio.com/users");
             nameRef.once("value", function(snapshot) {
