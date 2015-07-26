@@ -190,6 +190,7 @@ th, td {
 }
 
 .mini-profile {
+    margin-left: 30px;
     margin-right: 30px;
     width: auto;
     background-color: white;
