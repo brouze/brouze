@@ -261,10 +261,10 @@
     <script>
         var results = 0;
         var keyWord;
-        var data;
+        var userData;
         var pageWord;
         var parseQueryString = function() {
-            console.log("go 39");
+            console.log("go 40");
             var queryString = window.location.search;
             console.log(queryString);
             var res = queryString.replace("%20", " ");
@@ -288,7 +288,7 @@
                
             }
             console.log("dude");
-            data = params["username"];
+            userData = params["username"];
             console.log(params["username"]);
             //accessInfo(params["username"]);
             //console.log("page Owner"+params["pageOwner"]);
@@ -411,7 +411,7 @@
             });    
         }
         function home(){
-            window.location.replace("profile.html?" + "username=" + data + "&pageOwner="+data);
+            window.location.replace("profile.html?" + "username=" + userData + "&pageOwner="+userData);
         }
         /*$("#miniList").click(function(event){
             alert(event.target.id);
