@@ -240,6 +240,7 @@
     <script>
         var data;
         var profileOwner;
+        var pageViewer;
         /*function parseQueryString(){
             data = GetUrlValue("username_a");
             console.log(data);
@@ -264,8 +265,13 @@
             console.log("dude");
             data = params["username"];
             console.log(params["username"]);
+            pageViewer = params["pageOwner"];
+            if(pageViewer != data){
+                $(".glyphicon glyphicon-plus").hide();
+            }
             accessInfo(params["username"]);
             console.log("page Owner"+params["pageOwner"]);
+            
         };
         function GetUrlValue(VarSearch){
             var SearchString = window.location.search.substring(1);
