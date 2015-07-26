@@ -264,8 +264,11 @@
         var data;
         var pageWord;
         var parseQueryString = function() {
+            console.log("go 38");
             var queryString = window.location.search;
             console.log(queryString);
+            var res = queryString.replace("%20", " ");
+            console.log(res);
             //decodeURI(queryString)
             //decodeURIComponent(queryString.replace(/\+/g, '%20') );
             queryString = queryString.substring(1);
