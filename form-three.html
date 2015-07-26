@@ -163,7 +163,8 @@
             redirect();
         }
         function redirect(){
-             window.location.replace("profile.html?username="+userData);
+             //window.location.replace("profile.html?username="+userData);
+             window.location.replace("profile.html?" + "username=" + userData + "&pageOwner="+userData);
         }
       
 </script>
