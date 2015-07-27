@@ -263,7 +263,7 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude 12");
+            console.log("dude 13");
             data = params["username"];
             console.log(params["username"]);
             pageViewer = params["pageOwner"];
@@ -366,11 +366,11 @@
                 var comments = childData.comment;
                 var grade = childData.grade;
                 var AP = childData.AP;
-                $('#canTutorTable tr:last').after('<tr id='+key+'><td>'+key+'</td><td>'+teacher+'</td><td>'+yearTaken+'</td><td>'+grade+'</td><td>'+AP+'</td><td>$'+price+'</td><td>'+comments+'</td></tr>');
-                $("#"+key).click(function(){
+                $('#canTutorTable tr:last').after('<tr><td>'+key+'</td><td>'+teacher+'</td><td>'+yearTaken+'</td><td>'+grade+'</td><td>'+AP+'</td><td>$'+price+'</td><td>'+comments+'</td></tr>');
+                /*$("#"+key).click(function(){
                     console.log("key what's up ");
                        // window.document.location = $(this).data("href");
-                });
+                });*/
                     /*$("#canTutorTable").on('click', '#'+key, function(){
                             var status = $(this).attr('id');
                             console.log(status);
