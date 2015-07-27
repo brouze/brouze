@@ -40,8 +40,7 @@
 
 </head>
 
-<!--<body onload="parseQueryString()">-->
-<body>
+<body onload="parseQueryString()">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -100,9 +99,9 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a id="dropMenu" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi Buttface  <span class="caret" aria-hidden="true"></span></a>
+                        <a id="dropMenu" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi<span class="caret" aria-hidden="true"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="profile.html">Profile</a></li>
+                            <li><a onclick="home()">Profile</a></li>
                             <li class="active"><a href="savedtutors.html">Saved Tutors</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a onclick="signOut()">Sign Out</a></li>
@@ -126,6 +125,9 @@
     
     <div id="results" class="container">
         <div class="row">
+<<<<<<< HEAD
+            <div class="col-lg-9" id="miniList">
+=======
             <div id="miniList">
                <center><div class="container mini-profile">
                     <div class="row">
@@ -153,6 +155,7 @@
                     </div>    
                 </div>
                 </center>
+>>>>>>> origin/master
             </div>
         </div>
     </div>  
@@ -172,7 +175,7 @@
             console.log(profileOwner);
             accessInfo(data);
                                
-        }
+        }*/
         var parseQueryString = function() {
             var queryString = window.location.search;
             queryString = queryString.substring(1);
@@ -188,9 +191,10 @@
             console.log("dude");
             data = params["username"];
             console.log(params["username"]);
-            accessInfo(params["username"]);
+            //accessInfo(params["username"]);
             console.log("page Owner"+params["pageOwner"]);
-        };
+            search();
+        };/*
         function GetUrlValue(VarSearch){
             var SearchString = window.location.search.substring(1);
             var VariableArray = SearchString.split('&');
@@ -278,6 +282,12 @@
               });
             });
         }
+        
+        
+        
+        
+        
+        
         function addRowTwo(){
             console.log("Attempting to append");
             //$('#canTutorTable tr:last').after('<tr><td>hello</td><td>world</td></tr>');
@@ -304,10 +314,75 @@
             window.location.replace("index.html");
             
         }
-         function sendWord(){
-+            var keyWord = $("#subject").val();
-+            window.location.replace("search.html?" + "username=" + data + "&word="+keyWord);
-+        }
+          function sendWord(){
+            var keyWord = $("#subject").val();
+            window.location.replace("search.html?" + "username=" + data + "&word="+keyWord);
+           }
+                   
+           function search(){
+               console.log("in search");
+           /*globalWord=searchVal;
+           console.log("in search");
+           var tempZip = $("#zipcode").val();
+           console.log("tempZip: "+tempZip);
+           if(tempZip != ''){
+               console.log("zip has value");
+           }
+           var tempAge = $("#minage").val();
+           console.log("tempAge: "+tempAge);
+           for(var i = 0;i < results;i++){
+               //$("#miniList").remove();
+               //$("#miniList:last-child").remove();
+               $("#miniList").children().last().remove();
+           }
+           console.log("xox 1");
+           results = 0;*/
+            var nameRef = new Firebase("https://brouze.firebaseio.com/users/"+data+"/faves");
+            nameRef.once("value", function(snapshot) {
+                snapshot.forEach(function(childSnapshot) {
+                    var key = childSnapshot.key();
+                    var faveKey = childSnapshot.faveKey;
+                    console.log(faveKey);
+                    console.log(name);
+                    addMini(key);
+                            
+                        
+                    
+              });
+            });
+       }
+        function addMini(miniKey){
+            var ref = new Firebase("https://brouze.firebaseio.com/users/" + miniKey + "/basicInfo");
+            ref.on("value", function(snapshot) {
+                var currentUser = snapshot.val();
+                var name = currentUser.name;
+                var username = currentUser.username;
+                var grade = currentUser.grade;
+                var school = currentUser.school;
+                var profilepic = currentUser.profilepic;
+                var comment = currentUser.blurb;
+                $("#miniList").append('<div class="container mini-profile"  id='+username+'><div class="row"><div class="col-md-4"><img class="img-responsive" src="'+profilepic+'"id="mini-pic"></div><div class="col-md-8"><h2>'+name+'</h2><h3>'+grade+' at '+ school+'</h3><h4>'+comment+'</h4></div></div></div>');
+                //apply_click(miniKey,results);
+                $("#miniList").on('click', '#'+username, function(){
+                //$(document.getElementById(results)).onclick = function(){
+    // this is your click-handler
+                   
+                    var status = $(this).attr('id');
+                    console.log(status);
+                    console.log(miniKey);
+                    //console.log(miniKey.ID);
+                     window.location.replace("profile.html?" + "username=" + miniKey + "&pageOwner="+data);
+                });
+                
+                console.log("go 36");
+            }, function(errorObject) {
+                console.log("The read failed: " + errorObject.code);
+            });
+            results++;
+        }
+        function home(){
+            window.location.replace("profile.html?" + "username=" + data + "&pageOwner=" + data);
+        }
     </script>
 
     <!-- jQuery -->
