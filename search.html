@@ -346,6 +346,9 @@
                     var zipcode =childData.basicInfo.zipcode;
                     var age = childData.basicInfo.age;
                     var skills = snapshot.child(key+"/skills/"+searchVal).exists();
+                    //var loc1 = childData.basicInfo.loc1;
+                    //var loc2 = childData.basicInfo.loc2;
+                    //var loc3 = childData.basicInfo.loc3;
                     //var username = childRef.username
                     //console.log(name);
                     //console.log(username);
@@ -353,7 +356,7 @@
                     //console.log(skills);
                     //console.log(searchVal);
                     if(skills==true){
-                        console.log("hey look at me  "+ Fzipcode+" and "+zipcode);
+                        //console.log("hey look at me  "+ Floc1+" and "+loc1);
                         if((Fzipcode == '') || (zipcode == Fzipcode)){
                             if(((Fminage == '')||(age >= Fminage))&&((Fmaxage == '')||(age <= Fmaxage))){
                                 console.log(name);
