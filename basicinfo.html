@@ -59,13 +59,13 @@
                     <label for="usr">Username:</label>
                     <input type="text" maxlength="18" class="form-control" id="usr" placeholder="Enter screenname">
                 </div>
-                <label>Contat Information</label>
+                <label>Contact Information - Optional</label>
                 <div class="form-group">
                     <label for="zipcode">Email:</label>
-                    <input type="text" maxlength="5" class="form-control" id="email" placeholder="Email-optional">
+                    <input type="text" maxlength="30" class="form-control" id="email" placeholder="random@email.com">
                     
                     <label for="zipcode">Phone Number:</label>
-                    <input type="text" maxlength="5" class="form-control" id="phone" placeholder="Phone number-optional">
+                    <input type="text" maxlength="14" class="form-control" id="phone" placeholder="(555) 555-5555">
                 </div>
                 <div class="form-group">
                     <label for="school">School:</label>
@@ -165,8 +165,8 @@
             var school = $("#school").val();
             var zip = $("#zipcode").val();
             var username = $("#usr").val();
-            var email = $("email").val();
-            var phone = $("phone").val();
+            var email = $("#email").val();
+            var phone = $("#phone").val();
             var grade = $("#grade").val();
             var age = $("#age").val();
             var blurb = $("#comment").val();
