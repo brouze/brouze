@@ -142,6 +142,8 @@
                 <h2 id="zip">Zipcode: 95070</h2>
                 <h2 id="age">Age: 17</h2>
                 <h2 id="grade">Grade: 12</h2>
+                <h2 id="phone"></h2>
+                <h2 id="email"></h2>
                 <h2 id="prefLoc">Preferred tutoring location: Library</h2>
             </div>
 
@@ -314,6 +316,8 @@
                 $("#dropMenu").text("Hello " + currentUser.username + "   ");
                 $("#dropMenu").append('<span class="caret" aria-hidden="true"></span>');
                 $("#desc").text(currentUser.blurb);
+                $("#email").text("email"+currentUser.email);
+                $("#phone").text("phone number"+currentUser.phone);
                 //need to fix/update
                 $("prefLoc").text("Tutoring location(s): " + currentUser.loc1 + currentUser.loc2 + currentUser.loc3 + currentUser.loc4);
                 addRow();
