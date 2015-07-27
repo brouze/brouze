@@ -1,13 +1,10 @@
-body{
-   /*display: none;*/
+body {
+    /*display: none;*/
     width: 100%;
     height: 100%;
     overflow-x: hidden;
     font-weight: 400;
     margin-top: 70px;
-
-
-
 }
 
 body,
@@ -167,7 +164,14 @@ p.copyright {
 #title {
     background-color: white;
     color: darkorange;
-    text-align: center;  
+    text-align: center;
+}
+
+#title h1 {
+    font-size: 5em;
+
+   
+
 }
 
 #results {
@@ -184,24 +188,24 @@ tr td {
     vertical-align: middle;
 }
 
-th, td {
+th,
+td {
     padding: 50px;
 }
 
+
+
 .mini-profile {
     width: auto;
-    background-color: lightgray;
+    background-color: rgba(140, 179, 105, 0.2);
     position: relative;
     margin-top: 20px;
     padding: 2% 6% 2% 4%;
     border-radius: 5px;
-   
-    
-    
 }
 
 .mini-profile h2 {
-    font-size: 5em;  
+    font-size: 5em;
 }
 
 .mini-profile h3 {
@@ -218,54 +222,41 @@ th, td {
 #mini-pic {
     margin-left: 8%;
     border-radius: 100%;
-    width: 15vw; 
+    width: 15vw;
 }
 
-
-@media(max-width:767px){
-    
-    .mini-profile{
+@media(max-width:767px) {
+    .mini-profile {
         margin-top: 10px;
-        
     }
-.mini-profile h2 {
-    text-align:center; 
-}
-
-.mini-profile h3 {
- text-align: center;
-}
-
-.mini-profile h4 {
-   text-align: justify;
-}
-
-#mini-pic {
-    width: 50vw;
-   display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-    
-
+    .mini-profile h2 {
+        text-align: center;
+    }
+    .mini-profile h3 {
+        text-align: center;
+    }
+    .mini-profile h4 {
+        text-align: justify;
+    }
+    #mini-pic {
+        width: 50vw;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .fave {
-    color:white;
+    color: white;
     background-color: none;
-    
-    
 }
 
 .well {
     background-image: url(../img/forest.jpg);
 }
 
-
-
-
 .foot {
-    width:100%;
+    width: 100%;
     padding-top: 1%;
     padding-bottom: 1%;
     text-align: center;
@@ -273,8 +264,6 @@ th, td {
     border-top: 1px solid lightgray;
 }
 
- .navbar {
-    background: rgba(255,255,255,0.7);
-  }
-
-
+.navbar {
+    background: rgba(255, 255, 255, 0.7);
+}

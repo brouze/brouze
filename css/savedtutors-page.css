@@ -1,13 +1,10 @@
-body{
-   /*display: none;*/
+body {
+    /*display: none;*/
     width: 100%;
     height: 100%;
     overflow-x: hidden;
     font-weight: 400;
     margin-top: 70px;
-
-
-
 }
 
 body,
@@ -168,7 +165,7 @@ p.copyright {
     width: 100%;
     background-color: darkorange;
     color: floralwhite;
-    text-align: center;  
+    text-align: center;
 }
 
 #results {
@@ -185,7 +182,8 @@ tr td {
     vertical-align: middle;
 }
 
-th, td {
+th,
+td {
     padding: 50px;
 }
 
@@ -198,12 +196,10 @@ th, td {
     margin-top: 20px;
     padding: 2% 6% 2% 4%;
     border-radius: 5px
-    
-    
 }
 
 .mini-profile h2 {
-    font-size: 5em;  
+    font-size: 5em;
 }
 
 .mini-profile h3 {
@@ -220,29 +216,29 @@ th, td {
 #mini-pic {
     margin-left: 8%;
     border-radius: 100%;
-    width: 15vw; 
+    width: 15vw;
 }
-
-
-@media(max-width:767px){
-    
-    #name {
-
-    font-size: 10vw; 
-    font-weight: 700;
+ 
+@media(max-width:767px) {
+    .mini-profile h2 {
+        text-align: center;
+    }
+    .mini-profile h3 {
+        text-align: center;
+    }
+    .mini-profile h4 {
+        text-align: justify;
+    }
+    #mini-pic {
+        width: 50vw;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
-    #basicInfo h2 {
-    font-size: 5vw;
-
-}
-
-}
-
-
-
 
 .foot {
-    width:100%;
+    width: 100%;
     padding-top: 1%;
     padding-bottom: 1%;
     text-align: center;
@@ -250,6 +246,6 @@ th, td {
     border-top: 1px solid lightgray;
 }
 
- .navbar {
-    background: rgba(255,255,255,0.7);
-  }
+.navbar {
+    background: rgba(255, 255, 255, 0.7);
+}
