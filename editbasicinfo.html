@@ -52,27 +52,27 @@
 
     <div id="bg" class="container">
         <h2>Hello!</h2>
-        <p>To edit your profile, fill in the form below. You can always come back and edit this later.</p>
+        <p>To edit your profile, fill in the form below.</p>
         <form role="form" onsubmit="accessInfo()">
             <form role="form">
                 <label>Contact Information - Optional</label>
                 <div class="form-group">
-                    <label for="zipcode">Email:</label>
+                    <label id="oldemail" for="contact"></label>
                     <input type="text" maxlength="30" class="form-control" id="email" placeholder="random@email.com">
                     
-                    <label for="zipcode">Phone Number:</label>
+                    <label id="oldphone" for="contact">Phone Number:</label>
                     <input type="text" maxlength="16" class="form-control" id="phone" placeholder="(555) 555-5555">
                 </div>
                 <div class="form-group">
-                    <label for="school">School:</label>
+                    <label id="oldschool" for="school">School:</label>
                     <input type="text" maxlength="45" class="form-control" id="school" placeholder="Enter your school">
                 </div>
                 <div class="form-group">
-                    <label for="zipcode">Zipcode:</label>
+                    <label id="oldzipcode" for="zipcode">Zipcode:</label>
                     <input type="text" maxlength="5" class="form-control" id="zipcode" placeholder="Enter your zipcode">
                 </div>
                 <div class="form-group">
-                    <label for="grade">Select grade:</label>
+                    <label id="grade" for="grade">Select grade:</label>
                     <select class="form-control" id="grade">
                         <option></option>
                         <option>freshman</option>
@@ -82,7 +82,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="age">Select age:</label>
+                    <label id="oldage" for="age">Select age:</label>
                     <select class="form-control" id="age">
                         <option></option>
                         <option>13</option>
@@ -97,33 +97,33 @@
                 <label>Tutoring Location:
                     <div class="form-group">
                         <div class="checkbox">
-                            <label>
+                            <label id="oldlib">
                                 <input type="checkbox" id="lib"> Library
                             </label>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="checkbox">
-                            <label>
+                            <label id="oldhouse">
                                 <input type="checkbox" id="house"> Student's Home
                             </label>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="checkbox">
-                            <label>
+                            <label id="oldweb">
                                 <input type="checkbox" id="web"> Online
                             </label>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>
+                        <label id="oldother">
                             <input type="text" maxlength="40" class="form-control" id="other" placeholder="Other location">
                         </label>
                     </div>
                 </label>
                 <div class="form-group">
-                    <label for="comment">Bio:</label>
+                    <label id="oldcomment" for="comment">Bio:</label>
                     <textarea class="form-control" rows="5" id="comment" placeholder="A summary of your education will help people get to know you."></textarea>
                 </div>
                 <div class="form-group">
@@ -152,20 +152,27 @@
             console.log("dude");
             console.log(params["username"]);
             userData = params["username"];
-            //accessInfo(params["username"]);
+            showInfo(params["username"]);
         };
+        function showInfo(info) {
+            var ref = new Firebase("https://brouze.firebaseio.com/users/" + info + "/basicInfo");
+             ref.on("value", function(snapshot) {
+                var currentUser = snapshot.val();
+                $("#oldemail").text("Email: " + currentUser.email);
+             }
+        }
+        //old one
         function accessInfo() {
             var school = $("#school").val();
             var zip = $("#zipcode").val();
-            var username = $("#usr").val();
             var email = $("#email").val();
             var phone = $("#phone").val();
             var grade = $("#grade").val();
             var age = $("#age").val();
             var blurb = $("#comment").val();
-            var loc1 = $("#lib").val();
-            var loc2 = $("#house").val();
-            var loc3 = $("#web").val();
+            var loc1 = $('#lib').prop('checked');
+            var loc2 = $('#house').prop('checked');
+            var loc3 = $('#web').prop('checked');
             var loc4 = $("#other").val();
             console.log(school);
             console.log(zip);
@@ -176,7 +183,6 @@
             var usernameRef = usersRef.child(userData);
             var basicRef = usernameRef.child("basicInfo");
             basicRef.update({
-                "username": username,
                 "email": email,
                 "phone": phone,
                 "zipcode": zip,
