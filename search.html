@@ -131,7 +131,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a id="dropMenu" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi Buttface  <span class="caret" aria-hidden="true"></span></a>
+                        <a id="dropMenu" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu  <span class="caret" aria-hidden="true"></span></a>
                         <ul class="dropdown-menu">
                             <li><a onclick="home()">Profile</a></li>
                             <li><a href="">Saved Tutors</a></li>
@@ -164,7 +164,7 @@
                     <form>
                         <div class="form-group">
                             <label>Zipcode:</label>
-                            <input type="text" class="form-control" id="teacher">
+                            <input type="text" class="form-control" id="zipcode">
                         </div>
                         <div class="form-group">
                             <label>Teacher:</label>
@@ -206,29 +206,29 @@
                         </div>
                         <label>Tutoring Location:
                         <div class="form-group">
-                              <div class="checkbox" id="libraryCheck" onclick="state()">
+                              <div class="checkbox" id="libraryCheck">
                                 <label>
-                                  <input type="checkbox" id="box"> Library
+                                  <input type="checkbox" id="lib"> Library
                                 </label>
                               </div>
                           </div>
                           <div class="form-group">
                               <div class="checkbox">
                                 <label>
-                                  <input type="checkbox"> Your Home
+                                  <input type="checkbox" id="yourHome"> Your Home
                                 </label>
                               </div>
                           </div>
                           <div class="form-group">
                               <div class="checkbox">
                                 <label>
-                                  <input type="checkbox"> Online
+                                  <input type="checkbox" id="online"> Online
                                 </label>
                               </div>
                           </div>
                           </label>
                         <div class="form-group"> 
-                          <button type="button" class="btn btn-default">Filter</button>
+                          <button type="button" class="btn btn-primary" onclick="applyFilter()">Filter</button>
                         </div>
                     </form>
                 </div>
@@ -257,10 +257,22 @@
         <h5>Copyright 2015 - YAAAS Labs</h5>
     </div>
     <script>
+        
+        
+            var Fzipcode = $("#zipcode").val();
+            var Fminage = $("#minage").val();
+            var Fmaxage = $("#maxage").val();
+            var Fteacher = $("#teacher").val();
+            var Fminprice = $("#minprice").val();
+            var Fmaxprice = $("#maxprice").val();
+            var Floc1 = $('#lib').prop('checked');
+            var Floc2 = $('#yourHome').prop('checked');
+            var Floc3 = $('#online').prop('checked');//reading check boxes
         var results = 0;
         var keyWord;
         var userData;
         var pageWord;
+        var globalWord;
         var parseQueryString = function() {
             console.log("go 41");
             var queryString = window.location.search;
@@ -307,7 +319,15 @@
             }
         });
        function search(searchVal){
+           globalWord=searchVal;
            console.log("in search");
+           var tempZip = $("#zipcode").val();
+           console.log("tempZip: "+tempZip);
+           if(tempZip != ''){
+               console.log("zip has value");
+           }
+           var tempAge = $("#minage").val();
+           console.log("tempAge: "+tempAge);
            for(var i = 0;i < results;i++){
                //$("#miniList").remove();
                //$("#miniList:last-child").remove();
@@ -323,6 +343,8 @@
                     var username = childData.basicInfo.username;
                     var name = childData.basicInfo.name;
                     //var childRef = new Firebase("https://brouze.firebaseio.com/users/" + key);
+                    var zipcode =childData.basicInfo.zipcode;
+                    var age = childData.basicInfo.age;
                     var skills = snapshot.child(key+"/skills/"+searchVal).exists();
                     //var username = childRef.username
                     //console.log(name);
@@ -331,8 +353,11 @@
                     //console.log(skills);
                     //console.log(searchVal);
                     if(skills==true){
-                        console.log(name);
-                        addMini(key);
+                        console.log("hey look at me  "+ Fzipcode+" and "+zipcode);
+                        if((Fzipcode == '') || (zipcode == Fzipcode)){
+                            console.log(name);
+                            addMini(key);
+                        }
                     }
               });
             });
@@ -414,9 +439,55 @@
         /*$("#miniList").click(function(event){
             alert(event.target.id);
         });*/
-        function state(){
-            var check = $('#box').prop('checked');
-            console.log("check: "+check);
+        function applyFilter(){
+            
+            Fzipcode = $("#zipcode").val();
+            if(Fzipcode != ''){
+                console.log("zipcode: "+Fzipcode);
+            }
+            Fminage = $("#minage").val();
+            if(Fminage != ''){
+                console.log("minage: "+Fminage);
+            }
+            Fmaxage = $("#maxage").val();
+            if(Fmaxage != ''){
+                console.log("maxage: "+Fmaxage);
+            }
+            Fteacher = $("#teacher").val();
+            if(Fteacher != ''){
+                console.log("teacher: "+Fteacher);
+            }
+            Fminprice = $("#minprice").val();
+            if(Fminprice != ''){
+                console.log("minprice: "+Fminprice);
+            }
+            Fmaxprice = $("#maxprice").val();
+            if(Fmaxage != ''){
+                console.log("maxprice: "+Fmaxprice);
+            }
+            Floc1 = $('#lib').prop('checked');//reading check boxes
+            if(Floc1 != ''){
+                console.log("lib: "+Floc1);
+            }
+            Floc2 = $('#yourHome').prop('checked');//reading check boxes
+            if(Floc2 != ''){
+                console.log("yourHome: "+Floc2);
+            }
+            Floc3 = $('#online').prop('checked');//reading check boxes
+            if(Floc3 != ''){
+                console.log("online: "+Floc3);
+            }
+            clear();
+            search(globalWord);
+
+        }
+        function clear(){
+            for(var i = 0;i < results;i++){
+               //$("#miniList").remove();
+               //$("#miniList:last-child").remove();
+               $("#miniList").children().last().remove();
+           }
+            //console.log(results);
         }
     </script>
     
