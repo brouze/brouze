@@ -314,8 +314,12 @@
                 $("#dropMenu").text("Hello " + currentUser.username + "   ");
                 $("#dropMenu").append('<span class="caret" aria-hidden="true"></span>');
                 $("#desc").text(currentUser.blurb);
-                $("#email").text("email"+currentUser.email);
-                $("#phone").text("phone number"+currentUser.phone);
+                if(currentUser.email !== undefined){
+                    $("#email").text("email: "+currentUser.email);
+                }
+                if(currentUser.phone !== undefined){
+                    $("#phone").text("phone number: "+currentUser.phone);
+                }
                 //need to fix/update
                 $("prefLoc").text("Tutoring location(s): " + currentUser.loc1 + currentUser.loc2 + currentUser.loc3 + currentUser.loc4);
                 addRow();
