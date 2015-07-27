@@ -137,8 +137,7 @@
         <div class="row buttons">
             <button class="btn btn-warning btn-large" id="fave"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Add to Favorites</button>
             <button class="btn btn-warning btn-large" id="unfave">Remove from Favorites</button>
-            <a href="editbasicinfo.html" class="btn btn-warning btn-large" id="editProfile"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Edit Profile</a>
-            
+            <a onclick="redirectThree()" class="btn btn-warning btn-large" id="editProfile"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Edit Profile</a>
         </div>
         <div class="row" id="headInfo">
             <div class="col-md-5"> <img class="img-responsive" id="profileImage" onclick="imageEdit()" src="http://www.imran.com/xyper_images/icon-user-default.png"></div>
@@ -368,6 +367,11 @@
         function redirectTwo() {
             console.log("xox redirect");
             window.location.replace("form-three.html?username=" + data);
+        }
+        
+        function redirectThree() {
+            console.log("xox redirect");
+            window.location.replace("editbasicinfo.html?username=" + data);
         }
 
         function addRow() {
