@@ -118,7 +118,7 @@
                         <a id="dropMenu" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi Buttface  <span class="caret" aria-hidden="true"></span></a>
                         <ul class="dropdown-menu">
                             <li class="active"><a onclick="home()">Profile</a></li>
-                            <li><a href="savedtutors.html">Saved Tutors</a></li>
+                            <li><a onclick="saveRedirect()">Saved Tutors</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a onclick="signOut()">Sign Out</a></li>
                         </ul>
@@ -135,8 +135,8 @@
     <!--Content-->
     <div id="title" class="container">
         <div class="row buttons">
-            <button class="btn btn-warning btn-large" id="fave"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Add to Favorites</button>
-            <button class="btn btn-warning btn-large" id="unfave">Remove from Favorites</button>
+            <button class="btn btn-warning btn-large" id="fave" onclick="pushFave()"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Add to Favorites</button>
+            <button class="btn btn-warning btn-large" id="unfave" onclick="popFave()">Remove from Favorites</button>
             <a onclick="redirectThree()" class="btn btn-warning btn-large" id="editProfile"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Edit Profile</a>
         </div>
         <div class="row" id="headInfo">
@@ -250,6 +250,7 @@
         var profileOwner;
         var pageViewer;
         var match = true;
+        var profileViewer;
         /*function parseQueryString(){
             data = GetUrlValue("username_a");
             console.log(data);
@@ -273,6 +274,7 @@
             }
             console.log("dude 13");
             data = params["username"];
+            profileOwner=params["username"];
             console.log(params["username"]);
             pageViewer = params["pageOwner"];
             if (pageViewer != data) {
@@ -456,7 +458,7 @@
 
         function sendWord() {
             var keyWord = $("#subject").val();
-            window.location.replace("search.html?" + "username=" + data + "&word=" + keyWord);
+            window.location.replace("search.html?" + "username=" + pageViewer + "&word=" + keyWord);
         }
 
         function home() {
@@ -474,6 +476,20 @@
                     home();
                 }
             }
+        }
+        function pushFave(){
+            var newRef = new Firebase("https://brouze.firebaseio.com/users/" + pageViewer);
+            //var classRef = usernameRef.child("skills");
+            newRef.child("faves").child(data).set({
+                faveKey:data
+            });
+        }
+        function popFave(){
+            var endRef = new Firebase("https://brouze.firebaseio.com/users/" + pageViewer+"/faves/"+data);
+            endRef.remove();
+        }
+        function saveRedirect(){
+            window.location.replace("savedtutors.html?" + "username=" + pageViewer + "&pageOwner=" + pageViewer);
         }
     </script>
 
