@@ -52,27 +52,27 @@
 
     <div id="bg" class="container">
         <h2>Hello!</h2>
-        <p>To edit your profile, fill in the form below.</p>
+        <p>To edit your profile, fill in the form below. If you don't want to change a section of the form, keep that section blank- your original answer will be kept for you.</p>
         <form role="form" onsubmit="accessInfo()">
             <form role="form">
                 <label>Contact Information - Optional</label>
                 <div class="form-group">
-                    <label id="oldemail" for="contact"></label>
+                    <label for="contact">Email: </label>
                     <input type="text" maxlength="30" class="form-control" id="email" placeholder="random@email.com">
                     
-                    <label id="oldphone" for="contact">Phone Number:</label>
+                    <label for="contact">Phone Number:</label>
                     <input type="text" maxlength="16" class="form-control" id="phone" placeholder="(555) 555-5555">
                 </div>
                 <div class="form-group">
-                    <label id="oldschool" for="school">School:</label>
+                    <label for="school">School:</label>
                     <input type="text" maxlength="45" class="form-control" id="school" placeholder="Enter your school">
                 </div>
                 <div class="form-group">
-                    <label id="oldzipcode" for="zipcode">Zipcode:</label>
+                    <label for="zipcode">Zipcode:</label>
                     <input type="text" maxlength="5" class="form-control" id="zipcode" placeholder="Enter your zipcode">
                 </div>
                 <div class="form-group">
-                    <label id="grade" for="grade">Select grade:</label>
+                    <label for="grade">Select grade:</label>
                     <select class="form-control" id="grade">
                         <option></option>
                         <option>freshman</option>
@@ -82,7 +82,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label id="oldage" for="age">Select age:</label>
+                    <label for="age">Select age:</label>
                     <select class="form-control" id="age">
                         <option></option>
                         <option>13</option>
@@ -97,33 +97,33 @@
                 <label>Tutoring Location:
                     <div class="form-group">
                         <div class="checkbox">
-                            <label id="oldlib">
+                            <label>
                                 <input type="checkbox" id="lib"> Library
                             </label>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="checkbox">
-                            <label id="oldhouse">
+                            <label>
                                 <input type="checkbox" id="house"> Student's Home
                             </label>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="checkbox">
-                            <label id="oldweb">
+                            <label>
                                 <input type="checkbox" id="web"> Online
                             </label>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label id="oldother">
+                        <label>
                             <input type="text" maxlength="40" class="form-control" id="other" placeholder="Other location">
                         </label>
                     </div>
                 </label>
                 <div class="form-group">
-                    <label id="oldcomment" for="comment">Bio:</label>
+                    <label for="comment">Bio:</label>
                     <textarea class="form-control" rows="5" id="comment" placeholder="A summary of your education will help people get to know you."></textarea>
                 </div>
                 <div class="form-group">
@@ -158,7 +158,12 @@
             var ref = new Firebase("https://brouze.firebaseio.com/users/" + info + "/basicInfo");
              ref.on("value", function(snapshot) {
                 var currentUser = snapshot.val();
-                $("#oldemail").text("Email: " + currentUser.email);
+                $("#email").attr("placeholder", currentUser.email);
+                $("#phone").attr("placeholder", currentUser.phone);
+                $("#school").attr("placeholder", currentUser.school);
+                $("#zipcode").attr("placeholder", currentUser.zipcode);
+                $("#other").attr("placeholder", currentUser.loc4);
+                $("#comment").attr("placeholder", currentUser.blurb);
              }
         }
         //old one
