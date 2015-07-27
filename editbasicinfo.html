@@ -158,6 +158,7 @@
             var ref = new Firebase("https://brouze.firebaseio.com/users/" + info + "/basicInfo");
              ref.on("value", function(snapshot) {
                 var currentUser = snapshot.val();
+                console.log(currentUser.email);
                 $("#email").attr("placeholder", currentUser.email);
                 $("#phone").attr("placeholder", currentUser.phone);
                 $("#school").attr("placeholder", currentUser.school);
