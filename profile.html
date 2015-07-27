@@ -405,9 +405,7 @@
             if(match==true){
                 var person = prompt("Please enter a new image URL", "paste URL here");
                 if (person != null) {
-                    var usersRef = ref.child("users")
-                    var usernameRef = usersRef.child(userData);
-                    var basicRef = usernameRef.child("basicInfo");
+                    var basicRef = new Firebase("https://brouze.firebaseio.com/users/"+ data + "/basicInfo");
                     basicRef.update({
                           "profilepic": person
                     });
