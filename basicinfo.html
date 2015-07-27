@@ -59,6 +59,14 @@
                     <label for="usr">Username:</label>
                     <input type="text" maxlength="18" class="form-control" id="usr" placeholder="Enter screenname">
                 </div>
+                <label>Contat Information</label>
+                <div class="form-group">
+                    <label for="zipcode">Email:</label>
+                    <input type="text" maxlength="5" class="form-control" id="email" placeholder="Email-optional">
+                    
+                    <label for="zipcode">Phone Number:</label>
+                    <input type="text" maxlength="5" class="form-control" id="phone" placeholder="Phone number-optional">
+                </div>
                 <div class="form-group">
                     <label for="school">School:</label>
                     <input type="text" maxlength="45" class="form-control" id="school" placeholder="Enter your school">
@@ -157,6 +165,8 @@
             var school = $("#school").val();
             var zip = $("#zipcode").val();
             var username = $("#usr").val();
+            var email = $("email").val();
+            var phone = $("phone").val();
             var grade = $("#grade").val();
             var age = $("#age").val();
             var blurb = $("#comment").val();
@@ -174,6 +184,8 @@
             var basicRef = usernameRef.child("basicInfo");
             basicRef.update({
                 "username": username,
+                "email": email,
+                "phone": phone,
                 "zipcode": zip,
                 "grade": grade,
                 "age": age,
