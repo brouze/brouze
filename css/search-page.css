@@ -237,6 +237,13 @@ th, td {
 
 }
 
+.fave {
+    color:white;
+    background-color: none;
+    
+    
+}
+
 
 
 
@@ -252,3 +259,5 @@ th, td {
  .navbar {
     background: rgba(255,255,255,0.7);
   }
+
+
