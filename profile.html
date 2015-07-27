@@ -135,7 +135,7 @@
     <!--Content-->
     <div id="title" class="container">
         <div class="row" id="headInfo">
-            <div class="col-md-5"> <img class="img-responsive" id="profileImage" src="http://www.imran.com/xyper_images/icon-user-default.png"></div>
+            <div class="col-md-5"> <img class="img-responsive" id="profileImage" onclick="imageEdit()" src="http://www.imran.com/xyper_images/icon-user-default.png"></div>
             <div id="basicInfo" class="col-md-7">
                 <h1 id="name">Buttface McGee</h1>
                 <h2 id="school">Saratoga High School</h2>
@@ -400,6 +400,20 @@
         }
         function home(){
             window.location.replace("profile.html?" + "username=" + pageViewer + "&pageOwner="+pageViewer);
+        }
+        function imageEdit(){
+            if(match==true){
+                var person = prompt("Please enter a new image URL", "paste URL here");
+                if (person != null) {
+                    var usersRef = ref.child("users")
+                    var usernameRef = usersRef.child(userData);
+                    var basicRef = usernameRef.child("basicInfo");
+                    basicRef.update({
+                          "profilepic": person
+                    });
+                    home();
+                }
+            }
         }
     </script>
 
