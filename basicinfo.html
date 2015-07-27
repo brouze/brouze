@@ -55,9 +55,14 @@
         <p>To set up your profile, fill in the form below. You can always come back and edit this later.</p>
         <form role="form" onsubmit="accessInfo()">
             <form role="form">
-                <div class="form-group">
+                <div class="form-group has-success has-feedback">
                     <label for="usr">Username:</label>
-                    <input type="text" maxlength="18" class="form-control" id="usr" placeholder="Enter screenname">
+                    <div class="col-sm-9">
+                      <input type="text" maxlength="18" class="form-control" id="usr" aria-describedby="inputSuccess3Status" placeholder="Enter screenname">
+                      <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                      <span id="inputSuccess3Status" class="sr-only">(success)</span>
+                    </div>
+                    <label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
                 </div>
                 <label>Contact Information - Optional</label>
                 <div class="form-group">
