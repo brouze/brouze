@@ -355,8 +355,10 @@
                     if(skills==true){
                         console.log("hey look at me  "+ Fzipcode+" and "+zipcode);
                         if((Fzipcode == '') || (zipcode == Fzipcode)){
-                            console.log(name);
-                            addMini(key);
+                            if(((Fminage == '')||(age >= Fminage))&&((Fmaxage == '')||(age <= Fmaxage))){
+                                console.log(name);
+                                addMini(key);
+                            }
                         }
                     }
               });
