@@ -206,9 +206,9 @@
                         </div>
                         <label>Tutoring Location:
                         <div class="form-group">
-                              <div class="checkbox">
+                              <div class="checkbox" id="libraryCheck" onclick="state()">
                                 <label>
-                                  <input type="checkbox"> Library
+                                  <input type="checkbox" id="box"> Library
                                 </label>
                               </div>
                           </div>
@@ -276,7 +276,7 @@
                 queries, temp, i, l;
             // Split into key/value pairs
             queries = queryString.split("&");
-            console.log(queries);
+            //console.log(queries);
             // Convert the array of strings into an object
             for (i = 0, l = queries.length; i < l; i++) {
                 temp = queries[i].split('=');
@@ -285,14 +285,14 @@
                 params[temp[0]] = temp[1];
                
             }
-            console.log("dude");
+            //console.log("dude");
             userData = params["username"];
-            console.log(params["username"]);
+            //console.log(params["username"]);
             //accessInfo(params["username"]);
             //console.log("page Owner"+params["pageOwner"]);
-            console.log("here is the search word");
+            //console.log("here is the search word");
             pageWord = params["word"];
-            console.log(pageWord);
+            //console.log(pageWord);
             search(pageWord);
         };
         function getWord(){
@@ -414,6 +414,10 @@
         /*$("#miniList").click(function(event){
             alert(event.target.id);
         });*/
+        function state(){
+            var check = $('#box').prop('checked');
+            console.log("check: "+check);
+        }
     </script>
     
     

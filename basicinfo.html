@@ -170,9 +170,12 @@
             var grade = $("#grade").val();
             var age = $("#age").val();
             var blurb = $("#comment").val();
-            var loc1 = $("#lib").val();
-            var loc2 = $("#house").val();
-            var loc3 = $("#web").val();
+            //var loc1 = $("#lib").val();
+            var loc1 = $('#lib').prop('checked');
+            var loc2 = $('#house').prop('checked');
+            var loc3 = $('#web').prop('checked');
+            //var loc2 = $("#house").val();
+            //var loc3 = $("#web").val();
             var loc4 = $("#other").val();
             console.log(school);
             console.log(zip);
