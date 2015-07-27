@@ -183,7 +183,6 @@ img:hover {
 }
 
 #profileImage {
-    height: 40vw;
     border-radius: 100%;
     display: block;
     margin-left: auto;
