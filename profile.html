@@ -134,6 +134,12 @@
 
     <!--Content-->
     <div id="title" class="container">
+        <div class="row" id="buttons">
+            <button class="btn btn-warning btn-large" id="fave"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Add to Favorites</button>
+            <button class="btn btn-warning btn-large" id="unfave">Remove from Favorites</button>
+            <button class="btn btn-warning btn-large" id="unfave" id="edit"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Edit Profile</button>
+            
+        </div>
         <div class="row" id="headInfo">
             <div class="col-md-5"> <img class="img-responsive" id="profileImage" onclick="imageEdit()" src="http://www.imran.com/xyper_images/icon-user-default.png"></div>
             <div id="basicInfo" class="col-md-7">
@@ -273,8 +279,10 @@
             if (pageViewer != data) {
                 console.log("the user is not the viewer");
                 //$(".canTutorButton").hide();
+                 $("#edit").hide();
                 match = false;
                 $(".canTutorButton").hide();
+               
                 
             }
             accessInfo(params["username"]);

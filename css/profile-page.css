@@ -187,6 +187,7 @@ img:hover {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 0.5em;
 }
 
 #name {
@@ -305,6 +306,17 @@ td {
   margin-top: 0.7em
 }
 
+#buttons {
+    margin-right: 8vw;
+    float: right;
+    
+}
+
+
+#buttons span {
+    margin-right: 10px;
+}
+
 
 
 
@@ -315,6 +327,7 @@ td {
         display: block;
         margin-left: auto;
         margin-right: auto;
+        margin-top: 0.5em;
     }
     
     .input-group {
@@ -332,6 +345,10 @@ td {
     font-size: 10vw;
     font-weight: 700;
 }
+    
+    #buttons {
+     text-align: center;
+    }
 
 
 

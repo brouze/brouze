@@ -173,7 +173,7 @@ p.copyright {
 
 #results {
     width: 100%;
-    background-color: floralwhite;
+    background-color: white;
 }
 
 th {
@@ -190,13 +190,13 @@ th, td {
 }
 
 .mini-profile {
-    margin-right: 30px;
     width: auto;
-    background-color: white;
+    background-color: lightgray;
     position: relative;
     margin-top: 20px;
     padding: 2% 6% 2% 4%;
-    border-radius: 5px
+    border-radius: 5px;
+   
     
     
 }
@@ -225,15 +225,29 @@ th, td {
 
 @media(max-width:767px){
     
-    #name {
-
-    font-size: 10vw; 
-    font-weight: 700;
+    .mini-profile{
+        margin-top: 10px;
+        
+    }
+.mini-profile h2 {
+    text-align:center; 
 }
-    #basicInfo h2 {
-    font-size: 5vw;
 
+.mini-profile h3 {
+ text-align: center;
 }
+
+.mini-profile h4 {
+   text-align: justify;
+}
+
+#mini-pic {
+    width: 50vw;
+   display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+    
 
 }
 
