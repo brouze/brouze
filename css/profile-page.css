@@ -306,15 +306,14 @@ td {
   margin-top: 0.7em
 }
 
-#buttons {
-    margin-right: 8vw;
+.buttons {
     float: right;
+    margin-right: 8vw;
     
 }
 
-
-#buttons span {
-    margin-right: 10px;
+.buttons a {
+    margin-right: 20px;
 }
 
 
