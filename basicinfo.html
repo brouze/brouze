@@ -69,7 +69,7 @@
                 -->
                 <div class="form-group has-error has-feedback" id="errorusrform">
                   <label class="control-label" for="inputError2">Invalid username: must be greater than 6 characters and unique</label>
-                  <input type="text" maxlength="16" class="form-control" id="username" aria-describedby="inputError2Status">
+                  <input type="text" maxlength="16" class="form-control" id="usernameTwo" aria-describedby="inputError2Status">
                   <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                   <span id="inputError2Status" class="sr-only">(error)</span>
                 </div>
@@ -156,6 +156,7 @@
 
     </div>
     <script>
+        var angry = false;
         var ref = new Firebase("https://brouze.firebaseio.com");
         var userData; //data.uid
         var parseQueryString = function() {
@@ -179,16 +180,31 @@
             $("#errorusrform").hide();
             //accessInfo(params["username"]);
         };
-        
+
         function accessInfo() {
-            var tempStr = $("#username").val();
+            var exists = false;
+            
+            //exists = unique();
+    
+            console.log(exists);
+            if(angry==false){
+                var tempStr = $("#username").val();
+            }
+            else{
+                var tempStry = $("#usernameTwo").val();
+            }
             console.log(tempStr);
             console.log("str len: "+tempStr.length);
             if (tempStr.length>6){//need to add for validity
-                console.log("username is valid! moving on");
+                //console.log("username is valid! moving on");
                 var school = $("#school").val();
                 var zip = $("#zipcode").val();
-                var username = $("#username").val();
+                if(angry==false){
+                    var username = $("#username").val();
+                }
+                else{
+                    var username = $("#usernameTwo").val();
+                }
                 var email = $("#email").val();
                 var phone = $("#phone").val();
                 var grade = $("#grade").val();
@@ -254,7 +270,23 @@
                 $("#usrform").hide();
                 $("#errorusrform").show();
                 console.log("got past");
+                angry = true;
             }
+        }
+        function userExistsCallback(exists) {
+          if (exists) {
+            //newUser = false;
+            //alert('user ' + userId + ' exists!');
+          } else {
+            //alert('user ' + userId + ' does not exist!');
+              //newUser = true;
+              //console.log("newUser is" + newUser);//here it is true
+          }
+        }
+
+        // Tests to see if /users/<userId> has any data.
+        function checkIfUserExists(possibleUser){
+          
         }
     </script>
     
