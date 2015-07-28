@@ -182,8 +182,9 @@
         
         function accessInfo() {
             var tempStr = $("#username");
-            console.log("str len: "+tempStr.value.length);
-            if (tempStr.length>6 && tempStr.length<16){//need to add for validity
+            console.log(tempStr);
+            console.log("str len: "+tempStr.length);
+            if (tempStr.length>6){//need to add for validity
                 console.log("username is valid! moving on");
                 var school = $("#school").val();
                 var zip = $("#zipcode").val();
