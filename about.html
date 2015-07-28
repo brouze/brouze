@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
 
     <title>Brouze | About Us</title>
 
@@ -51,7 +52,7 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="../navbar-static-top/"><b>Sign In</b></a></li>
+                    <li><a onclick="authenticate()"><b>Sign In</b></a></li>
 
                 </ul>
             </div>
@@ -119,7 +120,80 @@
     <div class="foot">
         <h5>Copyright 2015 - YAAAS Labs</h5>
     </div>
+    <script>
+            var USERS_LOCATION = 'https://brouze.firebaseio.com/users';
+        var userData;
+        var newUser;
+        var ref = new Firebase("https://brouze.firebaseio.com");
+        function authenticate(){
+        ref.authWithOAuthPopup("google", function(error, authData) {
+          if (error) {
+            console.log("Login Failed!", error);
+          } else {
 
+            console.log("Authenticated successfully with payload:", authData);
+              userData = authData.uid;
+              console.log("here is the key: " + userData);
+              checkIfUserExists(userData,authData.provider,authData);
+
+          }
+        });
+        }
+          function Username() {
+            var person = prompt("Please enter your name", "Username");
+            if (person != null) {
+                var usersRef = ref.child("users")
+                var usernameRef = usersRef.child(userData);
+                var basicRef = usernameRef.child("basicInfo");
+                    basicRef.update({
+                      "username": person
+                    });
+            }
+             // document.write("hello " + person);
+        }// Get a reference to our posts
+
+        function userExistsCallback(userId, exists) {
+          if (exists) {
+            newUser = false;
+            //alert('user ' + userId + ' exists!');
+          } else {
+            //alert('user ' + userId + ' does not exist!');
+              newUser = true;
+              //console.log("newUser is" + newUser);//here it is true
+          }
+        }
+
+        // Tests to see if /users/<userId> has any data.
+        function checkIfUserExists(userId,dataProvider,data){
+          var usersRef = new Firebase(USERS_LOCATION);
+          usersRef.child(userId).once('value', function(snapshot) {
+            var exists = (snapshot.val() !== null);
+            userExistsCallback(userId, exists);
+              console.log("right before " + newUser);//here it is false
+              if(newUser == true){
+                 
+                ref.child("users").child(userId).set({
+                basicInfo:{
+                    provider: dataProvider,
+                    name: data.google.displayName,
+                    profilepic: data.google.profileImageURL
+                }
+                 
+              //some more user data
+                });
+                  window.location.replace("basicinfo.html?username="+data.uid);
+                 //Username();*/
+              }
+              else{
+                  //window.location.replace("profile.html?username="+data.uid);
+                  window.location.replace("profile.html?" + "username=" + data.uid + "&pageOwner="+data.uid);
+                 // window.location.replace("form-two.html?username="+data.uid);
+              }
+             // console.log(data.google.profileImageURL);
+          });
+        }
+    
+    </script>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
