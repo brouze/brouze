@@ -350,7 +350,12 @@
                 $("#zip").text("Zipcode: " + currentUser.zipcode);
                 $("#age").text("Age: " + currentUser.age);
                 $("#grade").text("Grade: " + currentUser.grade);
-                $("#dropMenu").text("Hello " + currentUser.username + "   ");
+                if(match == false){
+                    $("#dropMenu").text("Menu");
+                }
+                else{
+                    $("#dropMenu").text("Hello " + currentUser.username + "   ");
+                }
                 $("#dropMenu").append('<span class="caret" aria-hidden="true"></span>');
                 $("#desc").text(currentUser.blurb);
                 if (currentUser.email !== undefined) {
