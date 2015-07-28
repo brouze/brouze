@@ -251,6 +251,7 @@
         var pageViewer;
         var match = true;
         var profileViewer;
+        var favorite;
         /*function parseQueryString(){
             data = GetUrlValue("username_a");
             console.log(data);
@@ -346,6 +347,9 @@
             }, function(errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
+            if(!match){
+                searchFave();
+            }
         }
 
         function createDiv(divText) {
@@ -490,6 +494,19 @@
         }
         function saveRedirect(){
             window.location.replace("savedtutors.html?" + "username=" + pageViewer + "&pageOwner=" + pageViewer);
+        }
+        function searchFave(){
+            var ref = new Firebase("https://brouze.firebaseio.com/users/"+pageViewer+"/faves");
+            ref.once("value", function(snapshot) {
+              var favorite = snapshot.child(data).exists();
+             //return favorite;
+                if(favorite==true){
+                    $("#fave").hide();
+                }
+                else{
+                    $("#unfave").hide();
+                }
+            });
         }
     </script>
 
