@@ -464,7 +464,7 @@
             console.log(deleted);
             var tempRef = new Firebase("https://brouze.firebaseio.com/users/"+data+"/weaknesses/"+deleted);
             tempRef.remove();
-            addRowTwo();
+            window.location.replace("profile.html?" + "username=" + pageViewer + "&pageOwner=" + pageViewer);
 // All data at the database location for user 'fred' has been deleted
 // (including any child data)
             // delete from weaknesses here
@@ -479,7 +479,7 @@
             console.log(deleted);
             var tempRef = new Firebase("https://brouze.firebaseio.com/users/"+data+"/skills/"+deleted);
             tempRef.remove();
-            addRow();
+            window.location.replace("profile.html?" + "username=" + pageViewer + "&pageOwner=" + pageViewer);
             //delete from strengths here
         }
 
