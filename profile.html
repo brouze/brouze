@@ -135,8 +135,7 @@
     <!--Content-->
     <div id="title" class="container">
         <div class="row buttons">
-            <button class="btn btn-warning btn-large" id="fave" onclick="pushFave()"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Add to Favorites</button>
-            <button class="btn btn-warning btn-large" id="unfave" onclick="popFave()">Remove from Favorites</button>
+            <button class="btn btn-warning btn-large" id="fave" onclick="pushFave(this)"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Add to Favorites</button>
             <a onclick="redirectThree()" class="btn btn-warning btn-large" id="editProfile"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Edit Profile</a>
         </div>
         <div class="row" id="headInfo">
@@ -291,6 +290,7 @@
             }
             accessInfo(params["username"]);
             console.log("page Owner " + params["pageOwner"]);
+            searchFave();
 
         };
 
@@ -401,7 +401,7 @@
                     var AP = childData.AP;
                     $('#canTutorTable tr:last').after('<tr><td>' + key + '</td><td>' + teacher + '</td><td>' + yearTaken + '</td><td>' + grade + '</td><td>' + AP + '</td><td>$' + price + '</td><td>' + comments + '</td><td></tr>');
                     if (match) {
-                        $('#canTutorTable td:last').after('<td><a onclick="deleteStrength(this)"id="' + key + '"><span class="glyphicon glyphicon-trash deleteButton" aria-hidden="true"></span></a></td>');
+                        $('#canTutorTable td:last').after('<td><a onclick="deleteStrength(this)" id="' + key + '"><span class="glyphicon glyphicon-trash deleteButton" aria-hidden="true"></span></a></td>');
                     }
                     /*$("#"+key).click(function(){
                         console.log("key what's up ");
@@ -515,12 +515,30 @@
                 }
             }
         }
-        function pushFave(){
-            var newRef = new Firebase("https://brouze.firebaseio.com/users/" + pageViewer);
+        function pushFave(obj){
+     
+            if($(obj).attr("id") === "fave"){
+               
+                   var newRef = new Firebase("https://brouze.firebaseio.com/users/" + pageViewer);
             //var classRef = usernameRef.child("skills");
             newRef.child("faves").child(data).set({
                 faveKey:data
             });
+                $("#fave").text("");
+                $("#fave").text("Remove from Favorites");
+                $("#fave").attr("id", "unfave");
+                
+            }
+            else {
+       
+                popFave();
+                $("#unfave").text("");
+                $("#unfave").append('<span class="glyphicon glyphicon-star" aria-hidden="true"></span>Add to Favorites');
+                $("#unfave").attr("id", "fave");
+            }
+         
+            
+            
         }
         function popFave(){
             var endRef = new Firebase("https://brouze.firebaseio.com/users/" + pageViewer+"/faves/"+data);
@@ -535,10 +553,16 @@
               var favorite = snapshot.child(data).exists();
              //return favorite;
                 if(favorite==true){
-                    $("#fave").hide();
+                    //$("#fave").hide();
+                    $("#unfave").text("");
+                    $("#unfave").append('<span class="glyphicon glyphicon-star" aria-hidden="true"></span>Add to Favorites');
+                    $("#unfave").attr("id", "fave");
                 }
                 else{
-                    $("#unfave").hide();
+                    
+                    $("#fave").text("");
+                    $("#fave").text("Remove from Favorites");
+                    $("#fave").attr("id", "unfave");//$("#unfave").hide();
                 }
             });
         }
