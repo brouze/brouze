@@ -426,7 +426,18 @@
                     var comments = childData.comment;
                     var grade = childData.grade;
                     var AP = childData.AP;
-                    $('#canTutorTable tr:last').after('<tr><td>' + key + '</td><td>' + teacher + '</td><td>' + yearTaken + '</td><td>' + grade + '</td><td>' + AP + '</td><td>$' + price + '</td><td>' + comments + '</td><td></tr>');
+                    if(AP == ''){
+                       AP = 'NA';
+                    }
+                    var SAT = childData.SAT;
+                    if(SAT == ''){
+                       SAT = 'NA';
+                    }
+                    var ACT = childData.ACT;
+                    if(ACT == ''){
+                       ACT = 'NA';
+                    }
+                    $('#canTutorTable tr:last').after('<tr><td>' + key + '</td><td>' + teacher + '</td><td>' + yearTaken + '</td><td>' + grade + '</td><td>' + AP +"/"+SAT+"/" +ACT+'</td><td>$' + price + '</td><td>' + comments + '</td><td></tr>');
                     if (match) {
                         $('#canTutorTable td:last').after('<td><a onclick="deleteStrength(this)" id="' + key + '"><span class="glyphicon glyphicon-trash deleteButton" aria-hidden="true"></span></a></td>');
                     }
