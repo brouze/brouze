@@ -166,9 +166,15 @@ p.copyright {
 
 #title {
     width: 100%;
-    background-color: darkorange;
-    color: floralwhite;
+    background-color: none;
+    color: darkorange;
+    font-size: 6em;
     text-align: center;  
+}
+
+#title h1 {
+    
+    font-size: 1em;
 }
 
 #results {
@@ -191,7 +197,7 @@ th, td {
 
 .mini-profile {
     width: auto;
-    background-color: lightgray;
+    background-color: #C6EEF7;
     position: relative;
     margin-top: 20px;
     padding: 2% 6% 2% 4%;
@@ -258,6 +264,10 @@ th, td {
     
 }
 
+.well {
+    background-image: url(../img/forest.jpg);
+    
+}
 
 
 
