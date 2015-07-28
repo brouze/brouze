@@ -138,16 +138,15 @@ h6 {
     float: right;
     margin-top: 0;
 }
+
 .centered {
     font-size: 1em;
     text-align: justify;
     font-weight: 400;
-    
 }
 
 b {
-  font-weight: 700;  
-    
+    font-weight: 700;
 }
 
 @media(max-width:1199px) {
@@ -208,6 +207,7 @@ p.copyright {
 #sidenav a {
     line-height: 1.8em;
 }
+
 #tips {
     text-align: left;
     float: right;
@@ -220,7 +220,11 @@ p.copyright {
     padding-left: 5%;
     padding-right: 5%;
     line-height: 2em;
-   
+}
+
+h2 {
+    padding-top: 70px;
+    margin-top: -70px;
 }
 
 @media(max-width:767px) {
@@ -228,11 +232,9 @@ p.copyright {
         position: relative;
         width: auto;
     }
-    
     #tips {
-      width: 100%;  
+        width: 100%;
         margin-top: 50px;
-        
     }
     .input-group {
         margin-left: 10vw;
@@ -241,6 +243,10 @@ p.copyright {
     .navbar-collapse {
         overflow-x: hidden;
     }
+}
+
+.help {
+    margin-bottom: 3%;
 }
 
 .foot {
