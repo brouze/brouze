@@ -152,7 +152,7 @@
                 <h2 id="grade">Grade: 12</h2>
                 <h2 id="phone"></h2>
                 <h2 id="email"></h2>
-                <h2 id="prefLoc">Preferred tutoring location: Library</h2>
+                <h2 id="prefLoc">Preferred tutoring location:</h2>
             </div>
 
         </div>
@@ -321,6 +321,22 @@
                 console.log(currentUser);
                 console.log(currentUser.username);
                 console.log(currentUser.name);
+                var lib = currentUser.loc1;
+                var house = currentUser.loc2;
+                var online = currentUser.loc3;
+                var other = currentUser.loc4;
+                if(lib != false){
+                    $("#prefLoc").append(" Library. ");
+                }
+                if(house != false){
+                    $("#prefLoc").append(" At home. ");
+                }
+                if(online != false){
+                    $("#prefLoc").append(" Online. ");
+                }
+                if(other != ''){
+                    $("#prefLoc").append(other+".");
+                }
                 //createDiv(currentUser.name);
                 //createImg(currentUser.profilepic);
                 //createDiv(currentUser.name);
