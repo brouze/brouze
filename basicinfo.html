@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+    <!--<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>-->
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
     <title>Brouze | New User</title>
@@ -67,11 +67,17 @@
                     <label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
                 </div>
                 -->
-                <div class="control-group">
-                    <label class="control-label" for="username">Username:</label>
-                    <div class="controls">
-                        <input type="text" maxlength="18" name="username" id="username" placeholder="Your username">
-                    </div>
+                <!--
+                <div class="form-group has-error has-feedback">
+                  <label class="control-label" for="inputError2">Input with error</label>
+                  <input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Status">
+                  <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                  <span id="inputError2Status" class="sr-only">(error)</span>
+                </div>
+                -->
+                <div class="form-group" id="usrform">
+                    <label for="username">Username:</label>
+                    <input type="text" maxlength="16" class="form-control" id="username" placeholder="Your username">
                 </div>
                 <label>Contact Information - Optional</label>
                 <div class="form-group">
@@ -176,72 +182,83 @@
         };
         
         function accessInfo() {
-            var school = $("#school").val();
-            var zip = $("#zipcode").val();
-            var username = $("#usr").val();
-            var email = $("#email").val();
-            var phone = $("#phone").val();
-            var grade = $("#grade").val();
-            var age = $("#age").val();
-            var blurb = $("#comment").val();
-            //var loc1 = $("#lib").val();
-            var loc1 = $('#lib').prop('checked');
-            var loc2 = $('#house').prop('checked');
-            var loc3 = $('#web').prop('checked');
-            //var loc2 = $("#house").val();
-            //var loc3 = $("#web").val();
-            var loc4 = $("#other").val();
-            console.log(school);
-            console.log(zip);
-            console.log(username);
-            console.log(grade);
-            console.log(age);
-            var usersRef = ref.child("users");
-            var usernameRef = usersRef.child(userData);
-            var basicRef = usernameRef.child("basicInfo");
-            basicRef.update({
-                "username": username,
-                "email": email,
-                "phone": phone,
-                "zipcode": zip,
-                "grade": grade,
-                "age": age,
-                "school": school,
-                "blurb": blurb,
-                "loc1": loc1,
-                "loc2": loc2,
-                "loc3": loc3,
-                "loc4": loc4
-            });
-            usernameRef.update({
-                "faves":{
-                }
-            });
-            /*var skillsRef = usernameRef.child("skills");
-                skillsRef.update({
-                    "math":{
-                        ability:0
-                    },
-                    "english":{
-                        ability:0
-                    },
-                    "science":{
-                        ability:0
-                    },
-                    "history":{
-                        ability:0
-                    },
-                    "languages":{
-                        ability:0
+            if ($("username").val()>6 && $("username").val()<16){//need to add for validity
+                console.log("username is valid! moving on");
+                var school = $("#school").val();
+                var zip = $("#zipcode").val();
+                var username = $("#username").val();
+                var email = $("#email").val();
+                var phone = $("#phone").val();
+                var grade = $("#grade").val();
+                var age = $("#age").val();
+                var blurb = $("#comment").val();
+                //var loc1 = $("#lib").val();
+                var loc1 = $('#lib').prop('checked');
+                var loc2 = $('#house').prop('checked');
+                var loc3 = $('#web').prop('checked');
+                //var loc2 = $("#house").val();
+                //var loc3 = $("#web").val();
+                var loc4 = $("#other").val();
+                console.log(school);
+                console.log(zip);
+                console.log(username);
+                console.log(grade);
+                console.log(age);
+                var usersRef = ref.child("users");
+                var usernameRef = usersRef.child(userData);
+                var basicRef = usernameRef.child("basicInfo");
+                basicRef.update({
+                    "username": username,
+                    "email": email,
+                    "phone": phone,
+                    "zipcode": zip,
+                    "grade": grade,
+                    "age": age,
+                    "school": school,
+                    "blurb": blurb,
+                    "loc1": loc1,
+                    "loc2": loc2,
+                    "loc3": loc3,
+                    "loc4": loc4
+                });
+                usernameRef.update({
+                    "faves":{
                     }
-                    
-                });*/
-            //window.location.replace("profile.html?username=" + userData);
-            window.location.replace("profile.html?" + "username=" + userData + "&pageOwner="+userData);
+                });
+                /*var skillsRef = usernameRef.child("skills");
+                    skillsRef.update({
+                        "math":{
+                            ability:0
+                        },
+                        "english":{
+                            ability:0
+                        },
+                        "science":{
+                            ability:0
+                        },
+                        "history":{
+                            ability:0
+                        },
+                        "languages":{
+                            ability:0
+                        }
+                        
+                    });*/
+                //window.location.replace("profile.html?username=" + userData);
+                window.location.replace("profile.html?" + "username=" + userData + "&pageOwner="+userData);
+            }
+            else {
+                //show error messages
+                console.log("username invalid -hiding the username form!");
+                $(".usrform").hide();
+                
+            }
         }
     </script>
     
+    
     <!--for username validation-->
+    <!--
     <script>
     $(document).ready(function () {
          console.log("made it to ready function");
@@ -274,7 +291,7 @@
 
     });
     </script>
-    
+    -->
     
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
