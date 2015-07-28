@@ -254,7 +254,7 @@
             console.log("go 41");
             var queryString = window.location.search;
             //console.log(queryString);
-            var res = queryString.replace("%20", " ");
+            var res = queryString.replace(/%20/g, " ");;
             //console.log(res);
             queryString = res;
             //decodeURI(queryString)
