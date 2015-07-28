@@ -290,6 +290,9 @@
             //console.log("page Owner"+params["pageOwner"]);
             //console.log("here is the search word");
             pageWord = params["word"];
+            if(pageWord =='Search All'){
+                pageWord = '';
+            }
             //console.log(pageWord);
             $("#subject").val(pageWord);
             search(pageWord);
