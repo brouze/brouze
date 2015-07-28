@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="js/jquery.validate.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
     <title>Brouze | New User</title>
@@ -76,7 +76,7 @@
                 <label>Contact Information - Optional</label>
                 <div class="form-group">
                     <label for="zipcode">Email:</label>
-                    <input type="email" maxlength="30" class="form-control" id="email" placeholder="random@email.com">
+                    <input type="text" maxlength="30" class="form-control" id="email" placeholder="random@email.com">
                     
                     <label for="zipcode">Phone Number:</label>
                     <input type="text" maxlength="16" class="form-control" id="phone" placeholder="(555) 555-5555">
@@ -244,46 +244,17 @@
     <!--for username validation-->
     <script>
     $(document).ready(function () {
-        console.log("went into validation function!");
+         console.log("made it to ready function");
          $('form').validate({
+            console.log("inside validate function");
             rules: {
                 username: {
-                    console.log("checking if username valid!");
-                    minlength: 6,
-                    maxlength: 16,
-                    required: true
-                }/*,
-                zipcode:{
-                   console.log("checking if zipcode valid!");
-                    minlength: 5,
-                    maxlength: 9,
-                    required: true 
-                },
-                school:{
-                    console.log("checking if school valid!");
+                    console.log("checking username validity"),
                     minlength: 3,
-                    maxlength: 35,
+                    maxlength: 15,
                     required: true
-                }*/
+                }
             },
-            messages:{
-                username: {
-                    required: "Please enter a username",
-                    minLength: "Username must consist of at least 6 characters",
-                    maxLength: "Username must not exceed 16 characters"
-                }/*,
-                zipcode:{
-                    required: "Please enter your zipcode",
-                    minLength: "Zipcode must consist of at least 5 characters",
-                    maxLength: "Zipcode must not exceed 9 characters"
-                },
-                school:{
-                    required: "Please enter a username",
-                    minLength: "School name must consist of at least 3 characters",
-                    maxLength: "School name must not exceed 35 characters"
-                }*/
-            }//,
-            /*
             highlight: function(element) {
                 $(element).closest('.form-group').addClass('has-error');
             },
@@ -298,7 +269,7 @@
                 } else {
                     error.insertAfter(element);
                 }
-            }*/
+            }
         });
 
     });
