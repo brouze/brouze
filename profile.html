@@ -190,7 +190,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                      
+
                     </tbody>
                 </table>
             </div>
@@ -278,22 +278,22 @@
             console.log(params["username"]);
             pageViewer = params["pageOwner"];
             if (pageViewer != data) {
-                
+
                 console.log("the user is not the viewer");
                 //$(".canTutorButton").hide();
-                 
+
                 match = false;
                 $(".canTutorButton").hide();
-            
-               
-                
+
+
+
             }
             accessInfo(params["username"]);
             console.log("page Owner " + params["pageOwner"]);
 
         };
-            
-          
+
+
 
         function GetUrlValue(VarSearch) {
             var SearchString = window.location.search.substring(1);
@@ -370,7 +370,7 @@
             console.log("xox redirect");
             window.location.replace("form-three.html?username=" + data);
         }
-        
+
         function redirectThree() {
             console.log("xox redirect");
             window.location.replace("editbasicinfo.html?username=" + data);
@@ -396,8 +396,8 @@
                     var grade = childData.grade;
                     var AP = childData.AP;
                     $('#canTutorTable tr:last').after('<tr><td>' + key + '</td><td>' + teacher + '</td><td>' + yearTaken + '</td><td>' + grade + '</td><td>' + AP + '</td><td>$' + price + '</td><td>' + comments + '</td><td></tr>');
-                    if(match){
-                         $('#canTutorTable td:last').after('<a onclick="redirect()"><span class="glyphicon glyphicon-trash deleteButton" aria-hidden="true"></span></a></td>');
+                    if (match) {
+                        $('#canTutorTable td:last').after('<td><a onclick="deleteStrength(this)"id="' + key + '"><span class="glyphicon glyphicon-trash deleteButton" aria-hidden="true"></span></a></td>');
                     }
                     /*$("#"+key).click(function(){
                         console.log("key what's up ");
@@ -413,13 +413,12 @@
                 });
 
             });
-            
-            
-            if(match === false){
+
+
+            if (match === false) {
                 console.log("fight me son");
                 $("#editProfile").hide();
-            }
-            else {
+            } else {
                 $("#fave").hide();
                 $("#unfave").hide();
             }
@@ -432,6 +431,7 @@
             weakRef.once("value", function(snapshot) {
                 snapshot.forEach(function(childSnapshot) {
                     var key = childSnapshot.key();
+
                     var childData = childSnapshot.val();
                     var teacher = childData.teacher;
                     var comments = childData.comment;
@@ -442,11 +442,37 @@
                     console.log(grade);
                     //console.log(key);
                     $('#cantTutorTable tr:last').after('<tr><td>' + key + '</td><td>' + teacher + '</td><td>' + grade + '</td><td>' + comments + '</td><td></tr>');
-                    if(match){
-                         $('#cantTutorTable td:last').after('<a onclick="redirect()"><span class="glyphicon glyphicon-trash deleteButton" aria-hidden="true"></span></a></td>');
+                    if (match) {
+                        $('#cantTutorTable td:last').after('<td><a onclick="deleteWeakness(this)"id="' + key + '"><span class="glyphicon glyphicon-trash deleteButton" aria-hidden="true"></span></a></td>');
+                        
+
                     }
+
                 });
             });
+        }
+
+        /*$('td a').on('click', function() {
+            console.log("I got clicked");
+        });*/
+        
+        
+        function deleteWeakness(obj){
+           
+            console.log(obj);
+            var deleted = $(obj).attr('id');
+            console.log(deleted);
+            // delete from weaknesses here
+            
+            
+        }
+        
+        function deleteStrength(obj){
+             
+            console.log(obj);
+            var deleted = $(obj).attr('id');
+            console.log(deleted);
+            //delete from strengths here
         }
 
         function signOut() {
