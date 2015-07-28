@@ -9,6 +9,7 @@
     <meta name="author" content="">
     <script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
     <title>Brouze | New User</title>
@@ -55,14 +56,22 @@
         <p>To set up your profile, fill in the form below. You can always come back and edit this later.</p>
         <form role="form" onsubmit="accessInfo()">
             <form role="form">
+                <!--
+                <label for="usr">Username:</label>
                 <div class="form-group has-success has-feedback">
-                    <label for="usr">Username:</label>
                     <div class="col-sm-9">
                       <input type="text" maxlength="18" class="form-control" id="usr" aria-describedby="inputSuccess3Status" placeholder="Enter screenname">
                       <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
                       <span id="inputSuccess3Status" class="sr-only">(success)</span>
                     </div>
                     <label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
+                </div>
+                -->
+                <div class="control-group">
+                    <label class="control-label" for="username">Username:</label>
+                    <div class="controls">
+                        <input type="text" maxlength="18" name="username" id="username" placeholder="Your username">
+                    </div>
                 </div>
                 <label>Contact Information - Optional</label>
                 <div class="form-group">
@@ -165,7 +174,7 @@
             userData = params["username"];
             //accessInfo(params["username"]);
         };
-
+        
         function accessInfo() {
             var school = $("#school").val();
             var zip = $("#zipcode").val();
@@ -231,6 +240,48 @@
             window.location.replace("profile.html?" + "username=" + userData + "&pageOwner="+userData);
         }
     </script>
+    
+    <!--for username validation-->
+    <script>
+    $(document).ready(function () {
+         console.log("made it to ready function");
+         $('form').validate({
+            console.log("inside validate function"),
+            rules: {
+                username: {
+                    console.log("checking username validity"),
+                    minlength: 3,
+                    maxlength: 15,
+                    required: true
+                }
+            },
+            highlight: function(element) {
+                $(element).closest('.form-group').addClass('has-error');
+            },
+            unhighlight: function(element) {
+                $(element).closest('.form-group').removeClass('has-error');
+            },
+            errorElement: 'span',
+            errorClass: 'help-block',
+            errorPlacement: function(error, element) {
+                if(element.parent('.input-group').length) {
+                    error.insertAfter(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+
+    });
+    </script>
+    
+    
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    
 </body>
 
 </html>
