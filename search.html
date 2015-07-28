@@ -471,6 +471,15 @@
            }
             //console.log(results);
         }
+        function signOut() {
+            var outRef = new Firebase("https://brouze.firebaseio.com");
+            outRef.unauth();
+            window.location.replace("index.html");
+        }
+        function home() {
+            window.location.replace("profile.html?" + "username=" + userData + "&pageOwner=" + userData);
+        }
+
     </script>
     
     
