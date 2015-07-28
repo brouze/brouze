@@ -75,10 +75,10 @@
                     <label for="grade">Select grade:</label>
                     <select class="form-control" id="grade">
                         <option></option>
-                        <option>freshman</option>
-                        <option>sophomore</option>
-                        <option>junior</option>
-                        <option>senior</option>
+                        <option>Freshman</option>
+                        <option>Sophomore</option>
+                        <option>Junior</option>
+                        <option>Senior</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -158,12 +158,14 @@
             var ref = new Firebase("https://brouze.firebaseio.com/users/" + info + "/basicInfo");
              ref.on("value", function(snapshot) {
                 var currentUser = snapshot.val();
-                $("#email").attr("placeholder", currentUser.email);
-                $("#phone").attr("placeholder", currentUser.phone);
-                $("#school").attr("placeholder", currentUser.school);
-                $("#zipcode").attr("placeholder", currentUser.zipcode);
-                $("#other").attr("placeholder", currentUser.loc4);
-                $("#comment").attr("placeholder", currentUser.blurb);
+                $("#email").val(currentUser.email);
+                $("#phone").val(currentUser.phone);
+                $("#school").val(currentUser.school);
+                $("#zipcode").val(currentUser.zipcode);
+                $("#other").val(currentUser.loc4);
+                $("#comment").val(currentUser.blurb);
+                $("#grade").val(currentUser.grade);
+                $("#age").val(currentUser.age);
              });
         }
         //old one
