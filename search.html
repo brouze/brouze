@@ -295,8 +295,14 @@
         };
         function getWord(){
             keyWord = $("#subject").val();
+            if($("#searchID").val() != ''){
+                $("#searchID").val('');
+                applyFilter();
+            }
+            else{
             //console.log(keyWord);
-            search(keyWord);
+                search(keyWord);
+            }
         }
        $('#srch-term').bind('keypress', function(e) {
             if(e.keyCode==13){
@@ -319,6 +325,11 @@
                //$("#miniList:last-child").remove();
                $("#miniList").children().last().remove();
            }
+           //i($("#searchID").val() !=''){
+               //$("#searchID").val('');
+               //applyFilter();
+           //}
+           
            console.log("xox 1");
            results = 0;
             var nameRef = new Firebase("https://brouze.firebaseio.com/users");
