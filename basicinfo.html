@@ -149,7 +149,7 @@
                     <textarea class="form-control" rows="5" id="comment" placeholder="A summary of your education will help people get to know you."></textarea>
                 </div>
                 <div class="form-group">
-                    <button type="button" class="btn btn-primary" onclick="accessInfo()">Submit</button>
+                    <button type="button" class="btn btn-primary" onclick="checkIfUserExists()">Submit</button>
                     <label> </label> <a class="btn btn-default" href="index.html">Cancel</a>
                 </div>
             </form>
@@ -159,6 +159,7 @@
         var angry = false;
         var ref = new Firebase("https://brouze.firebaseio.com");
         var userData; //data.uid
+        var newUser = true;
         var parseQueryString = function() {
             $("#errorusrform").hide();
             var info;
@@ -275,20 +276,54 @@
                 angry = true;
             }
         }
-        function userExistsCallback(exists) {
-          if (exists) {
-            //newUser = false;
-            //alert('user ' + userId + ' exists!');
-          } else {
-            //alert('user ' + userId + ' does not exist!');
-              //newUser = true;
-              //console.log("newUser is" + newUser);//here it is true
-          }
+        function userExistsCallback(userID,username,callback) {
+           if(username == userID){
+               newUser = false;
+               console.log("AAAAh its oooold");
+               angry = true;
+           }
+           else{
+               //newUser = true;
+               console.log("nah its cool");
+           }
+            console.log(newUser);
+            callback();
         }
 
         // Tests to see if /users/<userId> has any data.
-        function checkIfUserExists(possibleUser){
-          
+        function checkIfUserExists(){
+            var userID;
+            if(angry==false){
+                userID = $("#username").val();
+            }
+            else{
+                userID = $("#usernameTwo").val();
+            }
+            console.log("userID: "+userID);
+            var nameRef = new Firebase("https://brouze.firebaseio.com/users");
+            nameRef.once("value", function(snapshot){
+                snapshot.forEach(function(childSnapshot) {
+                    var key = childSnapshot.key();
+                    var childData = childSnapshot.val();
+                    var username = childData.basicInfo.username;
+                    //userExistsCallback(userID,username);
+                    if(userID == username){
+                        newUser = false;
+                        console.log("AAAAH ITS OLD");
+                        console.log("username invalid -hiding the username form!");
+                        $("#usrform").hide();
+                        $("#errorusrform").show();
+                        console.log("got past");
+                        angry = true;
+                    }
+              });
+                console.log(newUser);
+                if(newUser==true){
+                    accessInfo();
+                }
+                newUser = true;
+            });
+            //console.log(newUser);
         }
     </script>
     
