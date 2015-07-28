@@ -131,6 +131,9 @@
                         <!--<button class="btn btn-default" type="button" onclick="getWord()"><i class="glyphicon glyphicon-search"></i></button>-->
                     </form>
                 </ul>
+                <ul class="nav navbar-nav">
+                    <li><a onclick="helpRedirect()">Help</a></li>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a id="dropMenu" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu  <span class="caret" aria-hidden="true"></span></a>
@@ -504,6 +507,9 @@
         }
         function saveRedirect(){
             window.location.replace("savedtutors.html?" + "username=" + userData + "&pageOwner=" + userData);
+        }
+        function helpRedirect(){
+            window.location.replace("help.html?" + "username=" + userData + "&pageOwner=" + userData);
         }
     </script>
     
