@@ -114,6 +114,7 @@
                     </form>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a onclick="helpRedirect()">Profile</a></li>
                     <li class="dropdown">
                         <a id="dropMenu" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi Buttface  <span class="caret" aria-hidden="true"></span></a>
                         <ul class="dropdown-menu">
@@ -548,6 +549,9 @@
         }
         function saveRedirect(){
             window.location.replace("savedtutors.html?" + "username=" + pageViewer + "&pageOwner=" + pageViewer);
+        }
+        function helpRedirect(){
+            window.location.replace("help.html?" + "username=" + pageViewer + "&pageOwner=" + pageViewer);
         }
         function searchFave(){
             var ref = new Firebase("https://brouze.firebaseio.com/users/"+pageViewer+"/faves");
