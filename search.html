@@ -89,8 +89,8 @@
                               <option>Trigonometry</option>
                               <option>Precalculus</option>
                               <option>Calculus</option>
-                              <option>AP CalculusAB</option>
-                              <option>AP CalculusBC</option>
+                              <option>AP Calculus AB</option>
+                              <option>AP Calculus BC</option>
                               <option>Statistics</option>
                               <option>Rhetoric</option>
                               <option>AP English Literature</option>
@@ -285,6 +285,7 @@
             //console.log("here is the search word");
             pageWord = params["word"];
             //console.log(pageWord);
+            $("#subject").val(pageWord);
             search(pageWord);
         };
         function getWord(){
