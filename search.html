@@ -196,11 +196,11 @@
                               <option>19</option>
                            </select>
                         </div>
-                       <!-- <div class="form-group">
-                            <label>Minimum Price:</label>
-                            <input type="text" class="form-control" id="minprice">
-                        </div>
                         <div class="form-group">
+                            <label>School:</label>
+                            <input type="text" class="form-control" id="school">
+                        </div>
+                        <!--<div class="form-group">
                             <label>Maximum Price:</label>
                             <input type="text" class="form-control" id="maxprice">
                         </div>-->
@@ -242,15 +242,16 @@
             var Fteacher = $("#teacher").val();
             var Fminprice = $("#minprice").val();
             var Fmaxprice = $("#maxprice").val();
+            var Fschool = $("#school").val();
             //var Floc1 = $('#lib').prop('checked');
             //var Floc2 = $('#yourHome').prop('checked');
             //var Floc3 = $('#online').prop('checked');//reading check boxes
-        var results = 0;
-        var keyWord;
-        var userData;
-        var pageWord;
-        var globalWord;
-        var parseQueryString = function() {
+            var results = 0;
+            var keyWord;
+            var userData;
+            var pageWord;
+            var globalWord;
+            var parseQueryString = function() {
             console.log("go 41");
             var queryString = window.location.search;
             console.log(queryString);
@@ -324,6 +325,7 @@
                     var zipcode =childData.basicInfo.zipcode;
                     var age = childData.basicInfo.age;
                     var skills = snapshot.child(key+"/skills/"+searchVal).exists();
+                    var school = childData.basicInfo.school;
                     //var loc1 = childData.basicInfo.loc1;
                     //var loc2 = childData.basicInfo.loc2;
                     //var loc3 = childData.basicInfo.loc3;
@@ -337,8 +339,10 @@
                         //console.log("hey look at me  "+ Floc1+" and "+loc1);
                         if((Fzipcode == '') || (zipcode == Fzipcode)){
                             if(((Fminage == '')||(age >= Fminage))&&((Fmaxage == '')||(age <= Fmaxage))){
-                                console.log(name);
-                                addMini(key);
+                                if((Fschool=='')||(school==Fschool)){
+                                    console.log(name);
+                                    addMini(key);
+                                }
                             }
                         }
                     }
@@ -459,6 +463,10 @@
             Floc3 = $('#online').prop('checked');//reading check boxes
             if(Floc3 != ''){
                 console.log("online: "+Floc3);
+            }
+            Fschool = $('#school').val();//reading check boxes
+            if(Fschool != ''){
+                console.log("school: "+Fschool);
             }
             clear();
             search(globalWord);
