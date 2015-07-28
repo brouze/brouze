@@ -462,6 +462,10 @@
             console.log(obj);
             var deleted = $(obj).attr('id');
             console.log(deleted);
+            var tempRef = new Firebase("https://brouze.firebaseio.com/users/"+data+"/weaknesses/"+deleted);
+            tempRef.remove();
+// All data at the database location for user 'fred' has been deleted
+// (including any child data)
             // delete from weaknesses here
             
             
@@ -472,6 +476,8 @@
             console.log(obj);
             var deleted = $(obj).attr('id');
             console.log(deleted);
+            var tempRef = new Firebase("https://brouze.firebaseio.com/users/"+data+"/weaknesses/"+deleted);
+            tempRef.remove();
             //delete from strengths here
         }
 
