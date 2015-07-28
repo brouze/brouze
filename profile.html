@@ -290,7 +290,7 @@
             }
             accessInfo(params["username"]);
             console.log("page Owner " + params["pageOwner"]);
-            searchFave();
+            
 
         };
 
@@ -339,6 +339,8 @@
                 if (currentUser.phone !== undefined) {
                     $("#phone").text("phone number: " + currentUser.phone);
                 }
+                
+                //if (info 
                 //need to fix/update
                 $("prefLoc").text("Tutoring location(s): " + currentUser.loc1 + currentUser.loc2 + currentUser.loc3 + currentUser.loc4);
                 addRow();
@@ -552,17 +554,22 @@
             ref.once("value", function(snapshot) {
               var favorite = snapshot.child(data).exists();
              //return favorite;
-                if(favorite==true){
-                    //$("#fave").hide();
-                    $("#unfave").text("");
-                    $("#unfave").append('<span class="glyphicon glyphicon-star" aria-hidden="true"></span>Add to Favorites');
-                    $("#unfave").attr("id", "fave");
-                }
-                else{
+                if(favorite === true){
                     
+                     console.log("this is not a saved tutor");
                     $("#fave").text("");
                     $("#fave").text("Remove from Favorites");
                     $("#fave").attr("id", "unfave");//$("#unfave").hide();
+                   
+                }
+                else{
+                    
+                     console.log("this is already a saved tutor");
+                    //$("#fave").hide();
+                    $("#fave").text("");
+                    $("#fave").append('<span class="glyphicon glyphicon-star" aria-hidden="true"></span>Add to Favorites');
+                    $("#fave").attr("id", "fave");
+                   
                 }
             });
         }
