@@ -333,7 +333,12 @@ td {
     .input-group {
         margin-left: 10vw;
         margin-right: 10vw;
+        
+    }
+    
+      .navbar-collapse {
         overflow-x: hidden;
+        
     }
     
     #basicInfo h2 {
@@ -349,6 +354,10 @@ td {
     #buttons {
      text-align: center;
     }
+    
+  
+    
+    
 
 
 
