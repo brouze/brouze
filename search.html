@@ -350,46 +350,51 @@
             nameRef.once("value", function(snapshot) {
                 snapshot.forEach(function(childSnapshot) {
                     var key = childSnapshot.key();
-                    var childData = childSnapshot.val();
-                    var username = childData.basicInfo.username;
-                    var name = childData.basicInfo.name;
-                    //var childRef = new Firebase("https://brouze.firebaseio.com/users/" + key);
-                    var zipcode =childData.basicInfo.zipcode;
-                    var age = childData.basicInfo.age;
-                    var skills = snapshot.child(key+"/skills/"+searchVal).exists();
-                    var school = childData.basicInfo.school;
-                    //var loc1 = childData.basicInfo.loc1;
-                    //var loc2 = childData.basicInfo.loc2;
-                    //var loc3 = childData.basicInfo.loc3;
-                    //var username = childRef.username
-                    //console.log(name);
-                    //console.log(username);
-                    //console.log(key);
-                    //console.log(skills);
-                    //console.log(searchVal);
-                    console.log("Fusername: "+ Fusername);
-                    if(Fusername == ''){
-                        if(skills==true){
-                            //console.log("hey look at me  "+ Floc1+" and "+loc1);
-                            if((Fzipcode == '') || (zipcode == Fzipcode)){
-                                if(((Fminage == '')||(age >= Fminage))&&((Fmaxage == '')||(age <= Fmaxage))){
-                                    if((Fschool=='')||(school==Fschool)){
-                                        console.log(name);
-                                        addMini(key);
+                    if(key != "keys"){
+                        var childData = childSnapshot.val();
+                        var username = childData.basicInfo.username;
+                        var name = childData.basicInfo.name;
+                        //var childRef = new Firebase("https://brouze.firebaseio.com/users/" + key);
+                        var zipcode =childData.basicInfo.zipcode;
+                        var age = childData.basicInfo.age;
+                        var skills = snapshot.child(key+"/skills/"+searchVal).exists();
+                        var school = childData.basicInfo.school;
+                        //var loc1 = childData.basicInfo.loc1;
+                        //var loc2 = childData.basicInfo.loc2;
+                        //var loc3 = childData.basicInfo.loc3;
+                        //var username = childRef.username
+                        //console.log(name);
+                        //console.log(username);
+                        //console.log(key);
+                        //console.log(skills);
+                        //console.log(searchVal);
+                        console.log("Fusername: "+ Fusername);
+                        if(Fusername == ''){
+                            if(skills==true){
+                                //console.log("hey look at me  "+ Floc1+" and "+loc1);
+                                if((Fzipcode == '') || (zipcode == Fzipcode)){
+                                    if(((Fminage == '')||(age >= Fminage))&&((Fmaxage == '')||(age <= Fmaxage))){
+                                        if((Fschool=='')||(school==Fschool)){
+                                            console.log(name);
+                                            addMini(key);
+                                        }
                                     }
                                 }
                             }
                         }
-                    }
-                    else{
-                        if(username == Fusername){
-                            addMini(key);
+                        else{
+                            if(username == Fusername){
+                                addMini(key);
+                                console.log("xox2");
+                            }
                         }
+                        console.log("xox1");
                     }
               });
             });
        }
         function addMini(miniKey){
+            console.log("xox 4");
             //var profilepic;
             //var name;
             //var grade;
@@ -404,8 +409,10 @@
                 //console.log(currentUser);
                 //console.log(currentUser.username);
                 //console.log(currentUser.name);
+                console.log("lol");
                 var name = currentUser.name;
                 var username = currentUser.username;
+                console.log("xox 3");
                 var grade = currentUser.grade;
                 var school = currentUser.school;
                 var profilepic = currentUser.profilepic;
@@ -422,7 +429,7 @@
                     //console.log(miniKey.ID);
                     var secret = "username=" + miniKey + "&pageOwner="+userData;
                     secret = btoa(secret);
-                     window.location.replace("profile.html?" + secret);
+                     window.location.href="profile.html?" + secret;
                 });
                 
                 
@@ -454,18 +461,18 @@
         }
         function profileRedirect(ownerKey){
             console.log("hey we are redirecting");
-             window.location.replace("profile.html?" + "username=" + ownerKey + "&pageOwner="+ownerKey);
+             window.location.href="profile.html?" + "username=" + ownerKey + "&pageOwner="+ownerKey;
         }  
         function apply_click(ownerKey,resultNum) {
             $('#profile').click( function() {
                 alert('clicked'+ownerKey); 
-                window.location.replace("profile.html?" + "username=" + ownerKey + "&pageOwner="+ownerKey);
+                window.location.href="profile.html?" + "username=" + ownerKey + "&pageOwner="+ownerKey;
             });    
         }
         function home(){
             var secret  = "username=" + userData + "&pageOwner="+userData;
             secret = btoa(secret);
-            window.location.replace("profile.html?" + secret);
+            window.location.href="profile.html?" + secret;
         }
         /*$("#miniList").click(function(event){
             alert(event.target.id);
@@ -531,18 +538,18 @@
         function signOut() {
             var outRef = new Firebase("https://brouze.firebaseio.com");
             outRef.unauth();
-            window.location.replace("index.html");
+            window.location.href="index.html";
 
         }
         function saveRedirect(){
             var secret = "username=" + userData + "&pageOwner=" + userData;
             secret = btoa(secret);
-            window.location.replace("savedtutors.html?" + secret);
+            window.location.href="savedtutors.html?" + secret;
         }
         function helpRedirect(){
             var secret = "username=" + userData + "&pageOwner=" + userData;
             secret= btoa(secret);
-            window.location.replace("help.html?" + secret);
+            window.location.href="help.html?" + secret
         }
     </script>
     

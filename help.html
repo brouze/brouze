@@ -338,17 +338,17 @@
 
         function redirect() {
             console.log("xox redirect");
-            window.location.replace("form-two.html?username=" + data);
+            window.location.href="form-two.html?username=" + data;
         }
 
         function redirectTwo() {
             console.log("xox redirect");
-            window.location.replace("form-three.html?username=" + data);
+            window.location.href="form-three.html?username=" + data;
         }
 
         function redirectThree() {
             console.log("xox redirect");
-            window.location.replace("editbasicinfo.html?username=" + data);
+            window.location.href="editbasicinfo.html?username=" + data;
         }
 
         function addRow() {
@@ -461,13 +461,13 @@
             var keyWord = $("#subject").val();
             var secret = "username=" + pageViewer + "&word=" + keyWord;
             secret = btoa(secret);
-            window.location.replace("search.html?" + secret);
+            window.location.href="search.html?" + secret;
         }
 
         function home() {
             var secret = "username=" + pageViewer + "&pageOwner=" + pageViewer;
             secret = btoa(secret);
-            window.location.replace("profile.html?" + secret);
+            window.location.href="profile.html?" + secret;
         }
 
         function imageEdit() {
@@ -528,7 +528,7 @@
             console.log(data)
             var secret = "username=" + data + "&pageOwner=" + data;
             secret = btoa(secret);
-            window.location.replace("savedtutors.html?" + secret);
+            window.location.href="savedtutors.html?" + secret;
         }
 
         function searchFave() {

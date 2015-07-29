@@ -176,14 +176,17 @@
                  
               //some more user data
                 });
-                  window.location.replace("basicinfo.html?username="+data.uid);
+                  var secret = "username=" + data.uid + "&pageOwner="+data.uid;
+                  secret = btoa(secret);
+                  window.location.href = "basicinfo.html?"+secret;
                  //Username();*/
               }
               else{
                   //window.location.replace("profile.html?username="+data.uid);
                   var secret = "username=" + data.uid + "&pageOwner="+data.uid;
                   secret = btoa(secret);
-                  window.location.replace("profile.html?" + secret);
+                  //window.location.replace("profile.html?" + secret);
+                  window.location.href = "profile.html?" + secret;
                  // window.location.replace("form-two.html?username="+data.uid);
               }
              // console.log(data.google.profileImageURL);

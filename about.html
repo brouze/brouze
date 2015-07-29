@@ -181,12 +181,12 @@
                  
               //some more user data
                 });
-                  window.location.replace("basicinfo.html?username="+data.uid);
+                  window.location.href="basicinfo.html?username="+data.uid;
                  //Username();*/
               }
               else{
                   //window.location.replace("profile.html?username="+data.uid);
-                  window.location.replace("profile.html?" + "username=" + data.uid + "&pageOwner="+data.uid);
+                  window.location.href="profile.html?" + "username=" + data.uid + "&pageOwner="+data.uid;
                  // window.location.replace("form-two.html?username="+data.uid);
               }
              // console.log(data.google.profileImageURL);

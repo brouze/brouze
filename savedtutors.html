@@ -297,7 +297,7 @@
             var secret = "username=" + data + "&word="+keyWord;
             secret = btoa(secret);
 
-            window.location.replace("search.html?" + secret);
+            window.location.href="search.html?" + secret;
            }
                    
            function search(){
@@ -354,7 +354,7 @@
                     var secret = "username=" + miniKey + "&pageOwner="+data;
                     secret= btoa(secret);
                     //console.log(miniKey.ID);
-                     window.location.replace("profile.html?" + secret);
+                     window.location.href="profile.html?" + secret;
                 });
                 
                 console.log("go 36");
@@ -366,10 +366,10 @@
         function home() {
             var secret = "username=" + data + "&pageOwner=" + data;
             secret = btoa(secret);
-            window.location.replace("profile.html?" + secret);
+            window.location.href="profile.html?" + secret;
         }
         function helpRedirect(){
-            window.location.replace("help.html?" + "username=" + data + "&pageOwner=" + data);
+            window.location.href="help.html?" + "username=" + data + "&pageOwner=" + data;
         }
     </script>
 

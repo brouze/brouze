@@ -269,7 +269,7 @@
                 var secret = "username=" + userData + "&pageOwner="+userData;
                 secret = btoa(secret);
                 console.log(secret);
-                window.location.replace("profile.html?" + secret);
+                window.location.href ="profile.html?" + secret;
             }
             else {
                 //show error messages
@@ -308,17 +308,20 @@
             nameRef.once("value", function(snapshot){
                 snapshot.forEach(function(childSnapshot) {
                     var key = childSnapshot.key();
-                    var childData = childSnapshot.val();
-                    var username = childData.basicInfo.username;
-                    //userExistsCallback(userID,username);
-                    if(userID == username){
-                        newUser = false;
-                        console.log("AAAAH ITS OLD");
-                        console.log("username invalid -hiding the username form!");
-                        $("#usrform").hide();
-                        $("#errorusrform").show();
-                        console.log("got past");
-                        angry = true;
+                    if(key != "keys"){
+                        console.log(key);
+                        var childData = childSnapshot.val();
+                        var username = childData.basicInfo.username;
+                        //userExistsCallback(userID,username);
+                        if(userID == username){
+                            newUser = false;
+                            console.log("AAAAH ITS OLD");
+                            console.log("username invalid -hiding the username form!");
+                            $("#usrform").hide();
+                            $("#errorusrform").show();
+                            console.log("got past");
+                            angry = true;
+                        }
                     }
               });
                 console.log(newUser);
