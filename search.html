@@ -262,10 +262,10 @@
             var parseQueryString = function() {
             console.log("go 42");
             var queryString = window.location.search;
-            console.log(queryString);
-            var decrypted = CryptoJS.AES.decrypt(queryString,"mingo").toString(CryptoJS.enc.Utf8);
-            console.log("decrypted: " + decrypted);
-            queryString = decrypted;
+            //console.log(queryString);
+            //var decrypted = CryptoJS.AES.decrypt(queryString,"mingo").toString(CryptoJS.enc.Utf8);
+            //console.log("decrypted: " + decrypted);
+            //queryString = decrypted;
             console.log(queryString);
             //var res = queryString.replace("%20", " ");
             var res = queryString.replace(/%20/g, " ");
