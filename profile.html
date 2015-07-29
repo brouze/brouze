@@ -25,6 +25,9 @@
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+
+
 
 
     <!-- Custom Fonts -->
@@ -259,6 +262,10 @@
         var match = true;
         var profileViewer;
         var favorite;
+        var encrypted = CryptoJS.AES.encrypt("Message", "mingo");
+        console.log("encrypted: " + encrypted);
+        var decrypted = CryptoJS.AES.decrypt(encrypted, "mingo");
+        console.log("decrypted: " + decrypted);
         /*function parseQueryString(){
             data = GetUrlValue("username_a");
             console.log(data);
