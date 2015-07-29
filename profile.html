@@ -262,9 +262,9 @@
         var match = true;
         var profileViewer;
         var favorite;
-        var encrypted = CryptoJS.AES.encrypt("Message", "Secret Passphrase");
-        console.log("encrypted two: " + encrypted);
-        var decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase");
+        var encrypted = CryptoJS.AES.encrypt("mingo", "Message");
+        console.log("encrypted three: " + encrypted);
+        var decrypted = CryptoJS.AES.decrypt(encrypted, "mingo");
         //var encrypted = CryptoJS.AES.encrypt("Message", "mingo");
         
         //var decrypted = CryptoJS.AES.decrypt(encrypted, "mingo");
