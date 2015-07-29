@@ -51,7 +51,7 @@
 
 </head>
 
-<body onload="unsecret()">
+<body onload="parseQueryString()">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -231,7 +231,6 @@
         var match = true;
         var profileViewer;
         var favorite;
-        
         /*function parseQueryString(){
             data = GetUrlValue("username_a");
             console.log(data);
@@ -240,12 +239,10 @@
             accessInfo(data);
                                
         }*/
-        var parseQueryString = function(message) {
-            queryString = message;
-            //var queryString = window.location.search;
-            //queryString = queryString.substring(1);
-            //queryString = atob(queryString);
-            //queryString = unsecret();
+        var parseQueryString = function() {
+            var queryString = window.location.search;
+            queryString = queryString.substring(1);
+            queryString = atob(queryString);
             var params = {},
                 queries, temp, i, l;
             // Split into key/value pairs
@@ -468,7 +465,6 @@
         }
 
         function home() {
-            console.log(pageViewer);
             var secret = "username=" + pageViewer + "&pageOwner=" + pageViewer;
             secret = btoa(secret);
             window.location.replace("profile.html?" + secret);
@@ -512,7 +508,7 @@
                // var DecryptionResult = cryptico.decrypt(CipherText.cipher, MattsRSAkey);
                 var DecryptionResult = cryptico.decrypt(EncryptionResult.cipher, MattsRSAkey);
                 message = DecryptionResult.plaintext;
-                parseQueryString(message);
+                console.log(message);
                 //cryptico.decrypt(CipherText, MattsRSAkey);
             //console.log(DecryptionResult.plaintext);
                 console.log(DecryptionResult.plaintext);
@@ -520,7 +516,7 @@
             }, function(errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
-            
+            //return message;
             
         }
         function popFave() {
