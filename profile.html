@@ -26,8 +26,12 @@
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
-
-
+    <script language="JavaScript" type="text/javascript" src="cryptico-master/random.js"></script>
+    <script language="JavaScript" type="text/javascript" src="cryptico-master/hash.js"></script>
+    <script language="JavaScript" type="text/javascript" src="cryptico-master/rsa.js"></script>
+    <script language="JavaScript" type="text/javascript" src="cryptico-master/aes.js"></script>
+    <script language="JavaScript" type="text/javascript" src="cryptico-master/api.js"></script>
+    <script language="JavaScript" type="text/javascript" src="cryptico-master/jsbn.js"></script>
 
 
     <!-- Custom Fonts -->
@@ -551,7 +555,12 @@
             //console.log("xox 2"+ encrypted);
             //var decrypted = CryptoJS.AES.decrypt(encrypted,"mingo").toString(CryptoJS.enc.Utf8);
             //console.log("xox 3"+decrypted);
-            window.location.replace("search.html?" + "username=" + pageViewer + "&word=" + keyWord);
+            var secret = btoa("hello world");
+            var unsecret = atob(secret);
+            console.log("secret " + secret);
+            console.log("unsecret " + unsecret);
+           // window.location.replace("search.html?" + "username=" + pageViewer + "&word=" + keyWord);
+            //window.location.replace("search.html?" + "username=" + pageViewer + "&word=" + secret);
         }
 
         function home() {
@@ -603,7 +612,23 @@
             window.location.replace("savedtutors.html?" + "username=" + pageViewer + "&pageOwner=" + pageViewer);
         }
         function helpRedirect(){
+            var PassPhrase = "The Moon is a Harsh Mistress."; 
+            // The length of the RSA key, in bits.
+            var Bits = 1024; 
+            var MattsRSAkey = cryptico.generateRSAKey(PassPhrase, Bits);//generate RSAkey (non random I think)
+            console.log("this is the RSA key: "+MattsRSAkey);
+            var MattsPublicKeyString = cryptico.publicKeyString(MattsRSAkey); //generate public key (random)
+            console.log("public key: "+MattsPublicKeyString);//we will send matt's public key
+            var PlainText = pageViewer;//the text we are sending is pageviewer
+            var EncryptionResult = cryptico.encrypt(PlainText, MattsPublicKeyString);//this is how you encode btw
+            console.log("result: "+EncryptionResult.cipher);//say the decoding
+            var secret = EncryptionResult.cipher;//this is the encrypted text which we will send
+            
+           //this is the public key 
+//uXjrkGqe5WuS7zsTg6Z9DuS8cXLFz38ue+xrFzxrcQJCXtVccCoUFP2qH/AQ4qMvxxvqkSYBpRm1R5a4/NdQ5ei8sE8gfZEq7dlcR+gOSv3nnS4/CX1n5Z5m8bvFPF0lSZnYQ23xlyjXTaNacmV0IuZbqWd4j9LfdAKq5dvDaoE=
+            
             window.location.replace("help.html?" + "username=" + pageViewer + "&pageOwner=" + pageViewer);
+           // window.location.replace("help.html?" + "username=" + pageViewer + "&pageOwner=" + secret);
         }
         function searchFave(){
             var ref = new Firebase("https://brouze.firebaseio.com/users/"+pageViewer+"/faves");
