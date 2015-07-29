@@ -122,6 +122,7 @@
               var info;
               var queryString = window.location.search;
               queryString = queryString.substring(1);
+              queryString = atob(queryString);
               var params = {}, queries, temp, i, l;
 
                 // Split into key/value pairs
@@ -164,10 +165,12 @@
                 });
             redirect();
         }
-        function redirect(){
-             //window.location.replace("profile.html?username="+userData);
-             window.location.replace("profile.html?" + "username=" + userData + "&pageOwner="+userData);
-        }
+        function redirect() {
+             var secret = "username=" + userData + "&pageOwner="+userData;
+             secret = btoa(secret);
+             //window.location.replace("profile.html?username=" + userData);
+             window.location.replace("profile.html?" + secret);
+         }
       
 </script>
 </body>

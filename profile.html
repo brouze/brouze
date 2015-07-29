@@ -25,7 +25,7 @@
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+    <!--<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>-->
     <script language="JavaScript" type="text/javascript" src="cryptico-master/random.js"></script>
     <script language="JavaScript" type="text/javascript" src="cryptico-master/hash.js"></script>
     <script language="JavaScript" type="text/javascript" src="cryptico-master/rsa.js"></script>
@@ -281,6 +281,7 @@
 
             var queryString = window.location.search;
             queryString = queryString.substring(1);
+            queryString = atob(queryString);
             var params = {},
                 queries, temp, i, l;
             // Split into key/value pairs
@@ -409,17 +410,23 @@
 
         function redirect() {
             console.log("xox redirect");
-            window.location.replace("form-two.html?username=" + data);
+            secret = "username=" +data;
+            secret = btoa(secret);
+            window.location.replace("form-two.html?"+ secret);
         }
 
         function redirectTwo() {
             console.log("xox redirect");
-            window.location.replace("form-three.html?username=" + data);
+            secret = "username=" +data;
+            secret = btoa(secret);
+            window.location.replace("form-three.html?" + secret);
         }
 
         function redirectThree() {
             console.log("xox redirect");
-            window.location.replace("editbasicinfo.html?username=" + data);
+            secret = "username=" +data;
+            secret = btoa(secret);
+            window.location.replace("editbasicinfo.html?" + secret);
         }
 
         function addRow() {
@@ -521,7 +528,8 @@
             console.log(deleted);
             var tempRef = new Firebase("https://brouze.firebaseio.com/users/"+data+"/weaknesses/"+deleted);
             tempRef.remove();
-            window.location.replace("profile.html?" + "username=" + pageViewer + "&pageOwner=" + pageViewer);
+            //window.location.replace("profile.html?" + "username=" + pageViewer + "&pageOwner=" + pageViewer);
+            home();
 // All data at the database location for user 'fred' has been deleted
 // (including any child data)
             // delete from weaknesses here
@@ -536,7 +544,8 @@
             console.log(deleted);
             var tempRef = new Firebase("https://brouze.firebaseio.com/users/"+data+"/skills/"+deleted);
             tempRef.remove();
-            window.location.replace("profile.html?" + "username=" + pageViewer + "&pageOwner=" + pageViewer);
+            //window.location.replace("profile.html?" + "username=" + pageViewer + "&pageOwner=" + pageViewer);
+            home();
             //delete from strengths here
         }
 
@@ -555,16 +564,20 @@
             //console.log("xox 2"+ encrypted);
             //var decrypted = CryptoJS.AES.decrypt(encrypted,"mingo").toString(CryptoJS.enc.Utf8);
             //console.log("xox 3"+decrypted);
-            var secret = btoa("hello world");
-            var unsecret = atob(secret);
-            console.log("secret " + secret);
-            console.log("unsecret " + unsecret);
-           // window.location.replace("search.html?" + "username=" + pageViewer + "&word=" + keyWord);
-            //window.location.replace("search.html?" + "username=" + pageViewer + "&word=" + secret);
+            
+            var destination = "username=" + pageViewer + "&word=" + keyWord;
+            var secret = btoa(destination);
+            console.log(secret);
+            //var unsecret = atob(secret);
+            //console.log(unsecret);
+            //window.location.replace("search.html?" + "username=" + pageViewer + "&word=" + keyWord);
+            window.location.replace("search.html?" + secret);
         }
 
         function home() {
-            window.location.replace("profile.html?" + "username=" + pageViewer + "&pageOwner=" + pageViewer);
+            var secret = "username=" + pageViewer + "&pageOwner=" + pageViewer;
+            secret = btoa(secret);
+            window.location.replace("profile.html?" + secret);
         }
 
         function imageEdit() {
@@ -609,25 +622,41 @@
             endRef.remove();
         }
         function saveRedirect(){
-            window.location.replace("savedtutors.html?" + "username=" + pageViewer + "&pageOwner=" + pageViewer);
+            var secret = "username=" + pageViewer + "&pageOwner=" + pageViewer;
+            secret = btoa(secret);
+            window.location.replace("savedtutors.html?" + secret);
         }
         function helpRedirect(){
             var PassPhrase = "The Moon is a Harsh Mistress."; 
             // The length of the RSA key, in bits.
             var Bits = 1024; 
             var MattsRSAkey = cryptico.generateRSAKey(PassPhrase, Bits);//generate RSAkey (non random I think)
-            console.log("this is the RSA key: "+MattsRSAkey);
+            //console.log("this is the RSA key: "+MattsRSAkey);
             var MattsPublicKeyString = cryptico.publicKeyString(MattsRSAkey); //generate public key (random)
-            console.log("public key: "+MattsPublicKeyString);//we will send matt's public key
-            var PlainText = pageViewer;//the text we are sending is pageviewer
-            var EncryptionResult = cryptico.encrypt(PlainText, MattsPublicKeyString);//this is how you encode btw
-            console.log("result: "+EncryptionResult.cipher);//say the decoding
-            var secret = EncryptionResult.cipher;//this is the encrypted text which we will send
+            var PlainText = "username=" + pageViewer + "&pageOwner=" + pageViewer;//secure url
+            var EncryptionResult = cryptico.encrypt(PlainText, MattsPublicKeyString);
+            //var DecryptionResult = cryptico.decrypt(EncryptionResult.cipher, MattsRSAkey);
+            //console.log(DecryptionResult.plaintext);
+            var newRef = new Firebase("https://brouze.firebaseio.com/users");
+            //var classRef = usernameRef.child("skills");
+            newRef.child("keys").child("leaf").set({
+                public:MattsPublicKeyString,
+                private:MattsRSAkey,
+                message:EncryptionResult
+            });
+            
+            //console.log("public key: "+MattsPublicKeyString);//we will send matt's public key
+            //var PlainText = pageViewer;//the text we are sending is pageviewer
+            //var EncryptionResult = cryptico.encrypt(PlainText, MattsPublicKeyString);//this is how you encode btw
+            //console.log("result: "+EncryptionResult.cipher);//say the decoding
+            //var secret = EncryptionResult.cipher;//this is the encrypted text which we will send
             
            //this is the public key 
 //uXjrkGqe5WuS7zsTg6Z9DuS8cXLFz38ue+xrFzxrcQJCXtVccCoUFP2qH/AQ4qMvxxvqkSYBpRm1R5a4/NdQ5ei8sE8gfZEq7dlcR+gOSv3nnS4/CX1n5Z5m8bvFPF0lSZnYQ23xlyjXTaNacmV0IuZbqWd4j9LfdAKq5dvDaoE=
-            
-            window.location.replace("help.html?" + "username=" + pageViewer + "&pageOwner=" + pageViewer);
+            var secret = "username=" + pageViewer + "&pageOwner=" + pageViewer;
+            secret = btoa(secret);
+            //window.location.replace("help.html?" + secret);
+            window.location.replace("help.html");
            // window.location.replace("help.html?" + "username=" + pageViewer + "&pageOwner=" + secret);
         }
         function searchFave(){

@@ -262,19 +262,21 @@
             var parseQueryString = function() {
             console.log("go 42");
             var queryString = window.location.search;
-            //console.log(queryString);
+            console.log(queryString);
+            console.log(queryString);
             //var decrypted = CryptoJS.AES.decrypt(queryString,"mingo").toString(CryptoJS.enc.Utf8);
             //console.log("decrypted: " + decrypted);
             //queryString = decrypted;
             console.log(queryString);
             //var res = queryString.replace("%20", " ");
-            var res = queryString.replace(/%20/g, " ");
-            console.log(res);
-            queryString = res;
             //decodeURI(queryString)
             //decodeURIComponent(queryString.replace(/\+/g, '%20') );
             queryString = queryString.substring(1);
             console.log(queryString)
+            queryString = atob(queryString);
+            var res = queryString.replace(/%20/g, " ");
+            console.log(res);
+            queryString = res;
             var params = {},
                 queries, temp, i, l;
             // Split into key/value pairs
@@ -418,7 +420,9 @@
                     console.log(status);
                     console.log(miniKey);
                     //console.log(miniKey.ID);
-                     window.location.replace("profile.html?" + "username=" + miniKey + "&pageOwner="+userData);
+                    var secret = "username=" + miniKey + "&pageOwner="+userData;
+                    secret = btoa(secret);
+                     window.location.replace("profile.html?" + secret);
                 });
                 
                 
@@ -459,7 +463,9 @@
             });    
         }
         function home(){
-            window.location.replace("profile.html?" + "username=" + userData + "&pageOwner="+userData);
+            var secret  = "username=" + userData + "&pageOwner="+userData;
+            secret = btoa(secret);
+            window.location.replace("profile.html?" + secret);
         }
         /*$("#miniList").click(function(event){
             alert(event.target.id);
@@ -529,10 +535,14 @@
 
         }
         function saveRedirect(){
-            window.location.replace("savedtutors.html?" + "username=" + userData + "&pageOwner=" + userData);
+            var secret = "username=" + userData + "&pageOwner=" + userData;
+            secret = btoa(secret);
+            window.location.replace("savedtutors.html?" + secret);
         }
         function helpRedirect(){
-            window.location.replace("help.html?" + "username=" + userData + "&pageOwner=" + userData);
+            var secret = "username=" + userData + "&pageOwner=" + userData;
+            secret= btoa(secret);
+            window.location.replace("help.html?" + secret);
         }
     </script>
     

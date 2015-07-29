@@ -28,6 +28,14 @@
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    
+    
+    <script language="JavaScript" type="text/javascript" src="cryptico-master/random.js"></script>
+    <script language="JavaScript" type="text/javascript" src="cryptico-master/hash.js"></script>
+    <script language="JavaScript" type="text/javascript" src="cryptico-master/rsa.js"></script>
+    <script language="JavaScript" type="text/javascript" src="cryptico-master/aes.js"></script>
+    <script language="JavaScript" type="text/javascript" src="cryptico-master/api.js"></script>
+    <script language="JavaScript" type="text/javascript" src="cryptico-master/jsbn.js"></script>
 
 
     <!-- Custom Fonts -->
@@ -43,7 +51,7 @@
 
 </head>
 
-<body onload="parseQueryString()">
+<body onload="unsecret()">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -121,7 +129,7 @@
 
                 </ul>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="help.html">Help</a></li>
+                    <li class="active"><a onclick="unsecret()">Help</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
 
@@ -223,6 +231,7 @@
         var match = true;
         var profileViewer;
         var favorite;
+        
         /*function parseQueryString(){
             data = GetUrlValue("username_a");
             console.log(data);
@@ -231,9 +240,12 @@
             accessInfo(data);
                                
         }*/
-        var parseQueryString = function() {
-            var queryString = window.location.search;
-            queryString = queryString.substring(1);
+        var parseQueryString = function(message) {
+            queryString = message;
+            //var queryString = window.location.search;
+            //queryString = queryString.substring(1);
+            //queryString = atob(queryString);
+            //queryString = unsecret();
             var params = {},
                 queries, temp, i, l;
             // Split into key/value pairs
@@ -450,11 +462,16 @@
 
         function sendWord() {
             var keyWord = $("#subject").val();
-            window.location.replace("search.html?" + "username=" + pageViewer + "&word=" + keyWord);
+            var secret = "username=" + pageViewer + "&word=" + keyWord;
+            secret = btoa(secret);
+            window.location.replace("search.html?" + secret);
         }
 
         function home() {
-            window.location.replace("profile.html?" + "username=" + pageViewer + "&pageOwner=" + pageViewer);
+            console.log(pageViewer);
+            var secret = "username=" + pageViewer + "&pageOwner=" + pageViewer;
+            secret = btoa(secret);
+            window.location.replace("profile.html?" + secret);
         }
 
         function imageEdit() {
@@ -477,14 +494,45 @@
                 faveKey: data
             });
         }
-
+        function unsecret(){
+            var secretRef = new Firebase("https://brouze.firebaseio.com/users/keys/leaf");
+            //var MattsRSAkey;
+            //var CipherText;
+            var message;
+            secretRef.on("value", function(snapshot) {
+                var PassPhrase = "The Moon is a Harsh Mistress."; 
+            // The length of the RSA key, in bits.
+                var Bits = 1024; 
+                var MattsRSAkey = cryptico.generateRSAKey(PassPhrase, Bits);
+                var currentUser = snapshot.val();
+                var EncryptionResult = currentUser.message;
+                //var MattsRSAkey = currentUser.private;
+                console.log(EncryptionResult);
+                console.log(MattsRSAkey);
+               // var DecryptionResult = cryptico.decrypt(CipherText.cipher, MattsRSAkey);
+                var DecryptionResult = cryptico.decrypt(EncryptionResult.cipher, MattsRSAkey);
+                message = DecryptionResult.plaintext;
+                parseQueryString(message);
+                //cryptico.decrypt(CipherText, MattsRSAkey);
+            //console.log(DecryptionResult.plaintext);
+                console.log(DecryptionResult.plaintext);
+                
+            }, function(errorObject) {
+                console.log("The read failed: " + errorObject.code);
+            });
+            
+            
+        }
         function popFave() {
             var endRef = new Firebase("https://brouze.firebaseio.com/users/" + pageViewer + "/faves/" + data);
             endRef.remove();
         }
 
-        function saveRedirect() {
-            window.location.replace("savedtutors.html?" + "username=" + pageViewer + "&pageOwner=" + pageViewer);
+        function saveRedirect(){
+            console.log(data)
+            var secret = "username=" + data + "&pageOwner=" + data;
+            secret = btoa(secret);
+            window.location.replace("savedtutors.html?" + secret);
         }
 
         function searchFave() {
