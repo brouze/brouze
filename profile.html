@@ -262,13 +262,9 @@
         var match = true;
         var profileViewer;
         var favorite;
-        var encrypted = CryptoJS.AES.encrypt("Message", "mingo");
-        console.log("encrypted four: " + encrypted);
-        //var decrypted = CryptoJS.AES.decrypt(encrypted, "mingo");
-        var decrypted = CryptoJS.AES.decrypt(encrypted,"mingo").toString(CryptoJS.enc.Utf8);
-        //var encrypted = CryptoJS.AES.encrypt("Message", "mingo");
         
-        //var decrypted = CryptoJS.AES.decrypt(encrypted, "mingo");
+        console.log("encrypted four: " + encrypted);
+        var decrypted = CryptoJS.AES.decrypt(encrypted,"mingo").toString(CryptoJS.enc.Utf8);
         console.log("decrypted: " + decrypted);
         /*function parseQueryString(){
             data = GetUrlValue("username_a");
@@ -550,7 +546,9 @@
 
         function sendWord() {
             var keyWord = $("#subject").val();
-            window.location.replace("search.html?" + "username=" + pageViewer + "&word=" + keyWord);
+            var message = "username=" + pageViewer + "&word=" + keyWord;
+            var encrypted = CryptoJS.AES.encrypt(message, "mingo");
+            window.location.replace("search.html?" + encrypted);
         }
 
         function home() {
