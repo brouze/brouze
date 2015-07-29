@@ -545,11 +545,11 @@
 
         function sendWord() {
             var keyWord = $("#subject").val();
-            var message = "username=" + pageViewer + "&word=" + keyWord;
-            console.log("xox "+message);
-            var encrypted = CryptoJS.AES.encrypt(message, "mingo");
-            console.log("xox 2"+ encrypted);
-            //window.location.replace("search.html?" + encrypted);
+            //var message = "username=" + pageViewer + "&word=" + keyWord;
+            //console.log("xox "+message);
+            //var encrypted = CryptoJS.AES.encrypt(message, "mingo");
+            //console.log("xox 2"+ encrypted);
+            window.location.replace("search.html?" + "username=" + pageViewer + "&word=" + keyWord);
         }
 
         function home() {
