@@ -374,10 +374,10 @@
                 }
                 $("#dropMenu").append('<span class="caret" aria-hidden="true"></span>');
                 $("#desc").text(currentUser.blurb);
-                if (currentUser.email !== undefined) {
+                if (currentUser.email !== '') {
                     $("#email").text("Email: " + currentUser.email);
                 }
-                if (currentUser.phone !== undefined) {
+                if (currentUser.phone !== '') {
                     $("#phone").text("Phone number: " + currentUser.phone);
                 }
                 
