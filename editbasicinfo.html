@@ -140,6 +140,7 @@
             var info;
             var queryString = window.location.search;
             queryString = queryString.substring(1);
+            queryString = atob(queryString);
             var params = {},
                 queries, temp, i, l;
             // Split into key/value pairs
