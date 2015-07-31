@@ -160,6 +160,9 @@
         var ref = new Firebase("https://brouze.firebaseio.com");
         var userData; //data.uid
         var newUser = true;
+        var pic;
+        var provider;
+        var name;
         var parseQueryString = function() {
             $("#errorusrform").hide();
             var info;
@@ -180,6 +183,9 @@
             console.log("dude");
             console.log(params["username"]);
             userData = params["username"];
+            name = params["name"];
+            provider = params["provider"];
+            pic = params["pic"];
             
             //accessInfo(params["username"]);
         };
@@ -226,6 +232,13 @@
                 console.log(username);
                 console.log(grade);
                 console.log(age);
+                ref.child("users").child(userData).set({
+                basicInfo:{
+                    provider: provider,
+                    name: name,
+                    profilepic: pic
+                }
+                });
                 var usersRef = ref.child("users");
                 var usernameRef = usersRef.child(userData);
                 var basicRef = usernameRef.child("basicInfo");

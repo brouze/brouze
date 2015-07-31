@@ -172,22 +172,22 @@
               console.log("right before " + newUser);//here it is false
               if(newUser == true){
                  
-                ref.child("users").child(userId).set({
-                basicInfo:{
-                    provider: dataProvider,
-                    name: data.google.displayName,
-                    profilepic: data.google.profileImageURL
-                }
+                //ref.child("users").child(userId).set({
+                //basicInfo:{
+                    var provider= dataProvider;
+                    var name= data.google.displayName;
+                    var profilepic= data.google.profileImageURL;
+               // }
                  
               //some more user data
-                });
-                  var secret = "username=" + data.uid + "&pageOwner="+data.uid;
+                //});
+                  var secret = "username=" + data.uid + "&pageOwner="+data.uid+"&provider="+provider+"&name="+name+"&pic="+profilepic;
                   secret = btoa(secret);
-                  //window.location.replace("profile.html?" + secret);
-                  window.location.href = "basicinfo.html?" + secret;
+                  window.location.href = "basicinfo.html?"+secret;
                  //Username();*/
               }
               else{
+                  //window.location.replace("profile.html?username="+data.uid);
                   var secret = "username=" + data.uid + "&pageOwner="+data.uid;
                   secret = btoa(secret);
                   //window.location.replace("profile.html?" + secret);
