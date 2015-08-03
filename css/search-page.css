@@ -254,6 +254,13 @@ td {
     color: white;
     background-color: none;
 }
+.glyphicon-star {
+  padding: 0px 0px;
+  color:darkorange;
+  font-size: 18px;
+  line-height: 0;
+  border-radius: 0px;
+}
 
 .well {
     background-image: url(../img/forest.jpg);

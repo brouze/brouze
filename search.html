@@ -269,50 +269,51 @@
             var userData;
             var pageWord;
             var globalWord;
+            var faveUser;
             var parseQueryString = function() {
-            console.log("go 42");
-            var queryString = window.location.search;
-            console.log(queryString);
-            console.log(queryString);
-            //var decrypted = CryptoJS.AES.decrypt(queryString,"mingo").toString(CryptoJS.enc.Utf8);
-            //console.log("decrypted: " + decrypted);
-            //queryString = decrypted;
-            console.log(queryString);
-            //var res = queryString.replace("%20", " ");
-            //decodeURI(queryString)
-            //decodeURIComponent(queryString.replace(/\+/g, '%20') );
-            queryString = queryString.substring(1);
-            console.log(queryString)
-            queryString = atob(queryString);
-            var res = queryString.replace(/%20/g, " ");
-            console.log(res);
-            queryString = res;
-            var params = {},
-                queries, temp, i, l;
-            // Split into key/value pairs
-            queries = queryString.split("&");
-            console.log(queries);
-            // Convert the array of strings into an object
-            for (i = 0, l = queries.length; i < l; i++) {
-                temp = queries[i].split('=');
-                console.log(temp);
-                //temp.replace(/%20/g, " ");
-                params[temp[0]] = temp[1];
-               
-            }
-            //console.log("dude");
-            userData = params["username"];
-            //console.log(params["username"]);
-            //accessInfo(params["username"]);
-            //console.log("page Owner"+params["pageOwner"]);
-            //console.log("here is the search word");
-            pageWord = params["word"];
-            if(pageWord =='Search All'){
-                pageWord = '';
-            }
-            //console.log(pageWord);
-            $("#subject").val(pageWord);
-            search(pageWord);
+                console.log("go 42");
+                var queryString = window.location.search;
+                console.log(queryString);
+                console.log(queryString);
+                //var decrypted = CryptoJS.AES.decrypt(queryString,"mingo").toString(CryptoJS.enc.Utf8);
+                //console.log("decrypted: " + decrypted);
+                //queryString = decrypted;
+                console.log(queryString);
+                //var res = queryString.replace("%20", " ");
+                //decodeURI(queryString)
+                //decodeURIComponent(queryString.replace(/\+/g, '%20') );
+                queryString = queryString.substring(1);
+                console.log(queryString)
+                queryString = atob(queryString);
+                var res = queryString.replace(/%20/g, " ");
+                console.log(res);
+                queryString = res;
+                var params = {},
+                    queries, temp, i, l;
+                // Split into key/value pairs
+                queries = queryString.split("&");
+                console.log(queries);
+                // Convert the array of strings into an object
+                for (i = 0, l = queries.length; i < l; i++) {
+                    temp = queries[i].split('=');
+                    console.log(temp);
+                    //temp.replace(/%20/g, " ");
+                    params[temp[0]] = temp[1];
+
+                }
+                //console.log("dude");
+                userData = params["username"];
+                //console.log(params["username"]);
+                //accessInfo(params["username"]);
+                //console.log("page Owner"+params["pageOwner"]);
+                //console.log("here is the search word");
+                pageWord = params["word"];
+                if(pageWord =='Search All'){
+                    pageWord = '';
+                }
+                //console.log(pageWord);
+                $("#subject").val(pageWord);
+                search(pageWord);
         };
         function getWord(){
             keyWord = $("#subject").val();
@@ -435,8 +436,10 @@
                 var school = currentUser.school;
                 var profilepic = currentUser.profilepic;
                 var comment = currentUser.blurb;
+                checkIfFave(miniKey,username);
                 $("#miniList").append('<div class="container mini-profile"  id='+username+'><div class="row"><div class="col-md-4"><img class="img-responsive" src="'+profilepic+'"id="mini-pic"></div><div class="col-md-8"><h2>'+name+'</h2><h3>'+grade+' at '+ school+'</h3><h4>'+comment+'</h4></div></div></div>');
                 //apply_click(miniKey,results);
+                
                 $("#miniList").on('click', '#'+username, function(){
                 //$(document.getElementById(results)).onclick = function(){
     // this is your click-handler
@@ -572,6 +575,29 @@
             var secret = "username=" + userData + "&pageOwner=" + userData;
             secret= btoa(secret);
             window.location.href="help.html?" + secret
+        }
+
+        function userExistsCallback(userId, exists) {
+          if (exists) {
+            faveUser = true;
+            //alert('user ' + userId + ' exists!');
+          } else {
+            //alert('user ' + userId + ' does not exist!');
+              faveUser = false;
+              //console.log("newUser is" + newUser);//here it is true
+          }
+        }
+        // Tests to see if /users/<userId> has any data.
+        function checkIfFave(tempKey,tempUser){
+          var usersRef = new Firebase("https://brouze.firebaseio.com/users/"+userData+"/faves");
+          usersRef.child(tempKey).once('value', function(snapshot) {
+            var exists = (snapshot.val() !== null);
+            userExistsCallback(tempKey, exists);
+              console.log("right before " + faveUser);//here it is false
+              if(faveUser == true){//this is a favorite
+                 $("#"+tempUser).append('<span class="glyphicon glyphicon-star" aria-hidden="true"></span>');
+              }
+          });
         }
     </script>
     
