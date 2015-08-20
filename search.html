@@ -175,14 +175,14 @@
                 <div class="well">
                     <h3>Refine Search</h3>
                     <form>
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <label>Search by Name:</label>
                             <input type="text" class="form-control" id="searchIDname">
                         </div>
                         <div class="form-group">
                             <label>Search Username:</label>
                             <input type="text" class="form-control" id="searchID">
-                        </div>
+                        </div>-->
                         <div class="form-group">
                             <label>Zipcode:</label>
                             <input type="text" class="form-control" id="zipcode">
@@ -223,6 +223,18 @@
                         </div>
                         <div class="form-group"> 
                           <button type="button" class="btn btn-primary" onclick="applyFilter()">Filter</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="well">
+                    <h3>Search For Specific User</h3>
+                    <form>
+                        <div class="form-group">
+                            <label>Search Username:</label>
+                            <input type="text" class="form-control" id="searchID">
+                        </div>
+                        <div class="form-group"> 
+                          <button type="button" class="btn btn-primary" onclick="applyFilter()">Search</button>
                         </div>
                     </form>
                 </div>
@@ -323,6 +335,7 @@
                 $("#searchID").val('');
                 $("#searchIDname").val('');
                 applyFilter();
+                console.log("clearning searches");
             }
             else{
             //console.log(keyWord);
@@ -388,31 +401,35 @@
                         //console.log(key);
                         //console.log(skills);
                         //console.log(searchVal);
+                        console.log("globalWord: " + globalWord);
                         console.log("Fusername: "+ Fusername);
+                        console.log("skills: " + skills);
                         if((Fusername == '')&&(Fname == '')){
+                            console.log("we should be here");
                             if(skills==true){
                                 //console.log("hey look at me  "+ Floc1+" and "+loc1);
                                 if((Fzipcode == '') || (zipcode == Fzipcode)){
                                     if(((Fminage == '')||(age >= Fminage))&&((Fmaxage == '')||(age <= Fmaxage))){
                                         if((Fschool=='')||(school==Fschool)){
-                                            console.log(name);
+                                            console.log("wassssup " + name);
                                             addMini(key);
                                         }
                                     }
                                 }
                             }
                         }
-                        else if((Fusername != '')&&(Fname == '')){
+                        else if((Fusername != '')/*&&(Fname == '')*/){
+                            console.log("we might not want to be here");
                             if(username == Fusername){
                                 addMini(key);
                                 console.log("xox2");
                             }
                         }
-                        else{
+                        /*else{
                             if(name == Fname){
                                 addMini(key);
                             }
-                        }
+                        }*/
                         console.log("xox1");
                     }
               });
@@ -548,11 +565,11 @@
                 console.log("school: "+Fschool);
             }
             Fusername = $('#searchID').val();//reading check boxes
-            if(Fschool != ''){
+            if(Fusername != ''){
                 console.log("username: "+Fusername);
             }
-            Fname = $('#searchIDname').val();//reading check boxes
-            if(Fschool != ''){
+            Fname = ''//$('#searchIDname').val();//reading check boxes
+            if(Fname != ''){
                 console.log("name: "+Fname);
             }
             clear();
