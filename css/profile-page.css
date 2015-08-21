@@ -257,7 +257,8 @@ table .cellEditing{
 table .cellEditing input[type=text]{
     width:100%;
     border:0;
-    background-color:darkorange;  
+    background-color:darkorange; 
+    color:white;
 }
 
 th,
