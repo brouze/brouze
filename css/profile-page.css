@@ -250,6 +250,10 @@ tr td {
     vertical-align: middle;
 }
 
+td .cellEditing{
+    color:darkorange;
+}
+
 th,
 td {
     padding: 50px;
@@ -320,10 +324,6 @@ td {
 
 .glyphicon-pencil {
     color:coral;
-}
-#canTutor .cellEditing {
-    <!--padding: 0;-->
-    color:darkorange;
 }
 
 @media only screen and (max-width: 768px) {
