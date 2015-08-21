@@ -464,7 +464,7 @@
                     if(ACT == ''){
                        ACT = 'NA';
                     }
-                    $('#canTutorTable tr:last').after('<tr><td id=key>' + key + '</td><td id=teacher>' + teacher + '</td><td id=year>' + yearTaken + '</td><td id=grade>' + grade + '</td><td id=AP>' + AP +"/"+SAT+"/" +ACT+'</td><td id=price>$' + price + '</td><td id= blurb>' + comments + '</td><td></tr>');
+                    $('#canTutorTable tr:last').after('<tr><td id=key>' + key + '</td><td id=teacher>' + teacher + '</td><td id=year>' + yearTaken + '</td><td id=grade>' + grade + '</td><td id=AP>' + AP +"/"+SAT+"/" +ACT+'</td><td id=pay>$' + price + '</td><td id= comment>' + comments + '</td><td></tr>');
                     if (match) {
                        $('#canTutorTable td:last').after('<td><a onclick="alertFunc(this)" id="' + key + '"><span class="glyphicon glyphicon-pencil deleteButton" aria-hidden="true"></span></a></td>'); 
                         $('#canTutorTable td:last').after('<td><a onclick="deleteStrength(this)" id="' + key + '"><span class="glyphicon glyphicon-trash deleteButton" aria-hidden="true"></span></a></td>');
@@ -558,6 +558,7 @@
             //console.log(obj);
             var editRow = $(obj).attr('id');
             console.log(editRow);
+            tempSub=editRow;
         }
         function signOut() {
             var outRef = new Firebase("https://brouze.firebaseio.com");
@@ -719,27 +720,36 @@
             alert($(this).text());
         });*/
         $(document).on("click", "#canTutorTable td", function(e) {
+            //tempBit is sub subject
+            //tempSub is subject
             console.log(this.id);
-            var OriginalContent = $(this).text();
-            console.log(OriginalContent);
-            
-            $(this).addClass("cellEditing");
-            console.log("edited cell");//new stuff starts here
-            $(this).html("<input type='text' value='" + OriginalContent + "' />"); 
-            $(this).children().first().focus();
-            
-            $(this).children().first().keypress(function (e) { 
-                if (e.which == 13) { 
-                    var newContent = $(this).val(); 
-                    $(this).parent().text(newContent);
+            if(this.id == 'pay'){
+                tempBit=this.id;
+                var OriginalContent = $(this).text();
+                console.log(OriginalContent);
+
+                $(this).addClass("cellEditing");
+                console.log("edited cell");//new stuff starts here
+                $(this).html("<input type='text' value='" + OriginalContent + "' />"); 
+                $(this).children().first().focus();
+
+                $(this).children().first().keypress(function (e) { 
+                    if (e.which == 13) { 
+                        var newContent = $(this).val(); 
+                        $(this).parent().text(newContent);
+                        $(this).parent().removeClass("cellEditing"); 
+                    } 
+                });
+                $(this).children().first().blur(function(){ 
+                    $(this).parent().text(OriginalContent); 
                     $(this).parent().removeClass("cellEditing"); 
-                } 
-            });
-            $(this).children().first().blur(function(){ 
-                $(this).parent().text(OriginalContent); 
-                $(this).parent().removeClass("cellEditing"); 
-            });
+                });
+            }
         });
+        function saveEdit(newContent){
+             var basicRef = new Firebase("https://brouze.firebaseio.com/users/" + data + "/skills/"+tempSub+"/"+tempBit);
+             var nextRef = basicRef.child(newContent);
+        }
     </script>
 
 
