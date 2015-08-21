@@ -333,7 +333,9 @@ td {
     margin-right: 10px;
 }
 
-
+.glyphicon-pencil {
+    color:coral;
+}
 
 
 @media only screen and (max-width: 768px) {
