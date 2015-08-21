@@ -761,6 +761,9 @@
         }
         function refreshTable(){
             //$("#canTutorTable").empty();
+            $(document).ready(function() {
+                 $("#canTutorTable").find("tr:gt(0)").remove();
+            });
             addRow();
         }
     </script>
