@@ -717,7 +717,9 @@
             alert($(this).text());
         });*/
         $(document).on("dblclick", "#canTutorTable td", function(e) {
-            alert(this.id);
+            console.log(this.id);
+            var OriginalContent = $(this).text();
+            $(this).addClass("cellEditing");
         });
     </script>
 
