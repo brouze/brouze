@@ -296,7 +296,7 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude 24");
+            console.log("dude 25");
             data = params["username"];
             profileOwner=params["username"];
             console.log(params["username"]);
@@ -722,10 +722,12 @@
             console.log(this.id);
             var OriginalContent = $(this).text();
             console.log(OriginalContent);
+            
             $(this).addClass("cellEditing");
             console.log("edited cell");//new stuff starts here
             $(this).html("<input type='text' value='" + OriginalContent + "' />"); 
             $(this).children().first().focus();
+            
             $(this).children().first().keypress(function (e) { 
                 if (e.which == 13) { 
                     var newContent = $(this).val(); 
