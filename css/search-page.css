@@ -270,7 +270,9 @@ td {
 .well {
     background-image: url(../img/forest.jpg);
 }
-
+#two.well{
+    background-image: url(../img/flowers-crop.jpg);
+}
 .foot {
     width: 100%;
     padding-top: 1%;
