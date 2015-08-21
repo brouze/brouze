@@ -462,7 +462,7 @@
                     if(ACT == ''){
                        ACT = 'NA';
                     }
-                    $('#canTutorTable tr:last').after('<tr><td>' + key + '</td><td>' + teacher + '</td><td>' + yearTaken + '</td><td>' + grade + '</td><td>' + AP +"/"+SAT+"/" +ACT+'</td><td>$' + price + '</td><td>' + comments + '</td><td></tr>');
+                    $('#canTutorTable tr:last').after('<tr><td id=key>' + key + '</td><td id=teacher>' + teacher + '</td><td id=year>' + yearTaken + '</td><td id=grade>' + grade + '</td><td id=AP>' + AP +"/"+SAT+"/" +ACT+'</td><td id=price>$' + price + '</td><td = blurb>' + comments + '</td><td></tr>');
                     if (match) {
                         $('#canTutorTable td:last').after('<td><a onclick="deleteStrength(this)" id="' + key + '"><span class="glyphicon glyphicon-trash deleteButton" aria-hidden="true"></span></a></td>');
                     }
