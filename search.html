@@ -173,26 +173,16 @@
             <div class="col-lg-3">
                 <h3></h3>
                 <div class="well">
-                    <h3>Search For Specific User</h3>
+                    <h3>Refine Search</h3>
                     <form>
+                        <div class="form-group">
+                            <label>Search by Name:</label>
+                            <input type="text" class="form-control" id="searchIDname">
+                        </div>
                         <div class="form-group">
                             <label>Search Username:</label>
                             <input type="text" class="form-control" id="searchID">
                         </div>
-                        <button type="button" class="btn btn-primary" onclick="applyFilter()">Search</button>
-                    </form>
-                </div>
-                <div class="well">
-                    <h3>Refine Search</h3>
-                    <form>
-                        <!--<div class="form-group">
-                            <label>Search by Name:</label>
-                            <input type="text" class="form-control" id="searchIDname">
-                        </div>-->
-                       <!-- <div class="form-group">
-                            <label>Search Username:</label>
-                            <input type="text" class="form-control" id="searchID">
-                        </div>-->
                         <div class="form-group">
                             <label>Zipcode:</label>
                             <input type="text" class="form-control" id="zipcode">
@@ -271,7 +261,7 @@
             var Fmaxprice = $("#maxprice").val();
             var Fschool = $("#school").val();
             var Fusername = $("#searchID").val();
-            //var Fname = $("#searchIDname").val();
+            var Fname = $("#searchIDname").val();
             //var Floc1 = $('#lib').prop('checked');
             //var Floc2 = $('#yourHome').prop('checked');
             //var Floc3 = $('#online').prop('checked');//reading check boxes
@@ -399,7 +389,7 @@
                         //console.log(skills);
                         //console.log(searchVal);
                         console.log("Fusername: "+ Fusername);
-                        if((Fusername == '')/*&&(Fname == '')*/){
+                        if((Fusername == '')&&(Fname == '')){
                             if(skills==true){
                                 //console.log("hey look at me  "+ Floc1+" and "+loc1);
                                 if((Fzipcode == '') || (zipcode == Fzipcode)){
@@ -412,10 +402,15 @@
                                 }
                             }
                         }
-                        else{
+                        else if((Fusername != '')&&(Fname == '')){
                             if(username == Fusername){
                                 addMini(key);
                                 console.log("xox2");
+                            }
+                        }
+                        else{
+                            if(name == Fname){
+                                addMini(key);
                             }
                         }
                         console.log("xox1");
@@ -556,10 +551,10 @@
             if(Fschool != ''){
                 console.log("username: "+Fusername);
             }
-            /*Fname = $('#searchIDname').val();//reading check boxes
+            Fname = $('#searchIDname').val();//reading check boxes
             if(Fschool != ''){
                 console.log("name: "+Fname);
-            }*/
+            }
             clear();
             search(globalWord);
 
@@ -646,3 +641,5 @@
 </body>
 
 </html>
+
+
