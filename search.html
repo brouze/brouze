@@ -319,9 +319,8 @@
         };
         function getWord(){
             keyWord = $("#subject").val();
-            if(($("#searchID").val() != '') ||($("#searchIDname").val() != '')){
+            if(($("#searchID").val() != '') ){
                 $("#searchID").val('');
-                $("#searchIDname").val('');
                 applyFilter();
             }
             else{
