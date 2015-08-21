@@ -462,8 +462,9 @@
                     if(ACT == ''){
                        ACT = 'NA';
                     }
-                    $('#canTutorTable tr:last').after('<tr><td id=key>' + key + '</td><td id=teacher'+key+'>' + teacher + '</td><td id=year>' + yearTaken + '</td><td id=grade>' + grade + '</td><td id=AP>' + AP +"/"+SAT+"/" +ACT+'</td><td id=price>$' + price + '</td><td = blurb>' + comments + '</td><td></tr>');
+                    $('#canTutorTable tr:last').after('<tr><td id=key>' + key + '</td><td id=teacher>' + teacher + '</td><td id=year>' + yearTaken + '</td><td id=grade>' + grade + '</td><td id=AP>' + AP +"/"+SAT+"/" +ACT+'</td><td id=price>$' + price + '</td><td = blurb>' + comments + '</td><td></tr>');
                     if (match) {
+                       $('#canTutorTable td:last').after('<td><a onclick="alertFunc(this)" id="' + key + '"><span class="glyphicon glyphicon-pencil deleteButton" aria-hidden="true"></span></a></td>'); 
                         $('#canTutorTable td:last').after('<td><a onclick="deleteStrength(this)" id="' + key + '"><span class="glyphicon glyphicon-trash deleteButton" aria-hidden="true"></span></a></td>');
                     }
                     /*$("#"+key).click(function(){
@@ -551,7 +552,11 @@
             home();
             //delete from strengths here
         }
-
+        function alertFunc(obj){
+            console.log(obj);
+            var editRow = $(obj).attr('id');
+            console.log(editRow);
+        }
         function signOut() {
             var outRef = new Firebase("https://brouze.firebaseio.com");
             outRef.unauth();
