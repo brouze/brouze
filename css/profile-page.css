@@ -250,7 +250,7 @@ tr td {
     vertical-align: middle;
 }
 
- .cellEditing{
+table .cellEditing{
     color:darkorange;
 }
 
