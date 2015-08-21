@@ -251,7 +251,8 @@ tr td {
 }
 
 table .cellEditing{
-    color:darkorange;
+    color:white;
+    background-color: darkorange;
 }
 
 th,

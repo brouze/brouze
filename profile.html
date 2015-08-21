@@ -269,7 +269,9 @@
         var match = true;
         var profileViewer;
         var favorite;
-        
+        var editMode = false;
+        var tempSub;//temporary subject
+        var tempBit;//temporary sub subject like price or teacher. 
         //console.log("encrypted four: " + encrypted);
         
         /*function parseQueryString(){
@@ -716,7 +718,7 @@
         $("td").on("click", "p.test", function(){
             alert($(this).text());
         });*/
-        $(document).on("dblclick", "#canTutorTable td", function(e) {
+        $(document).on("click", "#canTutorTable td", function(e) {
             console.log(this.id);
             var OriginalContent = $(this).text();
             console.log(OriginalContent);
