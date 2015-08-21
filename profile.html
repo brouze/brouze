@@ -687,7 +687,7 @@
                 }
             });
         }
-            $(function () {
+           /* $(function () {
                  console.log("I bet ");
                 $("td").dblclick(function () {
                     console.log("if i just " );
@@ -710,6 +710,9 @@
             });
         $("td").on("click", "p.test", function(){
             alert($(this).text());
+        });*/
+        $(document).on("click", "#table tr", function(e) {
+            alert(this.id);
         });
     </script>
 
