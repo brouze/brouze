@@ -233,6 +233,7 @@
                         </div>
                         <div class="form-group"> 
                           <button type="button" class="btn btn-primary" onclick="applyFilter()">Filter</button>
+                          <button type="button" class="btn btn-warning" onclick="clearFilter()">Clear Filter</button>
                         </div>
                     </form>
                 </div>
@@ -633,6 +634,16 @@
                    
             }
             applyFilter();
+        }
+        function clearFilter(){
+            Fzipcode = '';
+            Fminage = '';
+            Fmaxage = '';
+            Fteacher = '';
+            Fminprice = '';
+            Fmaxprice = '';
+            Fschool = '';
+            search(globalWord);
         }
     </script>
     
