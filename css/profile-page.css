@@ -251,7 +251,7 @@ tr td {
 }
 
 table .cellEditing{
-    <!--color:white;-->
+    color:white;
     <!--background-color: darkorange;-->
 }
 table .cellEditing input[type=text]{
