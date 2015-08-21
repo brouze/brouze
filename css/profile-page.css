@@ -321,7 +321,7 @@ td {
 .glyphicon-pencil {
     color:coral;
 }
-.canTutor .cellEditing {
+#canTutor .cellEditing {
     <!--padding: 0;-->
     color:darkorange;
 }
