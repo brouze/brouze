@@ -687,9 +687,10 @@
                 }
             });
         }
-            $(function () {
-                 console.log("I bet ");
+           /* $(function () {
+                 console.log("I bet ");*/
                 $("td").dblclick(function () {
+                    console.log("if i just " );
                     var OriginalContent = $(this).text(); 
                     $(this).addClass("cellEditing");
                     $(this).html("<input type='text' value='" + OriginalContent + "' />"); 
@@ -706,7 +707,7 @@
                         $(this).parent().removeClass("cellEditing"); 
                     });
                 }); 
-            });
+           // });
     </script>
 
 
