@@ -724,7 +724,8 @@
             console.log(OriginalContent);
             $(this).addClass("cellEditing");
             console.log("edited cell");//new stuff starts here
-            $(this).html("<input type='text' value='" + OriginalContent + "' />"); $(this).children().first().focus();
+            $(this).html("<input type='text' value='" + OriginalContent + "' />"); 
+            $(this).children().first().focus();
             $(this).children().first().keypress(function (e) { 
                 if (e.which == 13) { 
                     var newContent = $(this).val(); 
