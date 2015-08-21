@@ -185,6 +185,7 @@
                         </div>
                         <div class="form-group"> 
                           <button type="button" class="btn btn-primary" onclick="applyFilter()">Filter</button>
+                          <button type="button" class="btn btn-warning" onclick="clearFilter()">Remove Filter</button>
                         </div>
                     </form>
                 </div>
@@ -239,6 +240,7 @@
                         </div>
                         <div class="form-group"> 
                           <button type="button" class="btn btn-primary" onclick="applyFilter()">Filter</button>
+                          <button type="button" class="btn btn-warning" onclick="clearFilter()">Remove Filter</button>
                         </div>
                     </form>
                 </div>
@@ -564,6 +566,26 @@
             clear();
             search(globalWord);
 
+        }
+        function clearFilter(){
+            $("#zipcode").val('')             
+            Fzipcode = $("#zipcode").val();
+            $("#minage").val('');
+            Fminage = $("#minage").val();
+            $("#maxage").val('');
+            Fmaxage = $("#maxage").val();
+            ("#teacher").val('');
+            Fteacher = $("#teacher").val();
+            $("#minprice").val('');
+            Fminprice = $("#minprice").val();
+            $("#maxprice").val('');
+            Fmaxprice = $("#maxprice").val();
+            $('#school').val();
+            Fschool = $('#school').val();//reading check boxes
+            $('#searchID').val();
+            Fusername = $('#searchID').val();//reading check boxes
+            clear();
+            search(globalWord);
         }
         function clear(){
             for(var i = 0;i < results;i++){
