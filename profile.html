@@ -738,6 +738,7 @@
                         var newContent = $(this).val(); 
                         $(this).parent().text(newContent);
                         $(this).parent().removeClass("cellEditing"); 
+                        saveEdit(newContent);
                     } 
                 });
                 $(this).children().first().blur(function(){ 
