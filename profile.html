@@ -294,7 +294,7 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude 18");
+            console.log("dude 19");
             data = params["username"];
             profileOwner=params["username"];
             console.log(params["username"]);
@@ -708,6 +708,9 @@
                     });
                 }); 
             });
+        $("td").on("click", "p.test", function(){
+            alert($(this).text());
+        });
     </script>
 
 
