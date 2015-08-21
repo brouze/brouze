@@ -723,7 +723,19 @@
             var OriginalContent = $(this).text();
             console.log(OriginalContent);
             $(this).addClass("cellEditing");
-            console.log("edited cell");
+            console.log("edited cell");//new stuff starts here
+            $(this).html("<input type='text' value='" + OriginalContent + "' />"); $(this).children().first().focus();
+            $(this).children().first().keypress(function (e) { 
+                if (e.which == 13) { 
+                    var newContent = $(this).val(); 
+                    $(this).parent().text(newContent);
+                    $(this).parent().removeClass("cellEditing"); 
+                } 
+            });
+            $(this).children().first().blur(function(){ 
+                $(this).parent().text(OriginalContent); 
+                $(this).parent().removeClass("cellEditing"); 
+            });
         });
     </script>
 
