@@ -244,10 +244,7 @@ table {
     
     
 }
-
-* { 
-    font-family:Consolas
-} 
+ 
 .editableTable { 
     <!--border:solid 1px; -->
     width:100% 
