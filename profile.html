@@ -296,7 +296,7 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude 29");
+            console.log("dude 30");
             data = params["username"];
             profileOwner=params["username"];
             console.log(params["username"]);
@@ -762,7 +762,7 @@
         function refreshTable(){
             //$("#canTutorTable").empty();
             $(document).ready(function() {
-                 $("#canTutorTable").find("tr:gt(0)").remove();
+                 $('#canTutorTable').children( 'tr:not(:first)' ).remove();
             });
             addRow();
         }
