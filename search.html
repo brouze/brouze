@@ -180,6 +180,7 @@
                             <input type="text" class="form-control" id="searchID">
                         </div>
                         <button type="button" class="btn btn-primary" onclick="applyFilter()">Search</button>
+                        <button type="button" class="btn btn-warning" onclick="clearFilter()">Clear Filter</button>
                     </form>
                 </div>
                 <div class="well">
@@ -650,7 +651,7 @@
             $("#minprice").val('');
             $("#maxprice").val('');
             $("#school").val('');
-            //$("#searchID").val('');
+            $("#searchID").val('');
             search(globalWord);
         }
     </script>
