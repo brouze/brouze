@@ -739,6 +739,7 @@
                         $(this).parent().text(newContent);
                         $(this).parent().removeClass("cellEditing"); 
                         saveEdit(newContent);
+                        refreshTable();
                     } 
                 });
                 $(this).children().first().blur(function(){ 
@@ -757,6 +758,10 @@
             console.log("hey what's the hold up");
              //var hopperRef = usersRef.child("gracehop");
             
+        }
+        function refreshTable(){
+            $("#cantTutorTable tbody").empty();
+            addRow();
         }
     </script>
 
