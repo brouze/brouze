@@ -296,7 +296,7 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude 28");
+            console.log("dude 29");
             data = params["username"];
             profileOwner=params["username"];
             console.log(params["username"]);
@@ -754,6 +754,7 @@
             console.log("new content "+newContent);
             var editRef = new Firebase("https://brouze.firebaseio.com/users/" + data + "/skills/"+tempSub);
             editRef.child(tempBit).set(newContent);
+            console.log("hey what's the hold up");
              //var hopperRef = usersRef.child("gracehop");
             
         }
