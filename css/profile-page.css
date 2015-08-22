@@ -254,7 +254,7 @@ table .cellEditing{
     <!--color:white;-->
     <!--background-color: darkorange;-->
 }
-table .rowEditing{
+.rowEditing{
     color:white;
     background-color: black;
 }
