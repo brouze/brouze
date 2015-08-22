@@ -297,7 +297,7 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude 52");
+            console.log("dude 53");
             data = params["username"];
             profileOwner=params["username"];
             console.log(params["username"]);
@@ -561,6 +561,7 @@
         function alertFunc(obj){
             //console.log(obj);
             var editRow = $(obj).attr('id');
+            $(obj).addClass("cellEditing");
             //console.log(editRow);
             tempSub=editRow;
             editMode =! editMode;
@@ -747,7 +748,7 @@
                     console.log(OriginalContent);
 
                     $(this).addClass("cellEditing");
-                    $(this).parent().addClass("rowEditing");
+                    //$(this).parent().addClass("rowEditing");
                     console.log("edited cell");//new stuff starts here
                     $(this).html("<input type='text' value='" + OriginalContent + "' />"); 
                     $(this).children().first().focus();
