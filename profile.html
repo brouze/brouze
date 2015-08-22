@@ -561,6 +561,7 @@
             var editRow = $(obj).attr('id');
             console.log(editRow);
             tempSub=editRow;
+            editMode = true;
         }
         function signOut() {
             var outRef = new Firebase("https://brouze.firebaseio.com");
@@ -722,32 +723,35 @@
             alert($(this).text());
         });*/
         $(document).on("click", "#canTutorTable td", function(e) {
-            //tempBit is sub subject
-            //tempSub is subject
-            console.log(this.id);
-            if(this.id == 'pay'){
-                tempBit=this.id;
-                var OriginalContent = $(this).text();
-                console.log(OriginalContent);
+            if(editMode == true){
+                //tempBit is sub subject
+                //tempSub is subject
+                console.log(this.id);
+                if(this.id == 'pay'){
+                    tempBit=this.id;
+                    var OriginalContent = $(this).text();
+                    console.log(OriginalContent);
 
-                $(this).addClass("cellEditing");
-                console.log("edited cell");//new stuff starts here
-                $(this).html("<input type='text' value='" + OriginalContent + "' />"); 
-                $(this).children().first().focus();
+                    $(this).addClass("cellEditing");
+                    console.log("edited cell");//new stuff starts here
+                    $(this).html("<input type='text' value='" + OriginalContent + "' />"); 
+                    $(this).children().first().focus();
 
-                $(this).children().first().keypress(function (e) { 
-                    if (e.which == 13) { 
-                        var newContent = $(this).val(); 
-                        $(this).parent().text(newContent);
+                    $(this).children().first().keypress(function (e) { 
+                        if (e.which == 13) { 
+                            var newContent = $(this).val(); 
+                            $(this).parent().text(newContent);
+                            $(this).parent().removeClass("cellEditing"); 
+                            saveEdit(newContent);
+                            refreshTable();
+                            editMode = false;
+                        } 
+                    });
+                    $(this).children().first().blur(function(){ 
+                        $(this).parent().text(OriginalContent); 
                         $(this).parent().removeClass("cellEditing"); 
-                        saveEdit(newContent);
-                        refreshTable();
-                    } 
-                });
-                $(this).children().first().blur(function(){ 
-                    $(this).parent().text(OriginalContent); 
-                    $(this).parent().removeClass("cellEditing"); 
-                });
+                    });
+                }
             }
         });
         function saveEdit(newContent){
