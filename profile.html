@@ -297,7 +297,7 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude 56");
+            console.log("dude 57");
             data = params["username"];
             profileOwner=params["username"];
             console.log(params["username"]);
@@ -559,11 +559,12 @@
             //delete from strengths here
         }
         function alertFunc(obj){
+            $('Table tr').addClass('rowEditing');
             //console.log(obj);
             var editRow = $(obj).attr('id');
             //$('#'+editRow).addClass("rowEditing");
             //console.log(editRow);
-            $(this).find('#'+editRow).addClass('rowEditing');
+            //$(this).find('#'+editRow).addClass('rowEditing');
 
             tempSub=editRow;
             editMode =! editMode;
