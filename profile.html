@@ -297,7 +297,7 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude 30");
+            console.log("dude 31");
             data = params["username"];
             profileOwner=params["username"];
             console.log(params["username"]);
@@ -559,7 +559,7 @@
         function alertFunc(obj){
             //console.log(obj);
             var editRow = $(obj).attr('id');
-            console.log(editRow);
+            //console.log(editRow);
             tempSub=editRow;
             editMode = true;
         }
@@ -724,6 +724,8 @@
         });*/
         $(document).on("click", "#canTutorTable td", function(e) {
             if(editMode == true){
+                var rowID = $(this).closest('tr');
+                console.log(rowID);
                 //tempBit is sub subject
                 //tempSub is subject
                 console.log(this.id);
