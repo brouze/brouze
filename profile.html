@@ -297,7 +297,7 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude 40");
+            console.log("dude 41");
             data = params["username"];
             profileOwner=params["username"];
             console.log(params["username"]);
@@ -727,6 +727,7 @@
             console.log("xox hey "+trid);
             var trid2 = $(this).parent('tr').attr('id'); // table row ID 
             console.log("xox hey "+trid2);
+            e.preventDefault();
             var i = $(this).closest('tr').attr('data-uid');
             console.log(i);
             var j = $(this).closest('tr').data('uid');
