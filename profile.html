@@ -297,7 +297,7 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude 33");
+            console.log("dude 34");
             data = params["username"];
             profileOwner=params["username"];
             console.log(params["username"]);
@@ -726,7 +726,7 @@
             if(editMode == true){
                 var rowID = $(this).parent('tr').prevAll().length;
                 //$(this).closest("tr").index();
-                console.log($(this).closest('tr').data('id') + "x0x");
+                console.log($(this).closest('tr').attr('id') + "x0x");
                 console.log(rowID);
                 //tempBit is sub subject
                 //tempSub is subject
