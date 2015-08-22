@@ -270,6 +270,7 @@
         var profileViewer;
         var favorite;
         var editMode = false;
+        var rowData = 0;
         var tempSub;//temporary subject
         var tempBit;//temporary sub subject like price or teacher. 
         //console.log("encrypted four: " + encrypted);
@@ -442,6 +443,7 @@
             skillsRef.once("value", function(snapshot) {
                 // The callback function will get once for each class
                 snapshot.forEach(function(childSnapshot) {
+                    rowData++;//number of skills
                     // key will be the name of the class they are taking 
                     var key = childSnapshot.key();
                     // childData will be the actual contents of the child
@@ -761,9 +763,10 @@
         }
         function refreshTable(){
             //$("#canTutorTable").empty();
-            $(document).ready(function() {
-                 $('#canTutorTable').children( 'tr:not(:first)' ).remove();
-            });
+            for(var i = 0;i<rowData;i++){
+                $('#canTutorTable tr:last').remove();
+            }
+            rowData = 0;
             addRow();
         }
     </script>
