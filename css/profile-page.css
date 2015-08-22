@@ -254,6 +254,10 @@ table .cellEditing{
     <!--color:white;-->
     <!--background-color: darkorange;-->
 }
+table .rowEditing{
+    color:white;
+    background-color: black;
+}
 table .cellEditing input[type=text]{
     width:100%;
     border:0;
