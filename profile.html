@@ -725,6 +725,8 @@
         $(document).on("click", "#canTutorTable td", function(e) {
             if(editMode == true){
                 var rowID = $(this).parent('tr').prevAll().length;
+                //$(this).closest("tr").index();
+                console.log($this.closest('tr').data('id') + "xox1");
                 console.log(rowID);
                 //tempBit is sub subject
                 //tempSub is subject
