@@ -254,9 +254,8 @@ table .cellEditing{
     <!--color:white;-->
     <!--background-color: darkorange;-->
 }
-#canTutorTable .rowEditing{
-    color:white;
-    background-color: black;
+ .glyphicon-pencil .rowEditing{
+    color:forestgreen;
 }
 table .cellEditing input[type=text]{
     width:100%;
