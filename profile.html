@@ -297,7 +297,7 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude 42");
+            console.log("dude 43");
             data = params["username"];
             profileOwner=params["username"];
             console.log(params["username"]);
@@ -466,7 +466,7 @@
                     if(ACT == ''){
                        ACT = 'NA';
                     }
-                    $('#canTutorTable tr:last').after('<tr><td id=key>' + key + '</td><td id=teacher>' + teacher + '</td><td id=year>' + yearTaken + '</td><td id=grade>' + grade + '</td><td id=AP>' + AP +"/"+SAT+"/" +ACT+'</td><td id=pay>$' + price + '</td><td id= comment>' + comments + '</td><td></tr>');
+                    $('#canTutorTable tr:last').after('<tr id='+key+'><td id=key>' + key + '</td><td id=teacher>' + teacher + '</td><td id=year>' + yearTaken + '</td><td id=grade>' + grade + '</td><td id=AP>' + AP +"/"+SAT+"/" +ACT+'</td><td id=pay>$' + price + '</td><td id= comment>' + comments + '</td><td></tr>');
                     if (match) {
                        $('#canTutorTable td:last').after('<td><a onclick="alertFunc(this)" id="' + key + '"><span class="glyphicon glyphicon-pencil deleteButton" aria-hidden="true"></span></a></td>'); 
                         $('#canTutorTable td:last').after('<td><a onclick="deleteStrength(this)" id="' + key + '"><span class="glyphicon glyphicon-trash deleteButton" aria-hidden="true"></span></a></td>');
