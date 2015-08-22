@@ -297,7 +297,7 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude 48");
+            console.log("dude 49");
             data = params["username"];
             profileOwner=params["username"];
             console.log(params["username"]);
@@ -447,7 +447,7 @@
                     // key will be the name of the class they are taking 
                     var key = childSnapshot.key();
                     var betterKey = key.replace(/ /g, "%20")
-                    console.log("there is a better key " + betterKey);
+                    //console.log("there is a better key " + betterKey);
                     // childData will be the actual contents of the child
                     var childData = childSnapshot.val();
                     //var category= childData.category;
@@ -741,7 +741,7 @@
                 //tempBit is sub subject
                 //tempSub is subject
                 console.log(this.id);
-                if(this.id == 'pay'){
+                if((this.id != 'key') &&(this.id != 'AP')){
                     tempBit=this.id;
                     var OriginalContent = $(this).text();
                     console.log(OriginalContent);
