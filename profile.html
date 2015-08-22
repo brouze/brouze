@@ -297,7 +297,7 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude 55");
+            console.log("dude 56");
             data = params["username"];
             profileOwner=params["username"];
             console.log(params["username"]);
@@ -561,8 +561,10 @@
         function alertFunc(obj){
             //console.log(obj);
             var editRow = $(obj).attr('id');
-            $('#'+editRow).addClass("rowEditing");
+            //$('#'+editRow).addClass("rowEditing");
             //console.log(editRow);
+            $(this).find('#'+editRow).addClass('rowEditing');
+
             tempSub=editRow;
             editMode =! editMode;
         }
