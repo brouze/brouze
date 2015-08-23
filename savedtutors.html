@@ -343,7 +343,8 @@
                   addMini(artifact);
               }
               else{
-                  checkRef.remove();
+                  localRef = new Firebase("https://brouze.firebaseio.com/users/"+data+"/faves/"+artifact)
+                  localRef.remove();
               }
             });   
         }
