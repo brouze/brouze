@@ -297,7 +297,7 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude 61");
+            console.log("dude 62");
             data = params["username"];
             profileOwner=params["username"];
             console.log(params["username"]);
@@ -563,7 +563,7 @@
             //console.log(obj);
            
             var editRow = $(obj).attr('id');
-            $('#canTutorTable #'+editRow).children('td, th').css('background-color','yellow');
+            $('#'+editRow).children('td, th').css('background-color','yellow');
             //$('#'+editRow).addClass("rowEditing");
             //console.log(editRow);
             //$(this).find('#'+editRow).addClass('rowEditing');
