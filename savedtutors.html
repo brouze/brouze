@@ -324,16 +324,29 @@
             nameRef.once("value", function(snapshot) {
                 snapshot.forEach(function(childSnapshot) {
                     var key = childSnapshot.key();
+                    clean(key);
                     var faveKey = childSnapshot.faveKey;
                     console.log(faveKey);
                     console.log(name);
-                    addMini(key);
+                   // addMini(key);
                             
                         
                     
               });
             });
        }
+        function clean(artifact){
+              var checkRef = new Firebase("https://brouze.firebaseio.com/users/"+artifact);
+              checkRef.once("value", function(snapshot) {
+              var a = snapshot.exists();
+              if(a == true){//if there is a child like this
+                  addMini(artifact);
+              }
+              else{
+                  checkRef.remove();
+              }
+            });   
+        }
         function addMini(miniKey){
             var ref = new Firebase("https://brouze.firebaseio.com/users/" + miniKey + "/basicInfo");
             ref.on("value", function(snapshot) {
