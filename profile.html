@@ -297,7 +297,7 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude 63");
+            console.log("dude 64");
             data = params["username"];
             profileOwner=params["username"];
             console.log(params["username"]);
@@ -570,14 +570,14 @@
 
             tempSub=editRow;
             editMode =! editMode;
-            /*if(editMode == true){
+            if(editMode == true){
                 $("#canTutorTable tr ").css('background-color', '#000000');
                 $("#canTutorTable tr ").css('color', '#FFFFFF');
             }
             else{
                 $("#canTutorTable tr ").css('background-color', '#FFFFFF');
                 $("#canTutorTable tr ").css('color', '#000000');
-            }*/
+            }
         }
         function signOut() {
             var outRef = new Firebase("https://brouze.firebaseio.com");
