@@ -471,7 +471,7 @@
                     $('#canTutorTable tr:last').after('<tr id='+betterKey+'><td id=key>' + key + '</td><td id=teacher>' + teacher + '</td><td id=year>' + yearTaken + '</td><td id=grade>' + grade + '</td><td id=AP>' + AP +"/"+SAT+"/" +ACT+'</td><td id=pay>$' + price + '</td><td id= comment>' + comments + '</td><td></tr>');
                     if (match) {
                        $('#canTutorTable td:last').after('<td id=penButton><a onclick="alertFunc(this)" id="' + key + '"><span class="glyphicon glyphicon-pencil deleteButton" aria-hidden="true"></span></a></td>'); 
-                        $('#canTutorTable td:last').after('<td id=trashButton><a onclick="deleteStrength(this)" id="' + key + '"><span class="glyphicon glyphicon-trash deleteButton" aria-hidden="true"></span></a></td>');
+                       $('#canTutorTable td:last').after('<td id=trashButton><a onclick="deleteStrength(this)" id="' + key + '"><span class="glyphicon glyphicon-trash deleteButton" aria-hidden="true"></span></a></td>');
                     }
                     /*$("#"+key).click(function(){
                         console.log("key what's up ");
