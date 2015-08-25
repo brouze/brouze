@@ -570,14 +570,14 @@
 
             tempSub=editRow;
             editMode =! editMode;
-            /*if(editMode == true){
+            if(editMode == true){
                 $("#canTutorTable tr ").css('background-color', '#000000');
                 $("#canTutorTable tr ").css('color', '#FFFFFF');
             }
             else{
                 $("#canTutorTable tr ").css('background-color', '#FFFFFF');
                 $("#canTutorTable tr ").css('color', '#000000');
-            }*/
+            }
         }
         function signOut() {
             var outRef = new Firebase("https://brouze.firebaseio.com");
@@ -775,6 +775,8 @@
                             saveEdit(newContent);
                             refreshTable();
                             editMode = false;
+                            $("#canTutorTable tr ").css('background-color', '#FFFFFF');
+                            $("#canTutorTable tr ").css('color', '#000000');
                         } 
                     });
                     $(this).children().first().blur(function(){ 
