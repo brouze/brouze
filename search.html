@@ -629,6 +629,9 @@
               if(faveUser == true){//this is a favorite
                  $("#"+tempUser).append('<span class="glyphicon glyphicon-star" aria-hidden="true"></span>');
               }
+              else if(tempKey==userData){
+                  $("#"+tempUser).append('<span class="glyphicon glyphicon-user" aria-hidden="true"></span>');
+              }
           });
         }
         function swap(){
