@@ -566,6 +566,7 @@
             //$('#penButton').addClass('rowEditing');
             //console.log(obj);
             mode = 0;
+            var last = editRow;
             var editRow = $(obj).attr('id');
 
             //$('#'+editRow).addClass("rowEditing");
@@ -573,7 +574,9 @@
             //$("#"+editRow).css('background-color', '#FFCCFF');;
 
             tempSub=editRow;
+            if(last == editRow){
             editMode =! editMode;
+            }
             if(editMode == true){
                 $("#canTutorTable tr ").css('background-color', '#000000');
                 $("#canTutorTable tr ").css('color', '#FFFFFF');
