@@ -565,6 +565,7 @@
         function alertFunc(obj){
             //$('#penButton').addClass('rowEditing');
             //console.log(obj);
+            if((mode == 0)||(editMode == false)){
             mode = 0;
             var last = editRow;
             var editRow = $(obj).attr('id');
@@ -589,6 +590,7 @@
             else{
                 $("#canTutorTable tr ").css('background-color', '#FFFFFF');
                 $("#canTutorTable tr ").css('color', '#000000');
+            }
             }
             }
         }
