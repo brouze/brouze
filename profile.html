@@ -299,7 +299,7 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude 70");
+            console.log("dude 71");
             data = params["username"];
             profileOwner=params["username"];
             console.log(params["username"]);
@@ -565,12 +565,12 @@
         function alertFunc(obj){
             //$('#penButton').addClass('rowEditing');
             //console.log(obj);
+            
+            mode = 0;
+            var last = tempSub;//what was the last row we were editing?
+            var editRow = $(obj).attr('id');//this is the row we just clicked
             console.log("bro "+mode);
             console.log("bro look "+editRow);
-            mode = 0;
-            var last = editRow;//what was the last row we were editing?
-            var editRow = $(obj).attr('id');//this is the row we just clicked
-            
             //$('#'+editRow).addClass("rowEditing");
             //console.log(editRow);
             //$("#"+editRow).css('background-color', '#FFCCFF');;
