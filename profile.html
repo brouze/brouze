@@ -515,8 +515,9 @@
                     console.log(teacher);
                     console.log(comments);
                     console.log(grade);
+                    var betterKey = key.replace(/ /g, "%20")
                     //console.log(key);
-                    $('#cantTutorTable tr:last').after('<tr><td>' + key + '</td><td>' + teacher + '</td><td>' + grade + '</td><td>' + comments + '</td><td></tr>');
+                    $('#cantTutorTable tr:last').after('<tr id='+betterKey+'><td id=key>' + key + '</td><td=teacher>' + teacher + '</td><td=grade>' + grade + '</td><td=blurb>' + comments + '</td><td></tr>');
                     if (match) {
                         $('#cantTutorTable td:last').after('<td id=penButton><a onclick="alertFuncTwo(this)" id="' + key + '"><span class="glyphicon glyphicon-pencil deleteButton" aria-hidden="true"></span></a></td>'); 
                         $('#cantTutorTable td:last').after('<td id=trashButton><a onclick="deleteWeakness(this)"id="' + key + '"><span class="glyphicon glyphicon-trash deleteButton" aria-hidden="true"></span></a></td>');
