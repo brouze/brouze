@@ -596,6 +596,7 @@
         }
         }
         function alertFuncTwo(obj){
+            if((mode==1)||(editMode==false)){
             mode = 1;
             //$('#penButton').addClass('rowEditing');
             //console.log(obj);
@@ -615,6 +616,7 @@
             else{
                 $("#cantTutorTable tr ").css('background-color', '#FFFFFF');
                 $("#cantTutorTable tr ").css('color', '#000000');
+            }
             }
         }
         function signOut() {
