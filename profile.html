@@ -273,6 +273,7 @@
         var mode = 0;
         var rowData = 0;
         var rowDataTwo = 0;
+        var changes = false;
         var tempSub;//temporary subject
         var tempBit;//temporary sub subject like price or teacher. 
         //console.log("encrypted four: " + encrypted);
@@ -580,7 +581,7 @@
             //console.log("check it "+editRow);
             //console.log("yeah but "+last);
             if((editMode == true)&&(last != editRow)){//if we are still editing and we didnt double click
-                editRow = true;
+                editRow = true;//if we are switching functions
             }
             else{
             editMode =! editMode;
@@ -786,6 +787,7 @@
         $(document).on("click", "#canTutorTable td", function(e) {
             theThingIs = $(this).closest("tr").attr('id')
             var localMatch = false;
+            changes = true;
             //console.log(theThingIs);
             var bro = theThingIs.replace(/%20/g, " ")
             console.log(bro);
@@ -822,6 +824,7 @@
                             saveEdit(newContent,true);
                             refreshTable();
                             editMode = false;
+                            changes = false;
                             $("#canTutorTable tr ").css('background-color', '#FFFFFF');
                             $("#canTutorTable tr ").css('color', '#000000');
                         } 
@@ -835,6 +838,7 @@
         });
         $(document).on("click", "#cantTutorTable td", function(e) {
             theThingIs = $(this).closest("tr").attr('id')
+            changes = true;
             var localMatch = false;
             //console.log(theThingIs);
             var bro = theThingIs.replace(/%20/g, " ")
@@ -872,6 +876,7 @@
                             saveEdit(newContent,false);
                             refreshTableTwo();
                             editMode = false;
+                            changes = false;
                             $("#cantTutorTable tr ").css('background-color', '#FFFFFF');
                             $("#cantTutorTable tr ").css('color', '#000000');
                         } 
