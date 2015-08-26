@@ -271,6 +271,7 @@
         var favorite;
         var editMode = false;
         var rowData = 0;
+        var rowDataTwo = 0;
         var tempSub;//temporary subject
         var tempBit;//temporary sub subject like price or teacher. 
         //console.log("encrypted four: " + encrypted);
@@ -505,7 +506,7 @@
             weakRef.once("value", function(snapshot) {
                 snapshot.forEach(function(childSnapshot) {
                     var key = childSnapshot.key();
-
+                    rowDataTwo++;
                     var childData = childSnapshot.val();
                     var teacher = childData.teacher;
                     var comments = childData.comment;
@@ -517,7 +518,8 @@
                     //console.log(key);
                     $('#cantTutorTable tr:last').after('<tr><td>' + key + '</td><td>' + teacher + '</td><td>' + grade + '</td><td>' + comments + '</td><td></tr>');
                     if (match) {
-                        $('#cantTutorTable td:last').after('<td><a onclick="deleteWeakness(this)"id="' + key + '"><span class="glyphicon glyphicon-trash deleteButton" aria-hidden="true"></span></a></td>');
+                        $('#cantTutorTable td:last').after('<td id=penButton><a onclick="alertFuncTwo(this)" id="' + key + '"><span class="glyphicon glyphicon-pencil deleteButton" aria-hidden="true"></span></a></td>'); 
+                        $('#cantTutorTable td:last').after('<td id=trashButton><a onclick="deleteWeakness(this)"id="' + key + '"><span class="glyphicon glyphicon-trash deleteButton" aria-hidden="true"></span></a></td>');
                         
 
                     }
@@ -577,6 +579,27 @@
             else{
                 $("#canTutorTable tr ").css('background-color', '#FFFFFF');
                 $("#canTutorTable tr ").css('color', '#000000');
+            }
+        }
+        function alertFuncTwo(obj){
+            //$('#penButton').addClass('rowEditing');
+            //console.log(obj);
+           
+            var editRow = $(obj).attr('id');
+
+            //$('#'+editRow).addClass("rowEditing");
+            //console.log(editRow);
+            $("#"+editRow).css('background-color', '#FFCCFF');;
+
+            tempSub=editRow;
+            editMode =! editMode;
+            if(editMode == true){
+                $("#cantTutorTable tr ").css('background-color', '#000000');
+                $("#cantTutorTable tr ").css('color', '#FFFFFF');
+            }
+            else{
+                $("#cantTutorTable tr ").css('background-color', '#FFFFFF');
+                $("#cantTutorTable tr ").css('color', '#000000');
             }
         }
         function signOut() {
@@ -772,7 +795,7 @@
                             $(this).parent().text(newContent);
                             console.log("wassssup "+$(this).parent('tr').id);
                             $(this).parent().removeClass("cellEditing"); 
-                            saveEdit(newContent);
+                            saveEdit(newContent,true);
                             refreshTable();
                             editMode = false;
                             $("#canTutorTable tr ").css('background-color', '#FFFFFF');
@@ -786,12 +809,65 @@
                 }
             }
         });
-        function saveEdit(newContent){
+        $(document).on("click", "#cantTutorTable td", function(e) {
+            theThingIs = $(this).closest("tr").attr('id')
+            var localMatch = false;
+            //console.log(theThingIs);
+            var bro = theThingIs.replace(/%20/g, " ")
+            console.log(bro);
+            if(bro==tempSub){
+                localMatch = true;
+            }
+            if((editMode == true)&&(localMatch==true)){
+                var rowID = $(this).parent('tr').prevAll().length;
+                //$(this).closest("tr").index();
+                //console.log($(this).closest('tr').attr('id') + "x0x");
+                console.log(rowID);
+                //tempBit is sub subject
+                //tempSub is subject
+                console.log(this.id);
+                if((this.id != 'key')&&(this.id != 'trashButton')&&(this.id != 'penButton')){
+                    tempBit=this.id;
+                    var OriginalContent = $(this).text();
+                    console.log(OriginalContent);
+                    //OriginalContent = OriginalContent.replace(/$/g,"")
+                    $(this).addClass("cellEditing");
+                    //$(this).parent().addClass("rowEditing");
+                    console.log("edited cell");//new stuff starts here
+                    $(this).html("<input type='text' value='" + OriginalContent + "' />"); 
+                    $(this).children().first().focus();
+
+                    $(this).children().first().keypress(function (e) { 
+                        if (e.which == 13) { 
+                            var newContent = $(this).val(); 
+                            $(this).parent().text(newContent);
+                            console.log("wassssup "+$(this).parent('tr').id);
+                            $(this).parent().removeClass("cellEditing"); 
+                            saveEdit(newContent,false);
+                            refreshTableTwo();
+                            editMode = false;
+                            $("#cantTutorTable tr ").css('background-color', '#FFFFFF');
+                            $("#cantTutorTable tr ").css('color', '#000000');
+                        } 
+                    });
+                    $(this).children().first().blur(function(){ 
+                        $(this).parent().text(OriginalContent); 
+                        $(this).parent().removeClass("cellEditing"); 
+                    });
+                }
+            }
+        });
+        function saveEdit(newContent,skill){
             console.log("new stuff");
             console.log("tempSub "+tempSub);
             console.log("tempBit "+tempBit);
             console.log("new content "+newContent);
-            var editRef = new Firebase("https://brouze.firebaseio.com/users/" + data + "/skills/"+tempSub);
+            if(skill == true){
+                var editRef = new Firebase("https://brouze.firebaseio.com/users/" + data + "/skills/"+tempSub);
+            }
+            else{
+                var editRef = new Firebase("https://brouze.firebaseio.com/users/" + data + "/weaknesses/"+tempSub);
+            }
             editRef.child(tempBit).set(newContent);
             console.log("hey what's the hold up");
              //var hopperRef = usersRef.child("gracehop");
@@ -804,6 +880,14 @@
             }
             rowData = 0;
             addRow();
+        }
+        function refreshTableTwo(){
+            //$("#canTutorTable").empty();
+            for(var i = 0;i<rowDataTwo;i++){
+                $('#cantTutorTable tr:last').remove();
+            }
+            rowDataTwo = 0;
+            addRowTwo();
         }
     </script>
 
