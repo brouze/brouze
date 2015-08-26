@@ -575,9 +575,9 @@
             //$("#"+editRow).css('background-color', '#FFCCFF');;
 
             tempSub=editRow;
-            console.log("bro "+editMode);
-            console.log("check it "+editRow);
-            console.log("yeah but "+last);
+            //console.log("bro "+editMode);
+            //console.log("check it "+editRow);
+            //console.log("yeah but "+last);
             if((editMode == true)&&(last != editRow)){
                 editRow = true;
             }
@@ -790,18 +790,18 @@
                 var rowID = $(this).parent('tr').prevAll().length;
                 //$(this).closest("tr").index();
                 //console.log($(this).closest('tr').attr('id') + "x0x");
-                console.log(rowID);
+                //console.log(rowID);
                 //tempBit is sub subject
                 //tempSub is subject
-                console.log(this.id);
+                //console.log(this.id);
                 if((this.id != 'key') &&(this.id != 'AP')&&(this.id != 'trashButton')&&(this.id != 'penButton')){
                     tempBit=this.id;
                     var OriginalContent = $(this).text();
-                    console.log(OriginalContent);
+                    //console.log(OriginalContent);
                     //OriginalContent = OriginalContent.replace(/$/g,"")
                     $(this).addClass("cellEditing");
                     //$(this).parent().addClass("rowEditing");
-                    console.log("edited cell");//new stuff starts here
+                    //console.log("edited cell");//new stuff starts here
                     $(this).html("<input type='text' value='" + OriginalContent + "' />"); 
                     $(this).children().first().focus();
 
@@ -809,7 +809,7 @@
                         if (e.which == 13) { 
                             var newContent = $(this).val(); 
                             $(this).parent().text(newContent);
-                            console.log("wassssup "+$(this).parent('tr').id);
+                            //console.log("wassssup "+$(this).parent('tr').id);
                             $(this).parent().removeClass("cellEditing"); 
                             saveEdit(newContent,true);
                             refreshTable();
@@ -840,18 +840,18 @@
                 var rowID = $(this).parent('tr').prevAll().length;
                 //$(this).closest("tr").index();
                 //console.log($(this).closest('tr').attr('id') + "x0x");
-                console.log(rowID);
+                //console.log(rowID);
                 //tempBit is sub subject
                 //tempSub is subject
-                console.log(this.id);
+                //console.log(this.id);
                 if((this.id != 'key')&&(this.id != 'trashButton')&&(this.id != 'penButton')){
                     tempBit=this.id;
                     var OriginalContent = $(this).text();
-                    console.log(OriginalContent);
+                    //console.log(OriginalContent);
                     //OriginalContent = OriginalContent.replace(/$/g,"")
                     $(this).addClass("cellEditing");
                     //$(this).parent().addClass("rowEditing");
-                    console.log("edited cell");//new stuff starts here
+                    //console.log("edited cell");//new stuff starts here
                     $(this).html("<input type='text' value='" + OriginalContent + "' />"); 
                     $(this).children().first().focus();
 
