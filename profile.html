@@ -299,7 +299,7 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude 70");
+            console.log("dude 69");
             data = params["username"];
             profileOwner=params["username"];
             console.log(params["username"]);
@@ -574,27 +574,26 @@
             //$("#"+editRow).css('background-color', '#FFCCFF');;
 
             tempSub=editRow;
-            //console.log("bro "+editMode);
-            //console.log("check it "+editRow);
-            //console.log("yeah but "+last);
+            console.log("bro "+editMode);
+            console.log("check it "+editRow);
+            console.log("yeah but "+last);
             if((editMode == true)&&(last != editRow)){
                 editRow = true;
             }
             else{
-                editMode =! editMode;
-                if(editMode == true){
-                    $("#canTutorTable tr ").css('background-color', '#000000');
-                    $("#canTutorTable tr ").css('color', '#FFFFFF');
-                }
-                else{
-                    $("#canTutorTable tr ").css('background-color', '#FFFFFF');
-                    $("#canTutorTable tr ").css('color', '#000000');
-                }
+            editMode =! editMode;
+            if(editMode == true){
+                $("#canTutorTable tr ").css('background-color', '#000000');
+                $("#canTutorTable tr ").css('color', '#FFFFFF');
+            }
+            else{
+                $("#canTutorTable tr ").css('background-color', '#FFFFFF');
+                $("#canTutorTable tr ").css('color', '#000000');
+            }
             }
         }
         function alertFuncTwo(obj){
             mode = 1;
-            var last = editRow;
             //$('#penButton').addClass('rowEditing');
             //console.log(obj);
            
@@ -605,19 +604,14 @@
             //$("#"+editRow).css('background-color', '#FFCCFF');;
 
             tempSub=editRow;
-            if((editRow == true)&&(last !=editRow)){
-                editRow = true;
+            editMode =! editMode;
+            if(editMode == true){
+                $("#cantTutorTable tr ").css('background-color', '#000000');
+                $("#cantTutorTable tr ").css('color', '#FFFFFF');
             }
             else{
-                editMode =! editMode;
-                if(editMode == true){
-                    $("#cantTutorTable tr ").css('background-color', '#000000');
-                    $("#cantTutorTable tr ").css('color', '#FFFFFF');
-                }
-                else{
-                    $("#cantTutorTable tr ").css('background-color', '#FFFFFF');
-                    $("#cantTutorTable tr ").css('color', '#000000');
-                }
+                $("#cantTutorTable tr ").css('background-color', '#FFFFFF');
+                $("#cantTutorTable tr ").css('color', '#000000');
             }
         }
         function signOut() {
