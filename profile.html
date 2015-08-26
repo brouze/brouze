@@ -270,6 +270,7 @@
         var profileViewer;
         var favorite;
         var editMode = false;
+        var mode = 0;
         var rowData = 0;
         var rowDataTwo = 0;
         var tempSub;//temporary subject
@@ -298,7 +299,7 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude 65");
+            console.log("dude 67");
             data = params["username"];
             profileOwner=params["username"];
             console.log(params["username"]);
@@ -564,7 +565,7 @@
         function alertFunc(obj){
             //$('#penButton').addClass('rowEditing');
             //console.log(obj);
-           
+            mode = 0;
             var editRow = $(obj).attr('id');
 
             //$('#'+editRow).addClass("rowEditing");
@@ -583,6 +584,7 @@
             }
         }
         function alertFuncTwo(obj){
+            mode = 1;
             //$('#penButton').addClass('rowEditing');
             //console.log(obj);
            
@@ -769,7 +771,9 @@
             var bro = theThingIs.replace(/%20/g, " ")
             console.log(bro);
             if(bro==tempSub){
-                localMatch = true;
+                if(mode==0){
+                    localMatch = true;
+                }
             }
             if((editMode == true)&&(localMatch==true)){
                 var rowID = $(this).parent('tr').prevAll().length;
@@ -817,7 +821,9 @@
             var bro = theThingIs.replace(/%20/g, " ")
             console.log(bro);
             if(bro==tempSub){
-                localMatch = true;
+                if(mode==1){
+                    localMatch = true;
+                }
             }
             if((editMode == true)&&(localMatch==true)){
                 var rowID = $(this).parent('tr').prevAll().length;
