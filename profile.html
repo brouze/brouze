@@ -301,7 +301,7 @@
                 temp = queries[i].split('=');
                 params[temp[0]] = temp[1];
             }
-            console.log("dude 74");
+            console.log("dude 75");
             data = params["username"];
             profileOwner=params["username"];
             console.log(params["username"]);
@@ -815,14 +815,15 @@
                 if((this.id != 'key') &&(this.id != 'AP')&&(this.id != 'trashButton')&&(this.id != 'penButton')){
                     tempBit=this.id;
                     var OriginalContent = $(this).text();
-                    tempContent = $(this).val();
-                    console.log("HEY " + tempContent);
                     //console.log(OriginalContent);
                     //OriginalContent = OriginalContent.replace(/$/g,"")
                     $(this).addClass("cellEditing");
                     //$(this).parent().addClass("rowEditing");
                     //console.log("edited cell");//new stuff starts here
                     $(this).html("<input type='text' value='" + OriginalContent + "' />"); 
+                    
+                    tempContent = $(this).val();
+                    console.log("HEY " + tempContent);
                     $(this).children().first().focus();
 
                     $(this).children().first().keypress(function (e) { 
