@@ -331,7 +331,8 @@ td {
 }
 
 .glyphicon-pencil {
-    color:coral;
+    <!--color:coral;-->
+    color:darkseagreen;
 }
 
 #penButton .rowEditing{
