@@ -274,6 +274,7 @@
         var rowData = 0;
         var rowDataTwo = 0;
         var changes = false;
+        var tempContent;
         var tempSub;//temporary subject
         var tempBit;//temporary sub subject like price or teacher. 
         //console.log("encrypted four: " + encrypted);
@@ -582,6 +583,10 @@
             //console.log("yeah but "+last);
             if((editMode == true)&&(last != editRow)){//if we are still editing and we didnt double click
                 editRow = true;//if we are switching functions
+                if(changes==true){
+                    saveEdit(tempContent,true);
+                    changes = false;
+                }
             }
             else{
             editMode =! editMode;
@@ -866,7 +871,7 @@
                     //console.log("edited cell");//new stuff starts here
                     $(this).html("<input type='text' value='" + OriginalContent + "' />"); 
                     $(this).children().first().focus();
-
+                    tempContent=$(this).val();
                     $(this).children().first().keypress(function (e) { 
                         if (e.which == 13) { 
                             var newContent = $(this).val(); 
