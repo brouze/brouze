@@ -569,6 +569,12 @@
             //console.log(obj);
             if((mode == 0)||(editMode==false)){//if we are not already editing the other table
             mode = 0;
+            console.log("change " + change);
+            console.log("editMode " + editMode);
+            console.log("tempContent " + tempContent);
+            if((change == true)&&(editMode == true)){//if the user made some edit
+                saveEdit(tempContent,false);
+            }
             var last = tempSub;//what was the last row we were editing?
             var editRow = $(obj).attr('id');//this is the row we just clicked
             console.log("bro "+mode);
@@ -583,6 +589,7 @@
             //console.log("yeah but "+last);
             if((editMode == true)&&(last != editRow)){//if we are still editing and we didnt double click
                 editRow = true;//if we are switching functions
+                
             }
             else{
             editMode =! editMode;
