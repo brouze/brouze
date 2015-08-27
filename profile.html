@@ -875,6 +875,7 @@
                     $(this).html("<input type='text' value='" + OriginalContent + "' />"); 
                     $(this).children().first().focus();
                     tempContent=$(this).val();
+                    console.log("HEY " + tempContent);
                     $(this).children().first().keypress(function (e) { 
                         if (e.which == 13) { 
                             var newContent = $(this).val(); 
